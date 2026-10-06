@@ -4,7 +4,7 @@ global.window = {};
 require("./data.js");
 const SB = window.SB;
 const all = SB.sections.flatMap((s) => s.shots.map((sh) => ({ ...sh, section: s.name })));
-const fmt = (t) => { const m = Math.floor(t / 60), s = t - m * 60; return m + ":" + (s < 10 ? "0" : "") + s.toFixed(1); };
+const fmt = (t) => { const neg = t < 0; t = Math.abs(t); const m = Math.floor(t / 60), s = t - m * 60; return (neg ? "-" : "") + m + ":" + (s < 10 ? "0" : "") + s.toFixed(1); };
 const castText = (k) => SB.cast.find((c) => c.key === k).prompt;
 const expand = (s) => String(s).replace(/\{(WIFE|HUSBAND|CATS|SPINDA)\}/g, (_, k) => castText(k));
 const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;

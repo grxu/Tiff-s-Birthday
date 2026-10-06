@@ -288,7 +288,7 @@ body { padding-bottom: 120px; }
     <h2>Higgsfield pipeline</h2>
     <p class="lede">The model names below are what Higgsfield recommends for this kind of work today. The ‘Gen’ field on each shot says which route that shot takes.</p>
     <div class="steps">
-      <div class="step"><div><h3>Lock the style first</h3><p>Generate three or four style frames from one shot (V1-01 is a good test) with <code>Nano Banana Pro</code>, using photos of the two of you as references. Pick one and treat it as the bible. Skipping this is the usual reason AI-made videos drift between shots.</p></div></div>
+      <div class="step"><div><h3>Lock the style first</h3><p>Generate three or four style frames from one shot (V1-01 is a good test) with <code>Nano Banana Pro</code>, using the client’s photos of Tiff and Adrian as references. Pick one and treat it as the bible. Skipping this is the usual reason AI-made videos drift between shots.</p></div></div>
       <div class="step"><div><h3>Build character sheets</h3><p>Use Higgsfield’s character-sheet workflow for Tiff, Adrian, each cat and your real Spinda plush: turnaround, expressions, chibi variant, spiral eyes. Feed these sheets as image references into every keyframe after this.</p></div></div>
       <div class="step"><div><h3>Keyframe each shot</h3><p>Paste the shot’s Copy prompt into <code>Nano Banana Pro</code> or <code>FLUX 3</code> with the character sheets attached. Approve the still before you spend anything on video.</p></div></div>
       <div class="step"><div><h3>Animate</h3><p><b>I2V</b> shots: <code>Seedance 2.5</code> (reference mode) from the approved keyframe. <b>S+E</b> shots (Spinda multiplying, melting, versions merging, the feast): <code>MiniMax H3</code> or <code>Seedance 2.0</code> with a start frame and an end frame. Turn the model’s own audio off, since the song is the soundtrack. Most of these models generate at least 4–5 seconds, while many shots here are 2–3 seconds, so generate a little long and trim to the beat. Draft at 480p, then finalise the takes you keep.</p></div></div>
@@ -300,7 +300,12 @@ body { padding-bottom: 120px; }
 
   <section class="block" id="questions">
     <div class="eyebrow">Open questions</div>
-    <h2>What I need from you</h2>
+    <h2>Decided, and what to ask the client</h2>
+    <h3>Decided</h3>
+    <div class="table-wrap"><table id="decisions"></table></div>
+    <h3>Questions for the client</h3>
+    <p class="lede">These need Tiff and Adrian’s input. Each one swaps a placeholder for something only they would recognise. Copy the list to send it as a message.</p>
+    <div class="timing-tools"><button type="button" id="copyQs">Copy questions for the client</button></div>
     <div class="qs" id="qs"></div>
     <h3>Your timing changes</h3>
     <p class="lede">Shots you re-timed with ‘Set start here’ are listed below and saved in this browser. Copy the list and paste it to me, and I’ll update the board for everyone.</p>
@@ -331,8 +336,8 @@ body { padding-bottom: 120px; }
   const SB = window.SB;
   const $ = (s) => document.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const fmt = (t) => { t = Math.max(0, t); const m = Math.floor(t / 60), s = t - m * 60; return m + ":" + (s < 10 ? "0" : "") + s.toFixed(1); };
-  const fmt0 = (t) => { const m = Math.floor(t / 60), s = Math.floor(t % 60); return m + ":" + String(s).padStart(2, "0"); };
+  const fmt = (t) => { const neg = t < 0; t = Math.abs(t); const m = Math.floor(t / 60), s = t - m * 60; return (neg ? "−" : "") + m + ":" + (s < 10 ? "0" : "") + s.toFixed(1); };
+  const fmt0 = (t) => { const neg = t < 0; t = Math.abs(t); const m = Math.floor(t / 60), s = Math.floor(t % 60); return (neg ? "−" : "") + m + ":" + String(s).padStart(2, "0"); };
   const store = {
     get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -354,7 +359,7 @@ body { padding-bottom: 120px; }
 
   $("#thesis").textContent = SB.thesis;
   $("#subtitle").textContent = SB.subtitle + ", set to “" + SB.song.title + "”. A playful montage of everyday married life: lost in the car, melting in the sun, buried in plushies, and home.";
-  $("#meta").innerHTML = [["Song", fmt0(total)], ["Tempo", SB.song.bpm + " BPM"], ["Shots", count], ["Priority 1", p1], ["Frame", "16:9 (to confirm)"]]
+  $("#meta").innerHTML = [["Song", fmt0(total)], ["Tempo", SB.song.bpm + " BPM"], ["Shots", count], ["Priority 1", p1], ["Frame", "16:9"]]
     .map(([k, v]) => `<span class="pill">${k} <b>${v}</b></span>`).join("");
 
   // ---- nav ----
@@ -369,7 +374,7 @@ body { padding-bottom: 120px; }
   $("#songnotes").innerHTML = SB.song.notes.map((n) => `<li>${esc(n)}</li>`).join("");
   function renderStrip() {
     $("#strip").innerHTML = SB.sections.map((s) => {
-      const w = ((s.end - s.start) / SB.song.end) * 100;
+      const w = ((s.end - s.start) / (SB.song.end - all[0].t0)) * 100;
       const h = 30 + s.chaos * 70;
       return `<a class="seg" href="#sec-${s.key}" style="width:${w}%" title="${esc(s.name)}: ${esc(s.intent)}">
         <div class="bar" style="height:${h}px;background:var(--sun);opacity:.95">
@@ -540,7 +545,7 @@ body { padding-bottom: 120px; }
   }
   function setPlayIcon() { $("#play").textContent = audio.paused ? "▶" : "❚❚"; $("#play").setAttribute("aria-label", audio.paused ? "Play" : "Pause"); }
   function markStarted() { if (!started) { started = true; document.querySelectorAll(".setstart").forEach((b) => (b.disabled = false)); } }
-  function playFrom(t) { markStarted(); audio.currentTime = Math.min(t, total - 0.05); audio.play().catch(() => {}); }
+  function playFrom(t) { markStarted(); audio.currentTime = Math.max(0, Math.min(t, total - 0.05)); audio.play().catch(() => {}); }
   $("#play").addEventListener("click", () => { markStarted(); if (audio.paused) audio.play().catch(() => {}); else audio.pause(); });
   audio.addEventListener("play", () => { setPlayIcon(); markActive(true); const el = activeId && document.getElementById("shot-" + activeId); if (el && $("#follow").checked) el.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }); });
   audio.addEventListener("pause", setPlayIcon);
@@ -578,7 +583,10 @@ body { padding-bottom: 120px; }
 
   renderBoard();
   renderTimes();
-  $("#qs").innerHTML = SB.questions.map((q) => `<div class="qcard"><h3>${esc(q.q)}</h3><p>${esc(q.why)}</p></div>`).join("");
+  $("#decisions").innerHTML = `<thead><tr><th>Topic</th><th>Decision</th></tr></thead><tbody>${SB.decisions.map((d) => `<tr><td>${esc(d.q)}</td><td>${esc(d.a)}</td></tr>`).join("")}</tbody>`;
+  $("#qs").innerHTML = SB.clientQuestions.map((q) => `<div class="qcard"><h3>${esc(q.q)}</h3><p>${esc(q.why)}</p></div>`).join("");
+  const qText = "A few questions for Tiff's birthday video:\n\n" + SB.clientQuestions.map((q, i) => `${i + 1}. ${q.q}: ${q.why}`).join("\n");
+  $("#copyQs").addEventListener("click", (e) => copyText(qText, e.currentTarget, "Copy questions for the client"));
   draw();
 })();
 </script>

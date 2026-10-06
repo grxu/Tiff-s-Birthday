@@ -4,7 +4,7 @@
    Prompt tokens {WIFE} {HUSBAND} {CATS} {SPINDA} are expanded from the cast block. */
 window.SB = {
   title: "Recalculating",
-  subtitle: "A birthday music video for Tiff’s 41st",
+  subtitle: "A birthday music video for Tiff",
   thesis: "He’s always lost. She’s always the destination.",
 
   song: {
@@ -16,12 +16,12 @@ window.SB = {
     bar: 1.86,
     genre: "Electronic disco with anime-style synth leads, a male lead vocal, vocal-chop hooks and big drops",
     notes: [
-      "The intro is only 3.3 seconds of vocal chops before the first line, so the opening has to be quick. An optional 3-second silent pre-roll on the GPS screen would give the title room.",
+      "The intro is only 3.3 seconds of vocal chops before the first line, so the film opens with a 3-second silent pre-roll on the GPS screen to give the title room.",
       "Each chorus has a stop on the beat right before “You make this oddball life lovely” (1:06, 2:09). That’s where the tableau shot freezes.",
       "After Chorus 1 (1:10–1:20) and Chorus 2 (2:13–2:19) there are instrumental vocal-chop breaks. They aren’t in the lyrics, so I’ve added dance breaks there.",
       "Verse 2’s second half works like a pre-chorus: four lines, then a ~6-second build into Chorus 2. The quiz punchline lands just before that build.",
       "The bridge builds to its loudest point on “You’re the kindest home…” (3:04), and the final chorus drops right after it.",
-      "In the outro the music stops for about 2 seconds after “But being my love?”, then the biggest drop in the song lands on “You get that just right” (3:54.8). That changes the brief’s ‘quiet ending’; see the open questions."
+      "In the outro the music stops for about 2 seconds after “But being my love?”, then the biggest drop in the song lands on “You get that just right” (3:54.8). The quiet moment goes in that silence, and the film celebrates on the drop."
     ]
   },
 
@@ -44,7 +44,7 @@ window.SB = {
       sheet: ["Royal: crowns, velvet cushions", "Judges holding scorecards", "Party hats, unimpressed", "Holding a phone with one paw (outro)"] },
     { key: "SPINDA", name: "Spinda (plush)", role: "Tiff’s mascot and mirror. Its spiral eyes become the visual shorthand for ‘she’s lost again’.",
       prompt: "a cream-coloured Spinda plush with red spots and swirly spiral eyes, slightly lopsided and wobbly",
-      sheet: ["Use a photo of your real Spinda plush as the reference", "Hero pose", "Wobble/dizzy pose", "Every Spinda has a different spot pattern"] }
+      sheet: ["Use a photo of Tiff’s real Spinda plush as the reference", "Hero pose", "Wobble/dizzy pose", "Every Spinda has a different spot pattern"] }
   ],
 
   motifs: [
@@ -55,7 +55,7 @@ window.SB = {
     { tag: "sun", name: "Smug sun", rule: "The sun has a face and a grudge. Swells when she steps outside. Wears a party hat in the finale." },
     { tag: "spinda", name: "Spiral eyes", rule: "When Tiff is overwhelmed her eyes turn into Spinda spirals. Introduced at the heat gag, explained by the Spinda verse." },
     { tag: "cloud", name: "Rain cloud", rule: "Forms over Adrian at the empty dinner plate (pre-chorus). Blown away by the feast’s steam (Verse 3)." },
-    { tag: "exit41", name: "Exit 41", rule: "The missed exit is numbered 41. Pays off at the cake and in the outro." },
+    { tag: "exit41", name: "Exit 41", rule: "The missed exit is numbered 41. Pays off at the cake and in the outro. The end card itself shows no number." },
     { tag: "cards", name: "Role cards", rule: "Each chorus role flips in as a trading card (‘WARDROBE EXPERT’, ‘TRAVEL PLANNER’…). Faster in Chorus 2; the final card reads ‘MY HOME’." },
     { tag: "versions", name: "Versions of Adrian", rule: "Introduced in Verse 3, merge back into one, reunite for the group photo and the finale." },
     { tag: "eyes", name: "Light in my eyes", rule: "Catchlight sparkle in Adrian’s eyes in the Verse 3 photo; returns as candlelight in the final close-up." },
@@ -74,14 +74,18 @@ window.SB = {
 
   sections: [
     { key: "intro", name: "Intro", mode: "gag", chaos: 0.35, heart: 0.3,
-      intent: "3.3 seconds of vocal chops. Set up the GPS and its destination before the first line.",
+      intent: "A 3-second silent pre-roll, then 3.3 seconds of vocal chops. Set up the GPS and its destination before the first line.",
       palette: ["#BFE3FF", "#2F6BFF", "#FFFFFF"],
       shots: [
+        { id: "PR-01", t: -3, lyric: "(3 seconds of silence before the music)", size: "ECU", cam: "Locked on the dashboard GPS screen",
+          action: "Silence. A stylized GPS screen in a parked car. The destination field types out ‘HOME’. A GPS voice says ‘Starting route.’ A Spinda keychain swings gently at the edge of frame.",
+          act: "—", ui: "Destination: HOME", sfx: "GPS voice: “Starting route.”", trans: "Music starts; snap into IN-01 on the first chop", tags: ["gps", "spinda"], p: 1, mode: "gag",
+          gen: { how: "Editor", img: "Flat cartoon GPS navigation screen inside a car dashboard, blue route line, arrow icon, a cream Spinda keychain hanging at the edge of frame", motion: "Motion graphics in the editor over a generated dashboard plate." },
+          note: "Pre-roll before the song. It mirrors the ‘Recalculating…’ tag after the song ends." },
         { id: "IN-01", t: 0, lyric: "(vocal-chop intro)", size: "ECU", cam: "Snap-zoom on a dashboard GPS screen, one beat per chop",
           action: "A stylized GPS screen. Blue arrow on a route. The destination field reads ‘HOME’. A Spinda keychain swings into frame.",
           act: "—", ui: "Title in GPS font: RECALCULATING · Destination: HOME", sfx: "Soft GPS chime on the first chop", trans: "Match-cut the arrow to the real car", tags: ["gps", "spinda"], p: 2, mode: "gag",
-          gen: { how: "Editor", img: "Flat cartoon GPS navigation screen inside a car dashboard, blue route line, arrow icon, a cream Spinda keychain swinging at the edge of frame", motion: "Make this as motion graphics in the editor; only the background dashboard needs generating." },
-          note: "Optional: start 3 seconds before the music on this screen with a GPS voice saying ‘Starting route’. It mirrors the ‘Recalculating…’ tag at the very end." },
+          gen: { how: "Editor", img: "Flat cartoon GPS navigation screen inside a car dashboard, blue route line, arrow icon, a cream Spinda keychain swinging at the edge of frame", motion: "Make this as motion graphics in the editor; only the background dashboard needs generating." } },
         { id: "IN-02", t: 1.7, lyric: "(vocal-chop intro)", size: "WS", cam: "High wide, fast push toward the windshield",
           action: "A cute little car on a sunny suburban road. Two silhouettes inside, one holding a phone up high.",
           act: "—", ui: "", sfx: "", trans: "Push through the windshield into V1-01 on the first sung word", tags: ["gps"], p: 3, mode: "gag",
@@ -118,7 +122,7 @@ window.SB = {
           action: "Three chat windows: Neisa gasping, Thei eating popcorn, Mel zooming in on the screen. Group chat title: ‘🚗 LIVE UPDATES’. Each panel receives the same update at once.",
           act: "Friends: invested like it’s a TV finale.", ui: "Avatars + names: Neisa · Thei · Mel", sfx: "PING ×3, one per name", trans: "Cut", tags: ["chat", "phone"], p: 2, mode: "gag",
           gen: { how: "Editor", img: "Three cute cartoon avatar reaction faces: gasping, eating popcorn, leaning in close", motion: "Avatars only; layout and bubbles in the editor." },
-          note: "The singer leaves small gaps between the three names, so each panel can pop on its own name." },
+          note: "The singer leaves small gaps between the three names, so each panel can pop on its own name. The friends are neutral avatars, not likenesses." },
         { id: "V1-07", t: 21.8, lyric: "I’m circling the block like I planned it like this.", size: "Top-down map", cam: "Locked overhead GPS view",
           action: "The car icon loops the same block. The route line thickens with each lap. A lap counter ticks 1, 2, 3.",
           act: "—", ui: "LAP 3 · ETA: ??", sfx: "Lap beep each loop", trans: "Cut", tags: ["gps"], p: 1, mode: "gag",
@@ -190,7 +194,7 @@ window.SB = {
           action: "Card: COSPLAY CREW. Adrian sits in a chair; four clones of Tiff swarm him like an F1 pit crew: makeup, wig, costume, props. Two seconds later he stands up in full cosplay.",
           act: "Tiff ×4: focused pros. Adrian: stunned, transformed.", ui: "Role card: COSPLAY CREW · pit-stop timer 2.0s", sfx: "Air-wrench zips", trans: "Card flip", tags: ["cards", "versions"], p: 1, mode: "gag",
           gen: { how: "S+E", img: "START: {HUSBAND} in plain clothes in a chair surrounded by four copies of {WIFE} with makeup brushes, a wig, fabric and props like a pit crew. END: {HUSBAND} standing in a full [COSPLAY CHARACTER] costume, the four Tiffs posing proudly", motion: "Fast pit-stop blur, then he stands transformed." },
-          note: "Which cosplay(s) have you done together? A real one makes this land." },
+          note: "Client question: which cosplays have Tiff and Adrian done? A real one makes this land." },
         { id: "C1-04", t: 60.6, lyric: "My travel planner who gets us through.", size: "MS → WS", cam: "Pull back from desk to train platform",
           action: "Card: TRAVEL PLANNER. Tiff at a command centre of maps, train timetables and a colour-tabbed binder. Pull back: a train platform; she leads with a clipboard, perfectly on time. Adrian follows with four suitcases and a plush backpack.",
           act: "Tiff: general. Adrian: pack mule, happy.", ui: "Role card: TRAVEL PLANNER", sfx: "Station chime", trans: "Card flip", tags: ["cards", "gps", "plush"], p: 1, mode: "gag",
@@ -219,7 +223,7 @@ window.SB = {
           action: "The plushie rain turns into a downpour. The pile rises to their waists, then their shoulders. The last plushie lands on Adrian’s head. Camera cranes up to show every surface covered.",
           act: "Tiff: thrilled. Adrian: drowning politely.", ui: "", sfx: "Squeaky avalanche", trans: "Match-cut to a single chair (V2-01)", tags: ["plush"], p: 2, mode: "gag",
           gen: { how: "S+E", img: "START: the couple dancing as plushies fall. END: high-angle view of the living room filled shoulder-deep with plushies, {WIFE} delighted, {HUSBAND} with a plush on his head", motion: "Plushies pour from above and fill the room." },
-          note: "Not in the lyrics, so it’s optional. If you’d rather keep the break short, hold the C1-06 photo and cut V2-01 earlier." }
+          note: "Not in the lyrics: this fills the instrumental break and sets up the plushie verse." }
       ] },
 
     { key: "v2", name: "Verse 2", mode: "gag", chaos: 1.0, heart: 0.3,
@@ -234,7 +238,7 @@ window.SB = {
           action: "A tiny plushie squeezes into a packed shelf with a ‘pop’; the shelf creaks. Then Tiff, buried in plushies on the couch, pats the one free spot next to her. Adrian squeezes in. Plushies all around them.",
           act: "Tiff: welcoming. Adrian: surrenders happily.", ui: "", sfx: "Cork pop", trans: "Spotlight snap", tags: ["plush"], p: 1, mode: "heart",
           gen: { how: "I2V", img: "{WIFE} on a couch completely surrounded by Pokémon plushies, patting the one small empty spot beside her, smiling at {HUSBAND}", motion: "She pats the spot; he squeezes in; plushies wobble." },
-          note: "I read ‘someone else’ two ways: one more plushie, and him. Doing both gives the verse a sweet beat. Tell me if you meant only the plushie." },
+          note: "Both readings of ‘someone else’: one more plushie, and him. The second gives the verse a sweet beat." },
         { id: "V2-03", t: 87.6, lyric: "Spinda’s your favorite, “He’s confused like me,”", size: "Hero CU → MS", cam: "Spotlight snap, slow 180° orbit",
           action: "Hero shot of Spinda in a spotlight. Tiff hugs it. Spinda wobble-dances, spiral eyes spinning; Tiff’s eyes go spiral to match. She points at it.",
           act: "Tiff: kindred-spirit joy.", ui: "Bubble: “He gets me.”", sfx: "Wobble ‘boing’", trans: "POOF", tags: ["spinda"], p: 1, mode: "gag",
@@ -244,7 +248,7 @@ window.SB = {
           action: "One Spinda. POOF, two. POOF, three. Each has a different spot pattern.",
           act: "—", ui: "Optional labels: HUG · DISPLAY · JUST IN CASE", sfx: "POOF ×2", trans: "Hard cut", tags: ["spinda", "plush"], p: 1, mode: "gag",
           gen: { how: "S+E", img: "START: one {SPINDA} on a table. END: three Spinda plushies side by side, each with a different spot pattern, puff of cartoon smoke", motion: "Two cartoon poofs, a plush appears with each." },
-          note: "Is there a real reason she buys three? If so I’ll use it as the labels." },
+          note: "Client question: is there a real reason she buys three? If so it becomes the labels; otherwise HUG · DISPLAY · JUST IN CASE." },
         { id: "V2-05", t: 93.0, lyric: "has to be three.", size: "WS", cam: "Wave crashes toward camera",
           action: "The whole room floods with Spindas. A wave knocks Adrian over. Tiff surfs the wave on a Spinda, delighted.",
           act: "Adrian: horrified. Tiff: ecstatic.", ui: "", sfx: "Wave crash of squeaks", trans: "Cut", tags: ["spinda", "plush"], p: 1, mode: "gag",
@@ -261,7 +265,7 @@ window.SB = {
           action: "A huge tournament stage. Spotlights, a roaring crowd, confetti, a giant trophy. Tiff walks out in slow motion in sunglasses and a cape, deck in hand. The jumbotron shows her face.",
           act: "Tiff: elite champion energy.", ui: "Jumbotron: TIFF", sfx: "Crowd roar", trans: "Freeze frame", tags: ["cats"], p: 1, mode: "epic",
           gen: { how: "I2V", img: "{WIFE} walking out onto a huge card-game tournament stage in slow motion wearing sunglasses and a cape, spotlights, cheering crowd, giant trophy, confetti", motion: "Slow-motion walk toward camera, spotlights sweep, confetti falls." },
-          note: "Did she actually compete (League Cup, Regionals…)? A real event name on the banner would be a lovely touch." },
+          note: "Client question: did she actually compete (League Cup, Regionals…)? A real event name on the banner would be a lovely touch." },
         { id: "V2-09", t: 105.7, lyric: "But first-turn Supporters?", size: "Graphic", cam: "Quiz card slams in",
           action: "Freeze. A game-show question card slams into frame. Tiff slaps the buzzer with total confidence.",
           act: "Tiff: certain.", ui: "Card: “You go first. Can you play a Supporter on Turn 1?” · Tiff: “YES!”", sfx: "Slam + buzzer press", trans: "Cut", tags: ["cards"], p: 1, mode: "gag",
@@ -335,7 +339,7 @@ window.SB = {
           action: "Adrian slumps in, tired; the little rain cloud from the pre-chorus is back over his head. Tiff lifts a cloche: a huge feast. The steam rises and blows the cloud away. He lights up.",
           act: "Adrian: gloom → instant joy.", ui: "", sfx: "Cloche ‘ting’, cloud ‘poof’", trans: "Mirror flash", tags: ["cloud"], p: 1, mode: "heart",
           gen: { how: "S+E", img: "START: tired {HUSBAND} at a table with a small rain cloud over his head, {WIFE} lifting a silver cloche. END: a lavish steaming home-cooked feast, the cloud gone, him beaming", motion: "Steam rises and pushes the cloud away; his face brightens." },
-          note: "What are her signature dishes? Using real ones makes this personal." },
+          note: "Client question: what are her signature dishes? Using real ones makes this personal." },
         { id: "V3-05", t: 154.4, lyric: "And you never ask me to be someone new,", size: "WS", cam: "Slow dolly through a crowd of Adrians",
           action: "Adrian surrounded by many versions of himself. Tiff walks among them, unbothered, smiling at each.",
           act: "Tiff: easy acceptance.", ui: "", sfx: "", trans: "Cut on the beat", tags: ["versions"], p: 1, mode: "heart",
@@ -344,7 +348,7 @@ window.SB = {
           action: "Femboy: cute outfit and hair clip, Tiff gives a thumbs up. Geek: gadgets and monitors. Nerd: glasses, books and games. Cards in shoe: a card sticks out of his sneaker; she plucks it and sleeves it.",
           act: "Tiff: the exact same loving face every time. That’s the joke.", ui: "Optional tiny labels: FEMBOY · GEEK · NERD · CARDS IN SHOE", sfx: "One beat-hit per cut", trans: "Light swirl", tags: ["versions"], p: 1, mode: "gag",
           gen: { how: "I2V ×4", img: "Four keyframes with identical framing: {HUSBAND} as a cute femboy in a skirt and hair clip; as a geek surrounded by gadgets; as a nerd with glasses and stacks of books and games; with a trading card sticking out of his sneaker; {WIFE} beside him with the same adoring smile each time", motion: "Tiny reaction per cut: thumbs up / nod / heart eyes / pluck the card." },
-          note: "Femboy should read as affectionate and celebratory. Tell me how far you want to go with the outfit." },
+          note: "Client question: how far should the femboy look go (subtle, cute and playful, or full glam)? The placeholder is cute and playful. It must read as affectionate and celebratory." },
         { id: "V3-07", t: 161.9, lyric: "You let me be all of the things that I am,", size: "MS", cam: "Versions swirl into one, camera settles",
           action: "All the versions swirl together in light and merge back into one Adrian. Tiff takes his hand.",
           act: "Both: calm.", ui: "", sfx: "Shimmer", trans: "Cut", tags: ["versions"], p: 2, mode: "heart",
@@ -373,7 +377,7 @@ window.SB = {
           action: "Stickers, bubbles and plushies peel away and fade; the colour drains to calm blue. Back to the Verse 1 GPS map. As it zooms out, the loops from ‘circling the block’ turn out to form a heart around their home.",
           act: "—", ui: "Route line forming a heart", sfx: "", trans: "Match the heart’s centre to their front door", tags: ["gps"], p: 1, mode: "heart",
           gen: { how: "Editor", img: "Reuse the V1-07 map plate at a wider zoom", motion: "Animate the route line in the editor so the heart shape is exact." },
-          note: "This bends the lyric a little (it implies he circled on purpose). I love it as the reveal, but it’s your call." },
+          note: "Decided: keep the heart. It bends the lyric a little (he circled on purpose), and that’s the point of the reveal." },
         { id: "BR-04", t: 184.5, lyric: "You’re the kindest home I could ever come back to.", size: "WS → MCU", cam: "Walk up the path; reverse on the doorway",
           action: "Night. Adrian walks up the path. The door opens; warm light spills out. Tiff in the doorway, cats at her feet. The GPS pin labelled HOME drops gently above her, not the house. They hug as the music peaks.",
           act: "Both: quiet, tender. Hold it.", ui: "Map pin above Tiff: HOME", sfx: "Door creak, soft chime", trans: "Whip into the final chorus on the drop", tags: ["gps", "cats"], p: 1, mode: "heart",
@@ -386,9 +390,9 @@ window.SB = {
       palette: ["#FFB347", "#FF7AB6", "#FFE8A3", "#7A4FD6"],
       shots: [
         { id: "FC-01", t: 189.7, lyric: "Happy birthday, love, you’re my whole supply,", size: "WS", cam: "Slow-motion confetti, crane down",
-          action: "The full party: cake, presents, cats, confetti in slow motion. Cindy, Neisa, Thei and Mel are here in person: the group chat, finally IRL.",
+          action: "The full party: cake, presents, cats, confetti in slow motion. Cindy, Neisa, Thei and Mel are here in person, drawn as the same neutral avatar characters from the chat: the group chat, finally IRL.",
           act: "Everyone: celebration.", ui: "", sfx: "", trans: "Card flip", tags: ["chat", "cats", "plush"], p: 1, mode: "heart",
-          gen: { how: "I2V", img: "Big birthday party in a warm living room, {WIFE} in the centre, {HUSBAND} beside her, four friends cheering, presents, cats in party hats, slow-motion confetti, golden light", motion: "Slow-motion confetti, camera cranes down to her." } },
+          gen: { how: "I2V", img: "Big birthday party in a warm living room, {WIFE} in the centre, {HUSBAND} beside her, four generic cartoon friends cheering (matching the chat avatars, not real people), presents, cats in party hats, slow-motion confetti, golden light", motion: "Slow-motion confetti, camera cranes down to her." } },
         { id: "FC-02", t: 192.5, lyric: "My wardrobe expert, my style on the fly.", size: "WS runway", cam: "Runway head-on",
           action: "Fashion montage, but now they walk the runway together in coordinated outfits.", act: "", ui: "WARDROBE EXPERT", sfx: "", trans: "Card flip", tags: ["cards"], p: 2, mode: "heart",
           gen: { how: "I2V", img: "{WIFE} and {HUSBAND} walking a runway together in coordinated outfits, camera flashes", motion: "Strut toward camera, spin." } },
@@ -442,37 +446,47 @@ window.SB = {
           gen: { how: "I2V", img: "Quiet evening living room, warm lamp light, {WIFE} and {HUSBAND} on the couch holding hands, two cats curled up beside them, a phone on the coffee table glowing softly", motion: "Almost still: cats breathe, a tail flicks, lamp glow." },
           note: "This is the brief’s quiet ending, placed in the silence the song gives us." },
         { id: "OU-06", t: 234.8, lyric: "You get that just right. (final drop)", size: "WS → crane up", cam: "Pull back and up as the room fills",
-          action: "On the drop, the whole film comes back to celebrate around them: the cats in crowns, the friends, the versions of Adrian, a wave of Spindas, the smug sun in a party hat, the Post button dancing. Tiff and Adrian stay in the middle, still holding hands.",
+          action: "On the drop, the whole film comes back to celebrate around them: the cats in crowns, the avatar friends, the versions of Adrian, a wave of Spindas, the smug sun in a party hat, the Post button dancing. Tiff and Adrian stay in the middle, still holding hands.",
           act: "Everyone: joy. The couple: just looking at each other.", ui: "", sfx: "", trans: "Confetti wipe to the end card", tags: ["cats", "chat", "versions", "spinda", "sun", "post", "plush"], p: 1, mode: "gag",
-          gen: { how: "I2V", img: "Joyful finale party in a living room: {WIFE} and {HUSBAND} holding hands in the centre, surrounded by cats wearing crowns, four cheering friends, several versions of Adrian dancing, a wave of Spinda plushies, a cartoon sun with a party hat in the window, confetti everywhere", motion: "Camera pulls back and rises as everyone dances around the still couple." },
-          note: "The brief asked for a quiet final line, but the song puts its biggest drop here. My suggestion is to keep the quiet in the 2-second stop (OU-05) and celebrate on the drop. If you’d rather stay quiet, hold OU-05 all the way through." },
+          gen: { how: "I2V", img: "Joyful finale party in a living room: {WIFE} and {HUSBAND} holding hands in the centre, surrounded by cats wearing crowns, four generic cartoon friends cheering, several versions of Adrian dancing, a wave of Spinda plushies, a cartoon sun with a party hat in the window, confetti everywhere", motion: "Camera pulls back and rises as everyone dances around the still couple." },
+          note: "Decided: the quiet moment lives in the 2-second stop (OU-05), and the film celebrates on the drop." },
         { id: "OU-07", t: 244.4, lyric: "(vocal-chop tail)", size: "Title card", cam: "—",
-          action: "End card over the closing chops: Happy 41st Birthday, My Love ❤️. Optional gag: a tiny Spinda wobbles across and sits on the ‘1’.",
-          act: "", ui: "Happy 41st Birthday, My Love ❤️", sfx: "", trans: "Hold to the end of the song (4:15.6)", tags: ["spinda"], p: 1, mode: "heart",
+          action: "End card over the closing chops: Happy Birthday, My Love ❤️. No number, in keeping with ‘No numbers disclosed’. A tiny Spinda wobbles across under the text.",
+          act: "", ui: "Happy Birthday, My Love ❤️", sfx: "", trans: "Hold to the end of the song (4:15.6)", tags: ["spinda"], p: 1, mode: "heart",
           gen: { how: "Editor", img: "Build in the editor.", motion: "—" },
-          note: "The lyric says ‘No numbers disclosed’. Do you want ‘41st’ on the end card, or the Spinda covering the number?" },
+          note: "Decided: no number on the end card. The 41 only appears on EXIT 41 and the cake candles." },
         { id: "OU-08", t: 255.6, lyric: "(after the music ends)", size: "MCU", cam: "Locked, then cut to black",
           action: "Silence. Tiff picks the phone up. The GPS voice: ‘Recalculating…’. She looks at Adrian, guilty. Cut to black.",
           act: "Tiff: caught. Adrian: resigned love.", ui: "GPS: Recalculating…", sfx: "GPS voice line", trans: "Cut to black", tags: ["gps", "phone"], p: 1, mode: "gag",
           gen: { how: "I2V", img: "{WIFE} on the couch holding her phone, looking sideways at {HUSBAND} with a guilty grin, warm lamp light", motion: "She slowly turns her eyes to him; hold." },
-          note: "A 3-second tag after the song. Record the GPS voice yourself, or generate it with a text-to-speech voice." }
+          note: "A 3-second tag after the song. Use the same GPS voice as the pre-roll: record it, or generate it with a text-to-speech voice." }
       ] }
   ],
 
-  questions: [
-    { q: "Check my timings", why: "I timed every shot from an audio analysis of the song (129 BPM, 4:15.6). Section starts should be within about a second; individual lines within about two. Play the song on this page, and if a shot starts in the wrong place, press ‘Set start here’ on it and send me the timing changes." },
-    { q: "Names", why: "I’ve used ‘Tiff’ (from the project name) and ‘Adrian’ (from the GO ADRIAN sign). Are those right?" },
-    { q: "The cats", why: "How many, what are their names, and what do they look like? One of them sends the final text." },
-    { q: "Looks & references", why: "Can you share photos of the two of you, the cats and your real Spinda plushie? They’ll be the reference images for the Higgsfield character sheets. The song’s anime-style synths suggest an anime-influenced look; does that suit you, or do you prefer something else (Bluey-ish, Ghibli-soft)?" },
-    { q: "The ending", why: "The brief wants the last line quiet, but the song stops for 2 seconds after “But being my love?” and then drops hard on “You get that just right.” I’ve put the quiet moment in the silence and a celebration on the drop. Keep that, or stay quiet all the way through?" },
-    { q: "Dance breaks", why: "The song has two instrumental breaks (1:10–1:20 and 2:13–2:19) that aren’t in the brief. I’ve filled them with a plushie-rain dance and a slow dance. OK?" },
-    { q: "Format", why: "Where will she watch it? 16:9 for a TV or laptop, 9:16 for a phone. I’ve assumed 16:9." },
-    { q: "The friends", why: "Should Cindy, Neisa, Thei and Mel appear as their own likenesses or as neutral avatars? They’re in the group chat (Verse 1), at the final party, and in the finale." },
-    { q: "Real details", why: "Real cosplays you’ve done, cities you’ve travelled to, her signature dishes, and any tournament she actually played. Each one swaps a placeholder for something only you two would recognise." },
-    { q: "Three Spindas", why: "Is there a real reason she gets three of every Spinda plushie? If so, I’ll use it as the labels in V2-04." },
-    { q: "The ‘41’", why: "The lyric says ‘No numbers disclosed’, but the brief’s end card says ‘Happy 41st’. Keep the number, or have a Spinda sit on it?" },
-    { q: "Heart-shaped route", why: "The Bridge reveals the ‘circling the block’ loops formed a heart around your home. It implies he circled on purpose. Keep it?" },
-    { q: "Public or private?", why: "As a private gift, Pokémon characters are fine. If you plan to post it publicly, Pokémon designs can get flagged or taken down, so tell me if you want a version that keeps them less prominent." }
+  decisions: [
+    { q: "Names", a: "Tiff and Adrian, as in the brief." },
+    { q: "Format", a: "16:9 landscape." },
+    { q: "Style", a: "Anime-influenced: chibi for the jokes, natural proportions and warm light for the sincere beats." },
+    { q: "Ending", a: "Quiet moment in the 2-second stop, then the whole cast celebrates on the final drop." },
+    { q: "Dance breaks", a: "Keep both: plushie-rain dance (1:10) and slow dance (2:13)." },
+    { q: "Pre-roll", a: "3 seconds of silence on the GPS screen before the music, mirroring the ‘Recalculating…’ tag." },
+    { q: "End card", a: "‘Happy Birthday, My Love ❤️’ with no number. The 41 lives on the exit sign and the cake." },
+    { q: "Heart route", a: "Keep the reveal: the Verse 1 loops form a heart around their home." },
+    { q: "Friends", a: "Neutral cartoon avatars with name labels, everywhere they appear." },
+    { q: "Audience", a: "Private gift, so Pokémon and Spinda stay front and centre." },
+    { q: "‘Someone else’", a: "Both readings: one more plushie, then Tiff makes room for Adrian." },
+    { q: "References", a: "Photos of Tiff, Adrian, the cats and the real Spinda plush will drive the character sheets." }
+  ],
+
+  clientQuestions: [
+    { q: "Photos", why: "Clear photos of Tiff and Adrian (face and full body), each cat, and Tiff’s real Spinda plush. These become the character references." },
+    { q: "The cats", why: "How many cats are there, what are their names, and what do they look like? Which one should send the text at the end?" },
+    { q: "Femboy look", why: "In the ‘Femboy, geek, nerd’ line, how far should Adrian’s femboy look go: subtle (pastel sweater, hair clip), cute and playful (skirt, hair clip), or full glam?" },
+    { q: "Tournament", why: "Did Tiff actually compete in Pokémon TCG (League Cup, Regionals or bigger)? If so, which event, so it can go on the banner." },
+    { q: "Three Spindas", why: "Is there a real reason every Spinda plushie has to come in threes? If so, what is each one for?" },
+    { q: "Cosplays", why: "Which cosplays have Tiff and Adrian done, individually or as a couple?" },
+    { q: "Travel", why: "Which cities or places have they travelled to together? One real landmark goes in the travel montage." },
+    { q: "Signature dishes", why: "What are Tiff’s signature dishes? They go in the feast that chases the gloom away." }
   ],
 
   peaks: [0.028, 0.12, 0.217, 0.245, 0.377, 0.391, 0.315, 0.266, 0.322, 0.344, 0.299, 0.278, 0.315, 0.344, 0.325, 0.305, 0.268, 0.271, 0.287, 0.394, 0.371, 0.493, 0.323, 0.227, 0.246, 0.299, 0.438, 0.634, 0.544, 0.602, 0.516, 0.625, 0.53, 0.605, 0.514, 0.62, 0.527, 0.623, 0.523, 0.605, 0.528, 0.599, 0.525, 0.609, 0.503, 0.59, 0.488, 0.595, 0.455, 0.32, 0.337, 0.405, 0.353, 0.36, 0.354, 0.336, 0.348, 0.35, 0.445, 0.379, 0.432, 0.45, 0.478, 0.446, 0.47, 0.4, 0.5, 0.514, 0.523, 0.523, 0.5, 0.448, 0.635, 0.611, 0.675, 0.565, 0.679, 0.607, 0.638, 0.624, 0.623, 0.648, 0.631, 0.651, 0.593, 0.655, 0.574, 0.706, 0.595, 0.717, 0.6, 0.593, 0.563, 0.454, 0.315, 0.375, 0.46, 0.518, 0.668, 0.683, 0.725, 0.649, 0.672, 0.604, 0.675, 0.612, 0.701, 0.635, 0.676, 0.601, 0.694, 0.624, 0.665, 0.616, 0.648, 0.658, 0.561, 0.531, 0.477, 0.639, 0.572, 0.658, 0.583, 0.639, 0.598, 0.724, 0.584, 0.669, 0.586, 0.683, 0.579, 0.675, 0.668, 0.646, 0.636, 0.606, 0.661, 0.602, 0.707, 0.627, 0.691, 0.623, 0.691, 0.597, 0.68, 0.61, 0.689, 0.604, 0.654, 0.649, 0.618, 0.647, 0.618, 0.665, 0.57, 0.626, 0.571, 0.649, 0.552, 0.532, 0.488, 0.666, 0.612, 0.745, 0.663, 0.743, 0.662, 0.626, 0.649, 0.636, 0.688, 0.63, 0.675, 0.603, 0.695, 0.6, 0.7, 0.573, 0.707, 0.659, 0.623, 0.638, 0.454, 0.248, 0.341, 0.422, 0.671, 0.715, 0.642, 0.729, 0.648, 0.704, 0.641, 0.702, 0.612, 0.682, 0.662, 0.646, 0.346, 0.285, 0.564, 0.714, 0.506, 0.446, 0.339, 0.503, 0.684, 0.577, 0.689, 0.629, 0.672, 0.634, 0.675, 0.661, 0.616, 0.65, 0.649, 0.675, 0.619, 0.658, 0.634, 0.68, 0.649, 0.693, 0.643, 0.682, 0.662, 0.671, 0.703, 0.549, 0.491, 0.607, 0.517, 0.342, 0.476, 0.266, 0.4, 0.315, 0.249, 0.358, 0.502, 0.572, 0.485, 0.381, 0.366, 0.322, 0.36, 0.369, 0.401, 0.461, 0.453, 0.447, 0.536, 0.658, 0.696, 0.638, 0.708, 0.649, 0.732, 0.74, 0.749, 0.811, 0.867, 0.819, 0.793, 0.742, 0.559, 0.481, 0.601, 0.498, 0.568, 0.625, 0.468, 0.411, 0.442, 0.654, 0.663, 0.454, 0.43, 0.637, 0.562, 0.8, 0.575, 0.711, 0.79, 0.779, 0.751, 0.783, 0.816, 0.754, 0.842, 0.791, 0.851, 0.802, 0.828, 0.768, 0.857, 0.788, 0.85, 0.825, 0.635, 0.584, 0.394, 0.287, 0.183, 0.285, 0.257, 0.356, 0.675, 0.655, 0.701, 0.646, 0.718, 0.699, 0.679, 0.744, 0.722, 0.737, 0.7, 0.645, 0.492, 0.682, 0.79, 0.526, 0.408, 0.271, 0.183, 0.663, 0.321, 0.524, 0.537, 0.27, 0.854, 1.0, 0.923, 0.998, 0.948, 0.99, 0.928, 0.937, 0.937, 0.91, 0.968, 0.921, 0.95, 0.964, 0.973, 0.893, 0.928, 0.675, 0.658, 0.574, 0.566, 0.696, 0.896, 0.913, 0.769, 0.58, 0.097, 0.014]
