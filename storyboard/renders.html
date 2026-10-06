@@ -1,0 +1,274 @@
+<meta charset="utf-8">
+<title>Render Drop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Figtree:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one upload card on top, then renders grouped by storyboard shot, newest first. Same palette as the storyboard. */
+:root {
+  --bg: #F4F6FB; --paper: #FFFFFF; --ink: #1B2140; --muted: #5B6384; --line: #DCE1EE;
+  --route: #2F6BFF; --spinda: #D9434B; --sun: #F2B705; --good: #1F9D66; --chip: #EEF1F8; --drop: #EAF0FF;
+  --f-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --f-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #11142A; --paper: #1A1E3A; --ink: #EEF0FA; --muted: #A3A9C8; --line: #2E3458; --route: #6C97FF; --spinda: #FF7178; --sun: #FFD24D; --good: #4CD69A; --chip: #252A4C; --drop: #1F2650; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #11142A; --paper: #1A1E3A; --ink: #EEF0FA; --muted: #A3A9C8; --line: #2E3458; --route: #6C97FF; --spinda: #FF7178; --sun: #FFD24D; --good: #4CD69A; --chip: #252A4C; --drop: #1F2650; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--f-body); }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 18px; padding-block: 28px 64px; display: grid; gap: 22px; }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.1; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(34px, 7vw, 56px); font-weight: 800; }
+h2 { font-size: 22px; font-weight: 800; }
+p { margin: 0; }
+.eyebrow { font: 500 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.lede { color: var(--muted); max-width: 66ch; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 14px; }
+.drop { border: 2px dashed var(--route); border-radius: 14px; background: var(--drop); padding: 22px 16px; text-align: center; display: grid; gap: 6px; cursor: pointer; }
+.drop.over { border-style: solid; }
+.drop b { font: 800 20px var(--f-display); }
+.drop span { color: var(--muted); font-size: 13px; }
+.drop:focus-visible { outline: 3px solid var(--route); outline-offset: 3px; }
+.picked { display: flex; flex-wrap: wrap; gap: 6px; }
+.picked .chip { font: 12px var(--f-mono); background: var(--chip); border-radius: 999px; padding: 3px 10px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+label.f { display: grid; gap: 4px; font-size: 13px; font-weight: 600; min-width: 0; }
+select, input[type=text], textarea { font: 14px var(--f-body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; width: 100%; min-width: 0; }
+textarea { min-height: 70px; resize: vertical; }
+select:focus-visible, input:focus-visible, textarea:focus-visible, button:focus-visible { outline: 2px solid var(--route); outline-offset: 1px; }
+.verdicts { display: flex; gap: 6px; flex-wrap: wrap; }
+.verdicts label { display: flex; align-items: center; gap: 6px; font-size: 13px; background: var(--chip); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+button.primary { border: 0; background: var(--route); color: #fff; font: 700 15px var(--f-body); padding: 10px 18px; border-radius: 999px; cursor: pointer; }
+button.primary[disabled] { opacity: .5; cursor: not-allowed; }
+button.ghost { border: 1px solid var(--line); background: var(--paper); color: var(--ink); font: 600 12px var(--f-body); padding: 4px 10px; border-radius: 999px; cursor: pointer; }
+button.danger { border-color: var(--spinda); color: var(--spinda); }
+.status { font-size: 13px; color: var(--muted); }
+.status.err { color: var(--spinda); }
+.status.ok { color: var(--good); }
+.notice { border: 1.5px dashed var(--sun); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+.group { display: grid; gap: 10px; }
+.ghead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ghead .tc { font: 12px var(--f-mono); color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.render { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: grid; align-content: start; min-width: 0; }
+.render .media { aspect-ratio: 16 / 9; background: var(--chip); display: grid; place-items: center; overflow: hidden; }
+.render .media img, .render .media video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.render .media a { display: block; width: 100%; height: 100%; }
+.render .body { padding: 10px 12px 12px; display: grid; gap: 6px; min-width: 0; }
+.render .meta { font: 11px var(--f-mono); color: var(--muted); overflow-wrap: anywhere; }
+.render .note { font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.badge { justify-self: start; font: 600 11px var(--f-mono); border-radius: 999px; padding: 2px 8px; background: var(--chip); }
+.badge.keep { background: color-mix(in srgb, var(--good) 22%, transparent); }
+.badge.work { background: color-mix(in srgb, var(--sun) 28%, transparent); }
+.badge.reject { background: color-mix(in srgb, var(--spinda) 22%, transparent); }
+.empty { text-align: center; color: var(--muted); padding: 28px 12px; border: 1px dashed var(--line); border-radius: 14px; }
+.confirm { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-size: 12px; }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:8px">
+    <div class="eyebrow">Tiff’s birthday video · renders</div>
+    <h1>Render Drop</h1>
+    <p class="lede">Drop Higgsfield renders here and tag each one with its storyboard shot. Claude can open everything uploaded here, so this is how renders get back for review.</p>
+  </header>
+
+  <section class="card" id="uploader" aria-labelledby="up-h">
+    <h2 id="up-h">Add renders</h2>
+    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Choose files to upload">
+      <b>Drop images or videos here</b>
+      <span>or click to choose · you can also paste an image · PNG, JPG, WebP, GIF, MP4, WebM up to 20 MB each</span>
+    </div>
+    <input type="file" id="file" accept="image/png,image/jpeg,image/webp,image/gif,video/mp4,video/webm" multiple hidden>
+    <div class="picked" id="picked"></div>
+    <div class="fields">
+      <label class="f" for="shot">Storyboard shot
+        <select id="shot"></select>
+      </label>
+      <label class="f" for="label">Round or label
+        <input type="text" id="label" value="Style test v1" maxlength="80">
+      </label>
+    </div>
+    <label class="f" for="note">Note for Claude (optional)
+      <textarea id="note" maxlength="2000" placeholder="What works, what’s off, what to change next time"></textarea>
+    </label>
+    <div class="verdicts" role="radiogroup" aria-label="Verdict">
+      <label><input type="radio" name="verdict" value="" checked> No verdict yet</label>
+      <label><input type="radio" name="verdict" value="keep"> Keep</label>
+      <label><input type="radio" name="verdict" value="work"> Needs work</label>
+      <label><input type="radio" name="verdict" value="reject"> Reject</label>
+    </div>
+    <div class="row">
+      <button type="button" class="primary" id="send" disabled>Upload</button>
+      <span class="status" id="status" aria-live="polite">Choose at least one file.</span>
+    </div>
+  </section>
+  <p class="notice" id="readonly" hidden>You can view renders here, but uploading needs edit access to this page.</p>
+
+  <section style="display:grid;gap:16px" aria-labelledby="list-h">
+    <div class="row" style="justify-content:space-between">
+      <h2 id="list-h">Uploaded renders</h2>
+      <span class="status" id="count"></span>
+    </div>
+    <div id="list"><p class="empty">Loading renders…</p></div>
+  </section>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const SB = window.SB || { sections: [] };
+  const shots = [];
+  SB.sections.forEach((sec) => sec.shots.forEach((sh) => shots.push({ id: sh.id, sec: sec.name, lyric: sh.lyric, t: sh.t })));
+  const byId = Object.fromEntries(shots.map((s) => [s.id, s]));
+  const fmt = (t) => { const neg = t < 0; t = Math.abs(t); const m = Math.floor(t / 60), s = Math.floor(t % 60); return (neg ? "−" : "") + m + ":" + String(s).padStart(2, "0"); };
+  const short = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
+
+  // Shot picker grouped by section
+  const sel = $("#shot");
+  const none = document.createElement("option"); none.value = ""; none.textContent = "No specific shot (general / style test)"; sel.appendChild(none);
+  SB.sections.forEach((sec) => {
+    const g = document.createElement("optgroup"); g.label = sec.name;
+    sec.shots.forEach((sh) => { const o = document.createElement("option"); o.value = sh.id; o.textContent = `${sh.id} · ${short(sh.lyric, 48)}`; g.appendChild(o); });
+    sel.appendChild(g);
+  });
+
+  // File picking
+  const OK = ["image/png", "image/jpeg", "image/webp", "image/gif", "video/mp4", "video/webm"];
+  const MAX = 20 * 1024 * 1024;
+  let files = [];
+  const status = (msg, kind) => { const el = $("#status"); el.textContent = msg; el.className = "status" + (kind ? " " + kind : ""); };
+  function setFiles(list) {
+    const good = [], bad = [];
+    Array.from(list).forEach((f) => (OK.includes(f.type) && f.size <= MAX ? good : bad).push(f));
+    files = good;
+    $("#picked").innerHTML = "";
+    good.forEach((f) => { const c = document.createElement("span"); c.className = "chip"; c.textContent = `${f.name || "pasted image"} · ${(f.size / 1048576).toFixed(1)} MB`; $("#picked").appendChild(c); });
+    $("#send").disabled = !good.length || !ready;
+    if (bad.length) status(`${bad.length} file${bad.length > 1 ? "s" : ""} skipped: use PNG, JPG, WebP, GIF, MP4 or WebM under 20 MB.`, "err");
+    else status(good.length ? `${good.length} file${good.length > 1 ? "s" : ""} ready.` : "Choose at least one file.");
+  }
+  const drop = $("#drop"), input = $("#file");
+  drop.addEventListener("click", () => input.click());
+  drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); input.click(); } });
+  input.addEventListener("change", () => setFiles(input.files));
+  ["dragenter", "dragover"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+  ["dragleave", "drop"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+  drop.addEventListener("drop", (e) => setFiles(e.dataTransfer.files));
+  document.addEventListener("paste", (e) => {
+    if (["TEXTAREA", "INPUT"].includes(e.target.tagName)) return;
+    const items = Array.from(e.clipboardData?.files || []);
+    if (items.length) { e.preventDefault(); setFiles(items); }
+  });
+
+  // Capabilities
+  let db = null, assets = null, ready = false, rows = [];
+  const col = () => db.collection("renders");
+  const assetMsg = (code) => ({
+    too_large: "That file is over 20 MB.",
+    unsupported_type: "That file type isn’t accepted. Use PNG, JPG, WebP, GIF, MP4 or WebM.",
+    quota_or_state: "This page’s storage is full. Delete some renders and try again.",
+    rate_limited: "Uploading too fast. Wait a moment and try again.",
+    upstream_auth: "Your session expired. Reload the page and sign in again.",
+    not_granted: "Uploading isn’t allowed in this view.",
+  }[code] || "The upload failed. Try again in a moment.");
+
+  async function upload() {
+    if (!files.length || !ready) return;
+    $("#send").disabled = true;
+    const shot = sel.value, label = $("#label").value.trim(), note = $("#note").value.trim();
+    const verdict = (document.querySelector('input[name="verdict"]:checked') || {}).value || "";
+    let done = 0;
+    for (const f of files) {
+      status(`Uploading ${done + 1} of ${files.length}…`);
+      try {
+        let res;
+        try { res = await assets.upload(f); }
+        catch (e) { if (e && e.code === "store_unavailable") { await new Promise((r) => setTimeout(r, 1200)); res = await assets.upload(f); } else throw e; }
+        await col().add({ asset: res.id, type: res.contentType, size: res.sizeBytes, filename: f.name || "pasted-image", shot, label, note, verdict, createdAt: new Date().toISOString() });
+        done++;
+      } catch (e) {
+        status(`${done} uploaded. ${assetMsg(e && e.code)}`, "err");
+        $("#send").disabled = false;
+        return;
+      }
+    }
+    status(`Uploaded ${done} file${done > 1 ? "s" : ""}.`, "ok");
+    files = []; input.value = ""; $("#picked").innerHTML = ""; $("#note").value = "";
+  }
+  $("#send").addEventListener("click", upload);
+
+  function render() {
+    const list = $("#list");
+    $("#count").textContent = rows.length ? `${rows.length} render${rows.length > 1 ? "s" : ""}` : "";
+    if (!rows.length) { list.innerHTML = `<p class="empty">No renders yet. Drop the first one above, tagged with its shot.</p>`; return; }
+    const groups = new Map();
+    rows.forEach((r) => { const k = r.shot || ""; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); });
+    const keys = Array.from(groups.keys()).sort((a, b) => (a === "" ? -1 : b === "" ? 1 : (byId[a]?.t ?? 1e9) - (byId[b]?.t ?? 1e9)));
+    list.innerHTML = "";
+    keys.forEach((k) => {
+      const g = document.createElement("div"); g.className = "group";
+      const h = document.createElement("div"); h.className = "ghead";
+      const h3 = document.createElement("h2"); h3.textContent = k ? k : "General / style tests";
+      h.appendChild(h3);
+      if (k && byId[k]) { const tc = document.createElement("span"); tc.className = "tc"; tc.textContent = `${byId[k].sec} · ${fmt(byId[k].t)} · ${short(byId[k].lyric, 60)}`; h.appendChild(tc); }
+      g.appendChild(h);
+      const grid = document.createElement("div"); grid.className = "grid";
+      groups.get(k).forEach((r) => grid.appendChild(card(r)));
+      g.appendChild(grid);
+      list.appendChild(g);
+    });
+  }
+  function card(r) {
+    const el = document.createElement("article"); el.className = "render";
+    const media = document.createElement("div"); media.className = "media";
+    const src = "/_blob/" + r.asset;
+    if (String(r.type).startsWith("video/")) { const v = document.createElement("video"); v.src = src; v.controls = true; v.muted = true; v.preload = "metadata"; media.appendChild(v); }
+    else { const a = document.createElement("a"); a.href = src; a.target = "_blank"; a.rel = "noopener"; const i = document.createElement("img"); i.src = src; i.alt = `${r.shot || "Render"} ${r.label || ""}`.trim(); i.loading = "lazy"; i.onerror = () => { media.textContent = "File missing"; }; a.appendChild(i); media.appendChild(a); }
+    el.appendChild(media);
+    const body = document.createElement("div"); body.className = "body";
+    if (r.verdict) { const b = document.createElement("span"); b.className = "badge " + r.verdict; b.textContent = { keep: "Keep", work: "Needs work", reject: "Reject" }[r.verdict] || r.verdict; body.appendChild(b); }
+    if (r.note) { const n = document.createElement("p"); n.className = "note"; n.textContent = r.note; body.appendChild(n); }
+    const m = document.createElement("p"); m.className = "meta";
+    const when = r.createdAt ? new Date(r.createdAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) : "";
+    m.textContent = [r.label, r.filename, r.size ? (r.size / 1048576).toFixed(1) + " MB" : "", when].filter(Boolean).join(" · ");
+    body.appendChild(m);
+    if (assets) {
+      const row = document.createElement("div"); row.className = "confirm";
+      const del = document.createElement("button"); del.type = "button"; del.className = "ghost"; del.textContent = "Delete";
+      del.addEventListener("click", () => {
+        row.innerHTML = "";
+        const q = document.createElement("span"); q.textContent = "Delete for everyone?";
+        const yes = document.createElement("button"); yes.type = "button"; yes.className = "ghost danger"; yes.textContent = "Delete";
+        const no = document.createElement("button"); no.type = "button"; no.className = "ghost"; no.textContent = "Cancel";
+        no.addEventListener("click", () => { row.innerHTML = ""; row.appendChild(del); });
+        yes.addEventListener("click", async () => {
+          yes.disabled = true;
+          try { await col().doc(r._id).delete(); await assets.delete(r.asset); }
+          catch (e) { q.textContent = "Couldn’t delete. Try again."; yes.disabled = false; }
+        });
+        row.append(q, yes, no);
+      });
+      row.appendChild(del);
+      body.appendChild(row);
+    }
+    el.appendChild(body);
+    return el;
+  }
+
+  (async () => {
+    db = await claude.use("db");
+    if (!db) { $("#list").innerHTML = `<p class="empty">Renders can’t load in this view. Open this page on claude.ai while signed in.</p>`; $("#uploader").hidden = true; return; }
+    assets = await claude.use("assets");
+    if (!assets) { $("#uploader").hidden = true; $("#readonly").hidden = false; }
+    else { ready = true; $("#send").disabled = !files.length; }
+    col().orderBy("createdAt", "desc").limit(500).onSnapshot(
+      (snap) => { rows = snap.docs.map((d) => ({ _id: d.id, ...d.data() })); render(); },
+      () => { $("#list").innerHTML = `<p class="empty">Renders stopped updating. Reload the page.</p>`; }
+    );
+  })();
+})();
+</script>
