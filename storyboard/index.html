@@ -1,0 +1,584 @@
+<meta charset="utf-8">
+<title>Tiff's Birthday Storyboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Figtree:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a production storyboard on "route paper" — a GPS-blue line runs down the shot list like a route, sections are stops. */
+:root {
+  --bg: #F4F6FB;
+  --paper: #FFFFFF;
+  --ink: #1B2140;
+  --muted: #5B6384;
+  --line: #DCE1EE;
+  --route: #2F6BFF;
+  --spinda: #D9434B;
+  --sun: #F2B705;
+  --heart: #E8679B;
+  --gag-bg: #FFF4D1;
+  --heart-bg: #FDE6EF;
+  --epic-bg: #E4E7FF;
+  --chip: #EEF1F8;
+  --f-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --f-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11142A; --paper: #1A1E3A; --ink: #EEF0FA; --muted: #A3A9C8; --line: #2E3458;
+    --route: #6C97FF; --spinda: #FF7178; --sun: #FFD24D; --heart: #FF8DB8;
+    --gag-bg: #3A3216; --heart-bg: #3D2232; --epic-bg: #262A55; --chip: #252A4C; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11142A; --paper: #1A1E3A; --ink: #EEF0FA; --muted: #A3A9C8; --line: #2E3458;
+  --route: #6C97FF; --spinda: #FF7178; --sun: #FFD24D; --heart: #FF8DB8;
+  --gag-bg: #3A3216; --heart-bg: #3D2232; --epic-bg: #262A55; --chip: #252A4C; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 80px; }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: 30px; font-weight: 800; }
+h3 { font-size: 20px; font-weight: 800; }
+p { margin: 0; }
+.mono { font-family: var(--f-mono); font-size: 12px; font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+section.block { margin-top: 56px; display: grid; gap: 18px; }
+.lede { color: var(--muted); max-width: 68ch; }
+
+/* Hero */
+.hero { display: grid; gap: 14px; }
+.hero h1 { font-size: clamp(44px, 9vw, 96px); font-weight: 800; letter-spacing: -.01em; display: flex; align-items: baseline; gap: .1em; flex-wrap: wrap; }
+.hero h1 .dots span { display: inline-block; color: var(--route); animation: blink 1.6s infinite; }
+.hero h1 .dots span:nth-child(2) { animation-delay: .2s; } .hero h1 .dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%, 60%, 100% { opacity: 1 } 30% { opacity: .2 } }
+@media (prefers-reduced-motion: reduce) { .hero h1 .dots span { animation: none; } }
+.thesis { font-family: var(--f-display); font-size: clamp(20px, 3vw, 28px); font-weight: 600; color: var(--route); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { background: var(--chip); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+.pill b { font-variant-numeric: tabular-nums; }
+.warn { border: 1.5px dashed var(--sun); background: var(--gag-bg); border-radius: 12px; padding: 12px 16px; max-width: 76ch; }
+
+/* Nav */
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px; border-bottom: 1px solid var(--line); margin-top: 28px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+nav.toc a { white-space: nowrap; text-decoration: none; color: var(--ink); font-size: 13px; padding: 5px 11px; border-radius: 999px; background: var(--chip); }
+nav.toc a:hover, nav.toc a:focus-visible { background: var(--route); color: #fff; outline: none; }
+
+/* Pillars */
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.pillar { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 6px; align-content: start; }
+.pillar p { color: var(--muted); font-size: 14px; }
+
+/* Structure strip */
+.strip-wrap { overflow-x: auto; }
+.strip { display: flex; min-width: 720px; height: 120px; gap: 2px; align-items: flex-end; }
+.seg { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; text-decoration: none; color: var(--ink); }
+.seg .bar { border-radius: 6px 6px 0 0; display: grid; }
+.seg .bar i { display: block; }
+.seg .lbl { font-size: 11px; padding: 4px 2px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seg .tc { font-family: var(--f-mono); font-size: 10px; color: var(--muted); padding-inline: 2px; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+
+/* Cast */
+.cast { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.castcard { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.castcard .tok { font-family: var(--f-mono); font-size: 11px; color: var(--route); }
+.castcard p.role { font-size: 14px; color: var(--muted); }
+.castcard textarea { width: 100%; min-height: 96px; resize: vertical; font: 13px/1.45 var(--f-body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+.castcard textarea:focus-visible { outline: 2px solid var(--route); outline-offset: 1px; }
+.castcard ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--muted); }
+.stylebox { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 10px; }
+.stylebox dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 13px; }
+.stylebox dt { font-weight: 700; }
+.stylebox dd { margin: 0; color: var(--muted); min-width: 0; }
+
+/* Motifs & matrix */
+.motifs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+.motif { display: grid; gap: 2px; padding: 12px 14px; background: var(--paper); border-radius: 12px; border: 1px solid var(--line); }
+.motif b { font-size: 14px; }
+.motif span { font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+thead th { font-family: var(--f-mono); font-size: 11px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+.matrix td.c { text-align: center; }
+.dot { display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: var(--route); color: #fff; font-size: 10px; line-height: 18px; text-align: center; font-family: var(--f-mono); }
+.ledger td:first-child { color: var(--spinda); }
+.ledger td:last-child { color: var(--ink); font-weight: 600; }
+
+/* Shot list */
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.seg-ctl { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; }
+.seg-ctl button { border: 0; background: transparent; color: var(--ink); font: 600 13px var(--f-body); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.seg-ctl button[aria-pressed="true"] { background: var(--route); color: #fff; }
+.seg-ctl button:focus-visible, .copy:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
+#q { flex: 1 1 200px; min-width: 0; font: 14px var(--f-body); padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); }
+.count { color: var(--muted); font-size: 13px; }
+
+.sec { margin-top: 40px; display: grid; gap: 14px; scroll-margin-top: 64px; }
+.sec-head { display: grid; gap: 6px; }
+.sec-head .row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.swatches { display: flex; gap: 4px; }
+.swatches i { width: 18px; height: 18px; border-radius: 5px; border: 1px solid var(--line); }
+.route { position: relative; display: grid; gap: 14px; padding-left: 26px; }
+.route::before { content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 3px; border-radius: 3px; background: repeating-linear-gradient(var(--route) 0 10px, transparent 10px 16px); opacity: .55; }
+
+.shot { position: relative; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 18px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+.shot::before { content: ""; position: absolute; left: -24px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: var(--paper); border: 3px solid var(--route); }
+.shot.p1::before { background: var(--route); }
+.frame { aspect-ratio: 16 / 9; max-width: 100%; border-radius: 10px; position: relative; overflow: hidden; display: grid; padding: 10px; color: #1B2140; }
+.frame .fid { font-family: var(--f-mono); font-size: 12px; background: rgba(255,255,255,.85); border-radius: 6px; padding: 2px 6px; justify-self: start; align-self: start; }
+.frame .fsize { position: absolute; right: 10px; top: 10px; font: 800 13px var(--f-display); background: rgba(255,255,255,.85); border-radius: 6px; padding: 1px 7px; }
+.frame .fui { position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 12px; line-height: 1.3; background: #fff; border-radius: 10px; padding: 6px 9px; box-shadow: 0 2px 0 rgba(0,0,0,.12); }
+.frame .fcam { position: absolute; left: 10px; top: 40px; right: 10px; font-size: 12px; line-height: 1.3; color: #1B2140; opacity: .78; }
+.fmeta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.chip { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--ink); font-family: var(--f-mono); }
+.chip.gag { background: var(--gag-bg); } .chip.heart { background: var(--heart-bg); } .chip.epic { background: var(--epic-bg); }
+.chip.p1 { background: var(--route); color: #fff; }
+.chip.p2 { background: var(--chip); }
+.chip.p3 { background: transparent; border: 1px dashed var(--line); color: var(--muted); }
+
+.sbody { display: grid; gap: 10px; min-width: 0; align-content: start; }
+.lyric { font-family: var(--f-display); font-size: 20px; font-weight: 600; line-height: 1.25; }
+.tc { font-family: var(--f-mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.kv { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 4px 12px; font-size: 14px; }
+.kv dt { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-top: 3px; }
+.kv dd { margin: 0; min-width: 0; }
+.note { font-size: 13px; border-left: 3px solid var(--sun); padding: 4px 10px; background: var(--gag-bg); border-radius: 0 8px 8px 0; }
+details.gen { border-top: 1px dashed var(--line); padding-top: 8px; }
+details.gen summary { cursor: pointer; font-size: 13px; font-weight: 700; color: var(--route); }
+.prompt { display: grid; gap: 6px; margin-top: 8px; }
+.prompt pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 12px/1.45 var(--f-mono); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; max-height: 220px; overflow: auto; }
+.prompt .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.copy { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; font: 600 12px var(--f-body); padding: 3px 10px; cursor: pointer; }
+.copy.done { background: var(--route); color: #fff; border-color: var(--route); }
+
+/* Pipeline & questions */
+.steps { display: grid; gap: 10px; counter-reset: s; }
+.step { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.step::before { counter-increment: s; content: counter(s); font: 800 18px var(--f-display); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--route); color: #fff; }
+.step p { color: var(--muted); font-size: 14px; }
+.step code { font-family: var(--f-mono); font-size: 12px; background: var(--chip); border-radius: 4px; padding: 1px 4px; }
+.qs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.qcard { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--spinda); border-radius: 12px; padding: 14px; display: grid; gap: 4px; align-content: start; }
+.qcard p { color: var(--muted); font-size: 14px; }
+
+/* Song notes */
+.songfacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.fact { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; display: grid; gap: 2px; }
+.fact b { font: 800 22px var(--f-display); font-variant-numeric: tabular-nums; }
+.fact span { font-size: 12px; color: var(--muted); }
+.notes { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 80ch; color: var(--ink); }
+.notes li::marker { color: var(--route); }
+
+/* Shot timing controls */
+.trow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.playfrom, .setstart { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; font: 500 12px var(--f-mono); padding: 3px 10px; cursor: pointer; font-variant-numeric: tabular-nums; }
+.playfrom:hover, .setstart:hover { border-color: var(--route); }
+.playfrom:focus-visible, .setstart:focus-visible, .pbtn:focus-visible, #scrub:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
+.setstart[disabled] { opacity: .45; cursor: not-allowed; }
+.moved { color: var(--spinda); font-family: var(--f-mono); font-size: 11px; }
+.shot.active { border-color: var(--route); box-shadow: 0 0 0 3px color-mix(in srgb, var(--route) 30%, transparent); }
+.shot.active::before { background: var(--sun); border-color: var(--sun); }
+
+/* Player */
+body { padding-bottom: 120px; }
+.player { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--paper); border-top: 1px solid var(--line); padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -6px 20px rgba(20, 24, 60, .08); }
+.pinner { max-width: 1120px; margin: 0 auto; display: grid; gap: 6px; }
+.prow { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.pbtn { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--route); color: #fff; font-size: 16px; cursor: pointer; display: grid; place-items: center; }
+.pnow { min-width: 0; flex: 1; display: grid; }
+.pnow .l1 { font-size: 12px; color: var(--muted); font-family: var(--f-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pnow .l2 { font: 600 15px var(--f-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ptools { display: flex; gap: 8px; align-items: center; flex: none; font-size: 12px; }
+.ptools label { display: flex; gap: 4px; align-items: center; cursor: pointer; white-space: nowrap; }
+#scrub { display: block; width: 100%; height: 34px; cursor: pointer; border-radius: 6px; }
+.timing-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.timing-tools button { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; font: 600 13px var(--f-body); padding: 6px 12px; cursor: pointer; }
+.timing-tools button:focus-visible { outline: 2px solid var(--route); outline-offset: 2px; }
+#timingOut { width: 100%; min-height: 70px; font: 12px var(--f-mono); background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+
+@media (max-width: 720px) {
+  .ptools .hide-sm { display: none; }
+  .shot { grid-template-columns: minmax(0, 1fr); }
+  .kv { grid-template-columns: minmax(0, 1fr); }
+  .kv dt { padding-top: 6px; }
+  .route { padding-left: 20px; }
+  .shot::before { left: -18px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Mock storyboard · v1 · for Higgsfield</div>
+    <h1>Recalculating<span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></h1>
+    <p class="thesis" id="thesis"></p>
+    <p class="lede" id="subtitle"></p>
+    <div class="meta" id="meta"></div>
+    <p class="warn"><b>Press play at the bottom.</b> The board is timed to the song, and it highlights and scrolls to each shot as it plays. Section starts came from an audio analysis and should be within about a second; individual lines within about two. If a shot starts in the wrong place, press <b>Set start here</b> on it while the song plays.</p>
+  </header>
+
+  <nav class="toc" id="toc" aria-label="Jump to"></nav>
+
+  <section class="block" id="idea">
+    <div class="eyebrow">The idea</div>
+    <h2>One story, not fifty illustrations</h2>
+    <p class="lede">Every joke in the song is about Tiff being lost, distracted or overwhelmed, and every chorus is about her being brilliant. The film ties those together with a GPS. In Verse 1 Adrian is lost because of her. In the Bridge the map zooms out, and the GPS pin marked HOME drops onto her, not the house.</p>
+    <div class="pillars">
+      <div class="pillar"><h3>Two drawing modes</h3><p><b>Gag mode</b>: chibi proportions, speed lines, bright pastels, for every joke. <b>Heart mode</b>: natural proportions and warm light, for the sincere beats. The film slides from gag to heart and back, so the switch itself tells the audience when to laugh and when to feel.</p></div>
+      <div class="pillar"><h3>One flop, one flex</h3><p>Each time Tiff fails at something, she’s shown being excellent at something nearby. That keeps her lovable and competent, which the brief asks for. The ledger below tracks every pair.</p></div>
+      <div class="pillar"><h3>Callbacks, not nouns</h3><p>Thirteen recurring motifs (exit 41, spiral eyes, the begging Post button, the rain cloud) are set up early and paid off later. That’s what makes it play as one story.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="structure">
+    <div class="eyebrow">The song</div>
+    <h2>Chaos → Pokémon chaos → personal → home → one last joke</h2>
+    <div class="songfacts" id="songfacts"></div>
+    <ul class="notes" id="songnotes"></ul>
+    <div class="legend">
+      <span style="--c: var(--sun)">Comedy energy (bar height)</span>
+      <span style="--c: var(--heart)">Heart (inner fill)</span>
+    </div>
+    <div class="strip-wrap"><div class="strip" id="strip"></div></div>
+  </section>
+
+  <section class="block" id="cast">
+    <div class="eyebrow">Cast & prompt tokens</div>
+    <h2>Fill these in once; every prompt updates</h2>
+    <p class="lede">Each shot prompt uses these tokens. Replace the bracketed placeholders with real details. Your edits are saved in this browser, and the Copy buttons in the shot list use them.</p>
+    <div class="cast" id="castcards"></div>
+    <div class="stylebox">
+      <h3>Style prefixes</h3>
+      <dl id="styles"></dl>
+    </div>
+  </section>
+
+  <section class="block" id="motifs">
+    <div class="eyebrow">Running gags</div>
+    <h2>The callback bible</h2>
+    <div class="motifs" id="motiflist"></div>
+    <h3>Where each motif appears</h3>
+    <div class="table-wrap"><table class="matrix" id="matrix"></table></div>
+    <h3>Flop / flex ledger</h3>
+    <div class="table-wrap"><table class="ledger" id="ledger"></table></div>
+  </section>
+
+  <section class="block" id="shots">
+    <div class="eyebrow">Shot list</div>
+    <h2>The board</h2>
+    <p class="lede">Filled dots on the route are priority 1 shots: the brief’s must-have jokes plus the shots that hold the story together. If time runs short, make those first and fill the gaps with re-cuts.</p>
+    <div class="controls">
+      <div class="seg-ctl" role="group" aria-label="Priority filter">
+        <button type="button" data-p="3" aria-pressed="true">All shots</button>
+        <button type="button" data-p="2" aria-pressed="false">P1 + P2</button>
+        <button type="button" data-p="1" aria-pressed="false">P1 only</button>
+      </div>
+      <input id="q" type="search" placeholder="Search shots, e.g. Spinda, cats, GPS" aria-label="Search shots">
+      <span class="count" id="count"></span>
+    </div>
+    <div id="board"></div>
+  </section>
+
+  <section class="block" id="pipeline">
+    <div class="eyebrow">Production</div>
+    <h2>Higgsfield pipeline</h2>
+    <p class="lede">The model names below are what Higgsfield recommends for this kind of work today. The ‘Gen’ field on each shot says which route that shot takes.</p>
+    <div class="steps">
+      <div class="step"><div><h3>Lock the style first</h3><p>Generate three or four style frames from one shot (V1-01 is a good test) with <code>Nano Banana Pro</code>, using photos of the two of you as references. Pick one and treat it as the bible. Skipping this is the usual reason AI-made videos drift between shots.</p></div></div>
+      <div class="step"><div><h3>Build character sheets</h3><p>Use Higgsfield’s character-sheet workflow for Tiff, Adrian, each cat and your real Spinda plush: turnaround, expressions, chibi variant, spiral eyes. Feed these sheets as image references into every keyframe after this.</p></div></div>
+      <div class="step"><div><h3>Keyframe each shot</h3><p>Paste the shot’s Copy prompt into <code>Nano Banana Pro</code> or <code>FLUX 3</code> with the character sheets attached. Approve the still before you spend anything on video.</p></div></div>
+      <div class="step"><div><h3>Animate</h3><p><b>I2V</b> shots: <code>Seedance 2.5</code> (reference mode) from the approved keyframe. <b>S+E</b> shots (Spinda multiplying, melting, versions merging, the feast): <code>MiniMax H3</code> or <code>Seedance 2.0</code> with a start frame and an end frame. Turn the model’s own audio off, since the song is the soundtrack. Most of these models generate at least 4–5 seconds, while many shots here are 2–3 seconds, so generate a little long and trim to the beat. Draft at 480p, then finalise the takes you keep.</p></div></div>
+      <div class="step"><div><h3>Text goes in the edit</h3><p>Speech bubbles, notifications, the quiz card, EXIT 41, the role cards and the end card should be added in your editor. Video models garble lettering. The prompts already say ‘no text’ and leave space for it.</p></div></div>
+      <div class="step"><div><h3>Cut to the song</h3><p>Lay the song on the timeline first and drop in the cuts at the start times on this board. Big hits worth landing exactly: the chorus drops (0:52.3, 1:55.4, 3:09.7), the stop beats before “oddball life lovely” (1:06, 2:09), the 2-second silence at 3:52 and the final drop at 3:54.8.</p></div></div>
+      <div class="step"><div><h3>Reuse on purpose</h3><p>Shots marked <b>Edit</b> are re-cuts or image edits of earlier keyframes (Chorus 2, outro callbacks). Locking the C1-06 living-room framing lets you add clutter for each chorus without regenerating the scene.</p></div></div>
+    </div>
+  </section>
+
+  <section class="block" id="questions">
+    <div class="eyebrow">Open questions</div>
+    <h2>What I need from you</h2>
+    <div class="qs" id="qs"></div>
+    <h3>Your timing changes</h3>
+    <p class="lede">Shots you re-timed with ‘Set start here’ are listed below and saved in this browser. Copy the list and paste it to me, and I’ll update the board for everyone.</p>
+    <div class="timing-tools">
+      <button type="button" id="copyTimes">Copy timing changes</button>
+      <button type="button" id="resetTimes">Reset timing changes</button>
+      <span class="count" id="timesCount"></span>
+    </div>
+    <textarea id="timingOut" readonly aria-label="Timing changes"></textarea>
+  </section>
+</div>
+
+<div class="player" role="region" aria-label="Song player">
+  <div class="pinner">
+    <div class="prow">
+      <button type="button" class="pbtn" id="play" aria-label="Play">▶</button>
+      <div class="pnow"><span class="l1" id="nowMeta">My Whole Supply · 0:00 / 4:16</span><span class="l2" id="nowLyric">Press play to watch the board follow the song</span></div>
+      <div class="ptools"><label><input type="checkbox" id="follow" checked> Follow</label></div>
+    </div>
+    <canvas id="scrub" aria-label="Song timeline, click to seek" tabindex="0"></canvas>
+  </div>
+</div>
+<audio id="audio" src="song.mp3" preload="metadata"></audio>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const SB = window.SB;
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const fmt = (t) => { t = Math.max(0, t); const m = Math.floor(t / 60), s = t - m * 60; return m + ":" + (s < 10 ? "0" : "") + s.toFixed(1); };
+  const fmt0 = (t) => { const m = Math.floor(t / 60), s = Math.floor(t % 60); return m + ":" + String(s).padStart(2, "0"); };
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+
+  // ---- timing ----
+  const TKEY = "tiff-sb-times-v1";
+  let overrides = store.get(TKEY, {}) || {};
+  const all = [];
+  SB.sections.forEach((sec) => sec.shots.forEach((sh) => { sh.sec = sec; sh.t0 = sh.t; all.push(sh); }));
+  function retime() {
+    all.forEach((sh) => { sh.t = overrides[sh.id] != null ? overrides[sh.id] : sh.t0; });
+    all.forEach((sh, i) => { const nx = all[i + 1]; sh.d = Math.max(0.1, (nx ? nx.t : SB.song.end) - sh.t); });
+    SB.sections.forEach((sec, i) => { sec.start = sec.shots[0].t; const nx = SB.sections[i + 1]; sec.end = nx ? nx.shots[0].t : SB.song.end; });
+  }
+  retime();
+  const total = SB.song.length;
+  const count = all.length, p1 = all.filter((s) => s.p === 1).length;
+
+  $("#thesis").textContent = SB.thesis;
+  $("#subtitle").textContent = SB.subtitle + ", set to “" + SB.song.title + "”. A playful montage of everyday married life: lost in the car, melting in the sun, buried in plushies, and home.";
+  $("#meta").innerHTML = [["Song", fmt0(total)], ["Tempo", SB.song.bpm + " BPM"], ["Shots", count], ["Priority 1", p1], ["Frame", "16:9 (to confirm)"]]
+    .map(([k, v]) => `<span class="pill">${k} <b>${v}</b></span>`).join("");
+
+  // ---- nav ----
+  const navItems = [["idea", "Idea"], ["structure", "Song"], ["cast", "Cast"], ["motifs", "Callbacks"]]
+    .concat(SB.sections.map((s) => ["sec-" + s.key, s.name]))
+    .concat([["pipeline", "Pipeline"], ["questions", "Questions"]]);
+  $("#toc").innerHTML = navItems.map(([id, n]) => `<a href="#${id}">${esc(n)}</a>`).join("");
+
+  // ---- song facts + strip ----
+  $("#songfacts").innerHTML = [[fmt0(total), "length"], [SB.song.bpm, "BPM · one bar ≈ " + SB.song.bar + "s"], [SB.sections.length, "sections incl. 2 dance breaks"], ["0:03", "first sung word"]]
+    .map(([b, s]) => `<div class="fact"><b>${b}</b><span>${esc(s)}</span></div>`).join("");
+  $("#songnotes").innerHTML = SB.song.notes.map((n) => `<li>${esc(n)}</li>`).join("");
+  function renderStrip() {
+    $("#strip").innerHTML = SB.sections.map((s) => {
+      const w = ((s.end - s.start) / SB.song.end) * 100;
+      const h = 30 + s.chaos * 70;
+      return `<a class="seg" href="#sec-${s.key}" style="width:${w}%" title="${esc(s.name)}: ${esc(s.intent)}">
+        <div class="bar" style="height:${h}px;background:var(--sun);opacity:.95">
+          <i style="align-self:end;height:${Math.round(s.heart * h)}px;background:var(--heart);border-radius:6px 6px 0 0;opacity:.85"></i>
+        </div>
+        <div class="lbl">${esc(s.name)}</div><div class="tc">${fmt0(s.start)}</div></a>`;
+    }).join("");
+  }
+  renderStrip();
+
+  // ---- cast ----
+  const KEY = "tiff-sb-cast-v1";
+  const saved = store.get(KEY, {}) || {};
+  const castText = (k) => saved[k] || SB.cast.find((c) => c.key === k).prompt;
+  $("#castcards").innerHTML = SB.cast.map((c) => `
+    <div class="castcard">
+      <div><h3>${esc(c.name)}</h3><div class="tok">{${c.key}}</div></div>
+      <p class="role">${esc(c.role)}</p>
+      <label class="eyebrow" for="cast-${c.key}">Prompt description</label>
+      <textarea id="cast-${c.key}" data-k="${c.key}">${esc(castText(c.key))}</textarea>
+      <ul>${c.sheet.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+    </div>`).join("");
+  document.querySelectorAll(".castcard textarea").forEach((ta) => ta.addEventListener("input", () => {
+    saved[ta.dataset.k] = ta.value; store.set(KEY, saved); renderBoard();
+  }));
+  $("#styles").innerHTML = [["Gag mode", SB.style.gag], ["Heart mode", SB.style.heart], ["Epic mode", SB.style.epic], ["Every prompt ends", SB.style.suffix]]
+    .map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+
+  // ---- motifs, matrix, ledger ----
+  $("#motiflist").innerHTML = SB.motifs.map((m) => `<div class="motif"><b>${esc(m.name)}</b><span>${esc(m.rule)}</span></div>`).join("");
+  const head = `<thead><tr><th>Motif</th>${SB.sections.map((s) => `<th>${esc(s.name)}</th>`).join("")}</tr></thead>`;
+  const rows = SB.motifs.map((m) => `<tr><td>${esc(m.name)}</td>${SB.sections.map((s) => {
+    const n = s.shots.filter((sh) => sh.tags.includes(m.tag)).length;
+    return `<td class="c">${n ? `<span class="dot" title="${n} shot(s)">${n}</span>` : ""}</td>`;
+  }).join("")}</tr>`).join("");
+  $("#matrix").innerHTML = head + "<tbody>" + rows + "</tbody>";
+  $("#ledger").innerHTML = `<thead><tr><th>Flop (the joke)</th><th>Flex (the answer)</th></tr></thead><tbody>${SB.ledger.map((l) => `<tr><td>${esc(l.flop)}</td><td>${esc(l.flex)}</td></tr>`).join("")}</tbody>`;
+
+  // ---- prompts ----
+  const expand = (s) => String(s).replace(/\{(WIFE|HUSBAND|CATS|SPINDA)\}/g, (_, k) => castText(k));
+  const fullPrompt = (sh) => `${SB.style[sh.mode] || SB.style.gag}. ${expand(sh.gen.img)}. ${SB.style.suffix}.`;
+
+  // ---- board ----
+  let pmax = 3, query = "", activeId = null;
+  const audio = $("#audio");
+  let started = false;
+  function renderBoard() {
+    const q = query.trim().toLowerCase();
+    let shown = 0;
+    $("#board").innerHTML = SB.sections.map((sec) => {
+      const shots = sec.shots.filter((sh) => sh.p <= pmax && (!q || JSON.stringify([sh.id, sh.lyric, sh.action, sh.ui, sh.note, sh.tags, sh.act]).toLowerCase().includes(q)));
+      shown += shots.length;
+      const grad = `linear-gradient(135deg, ${sec.palette[0]}, ${sec.palette[1]})`;
+      return `<div class="sec" id="sec-${sec.key}">
+        <div class="sec-head">
+          <div class="row"><h2>${esc(sec.name)}</h2><span class="tc">${fmt0(sec.start)}–${fmt0(sec.end)}</span>
+          <span class="swatches" aria-label="Colour script">${sec.palette.map((c) => `<i style="background:${c}"></i>`).join("")}</span></div>
+          <p class="lede">${esc(sec.intent)}</p>
+        </div>
+        <div class="route">${shots.length ? shots.map((sh) => shotHTML(sh, grad)).join("") : `<p class="count">No shots match in this section.</p>`}</div>
+      </div>`;
+    }).join("");
+    $("#count").textContent = `${shown} of ${count} shots`;
+    document.querySelectorAll(".copy").forEach((b) => b.addEventListener("click", onCopy));
+    document.querySelectorAll(".playfrom").forEach((b) => b.addEventListener("click", () => playFrom(+b.dataset.t)));
+    document.querySelectorAll(".setstart").forEach((b) => b.addEventListener("click", () => setStart(b.dataset.id)));
+    markActive(true);
+  }
+  function shotHTML(sh, grad) {
+    const kv = [["Action", sh.action], ["Acting", sh.act], ["On screen", sh.ui], ["Sound", sh.sfx], ["Out", sh.trans]]
+      .filter(([, v]) => v && v !== "—").map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+    const modeName = { gag: "gag mode", heart: "heart mode", epic: "epic mode" }[sh.mode];
+    const img = fullPrompt(sh);
+    const moved = overrides[sh.id] != null ? `<span class="moved">moved from ${fmt(sh.t0)}</span>` : "";
+    return `<article class="shot p${sh.p}${sh.id === activeId ? " active" : ""}" id="shot-${sh.id}">
+      <div>
+        <div class="frame" style="background:${grad}">
+          <span class="fid">${esc(sh.id)}</span><span class="fsize">${esc(sh.size)}</span>
+          <span class="fcam">${esc(sh.cam)}</span>
+          ${sh.ui ? `<span class="fui">${esc(sh.ui)}</span>` : ""}
+        </div>
+        <div class="fmeta">
+          <span class="chip p${sh.p}">P${sh.p}</span><span class="chip ${sh.mode}">${modeName}</span>
+          <span class="chip">${esc(sh.gen.how)}</span>
+          ${sh.tags.map((x) => `<span class="chip">#${esc(x)}</span>`).join("")}
+        </div>
+      </div>
+      <div class="sbody">
+        <div class="trow">
+          <button type="button" class="playfrom" data-t="${sh.t}" aria-label="Play from ${fmt(sh.t)}">▶ ${fmt(sh.t)}</button>
+          <span class="tc">${sh.d.toFixed(1)}s</span>
+          <button type="button" class="setstart" data-id="${sh.id}" ${started ? "" : "disabled"} title="Play the song first, then press this when the shot should start">Set start here</button>
+          ${moved}
+        </div>
+        <p class="lyric">${esc(sh.lyric)}</p>
+        <dl class="kv">${kv}</dl>
+        ${sh.note ? `<p class="note">${esc(sh.note)}</p>` : ""}
+        <details class="gen"><summary>Higgsfield prompts (${esc(sh.gen.how)})</summary>
+          <div class="prompt"><div class="row"><span class="eyebrow">Keyframe / image</span><button type="button" class="copy" data-copy="${esc(img)}">Copy</button></div><pre>${esc(img)}</pre></div>
+          <div class="prompt"><div class="row"><span class="eyebrow">Motion</span><button type="button" class="copy" data-copy="${esc(sh.gen.motion)}">Copy</button></div><pre>${esc(sh.gen.motion)}</pre></div>
+        </details>
+      </div>
+    </article>`;
+  }
+  function copyText(text, btn, label) {
+    const done = () => { btn.textContent = "Copied"; btn.classList.add("done"); setTimeout(() => { btn.textContent = label; btn.classList.remove("done"); }, 1400); };
+    const fail = () => { btn.textContent = "Select and copy below"; };
+    try { navigator.clipboard.writeText(text).then(done, fail); } catch (err) { fail(); }
+  }
+  function onCopy(e) {
+    const b = e.currentTarget;
+    try { navigator.clipboard.writeText(b.dataset.copy).then(() => { b.textContent = "Copied"; b.classList.add("done"); setTimeout(() => { b.textContent = "Copy"; b.classList.remove("done"); }, 1400); }, () => selectPre(b)); } catch (err) { selectPre(b); }
+  }
+  function selectPre(b) { const pre = b.closest(".prompt").querySelector("pre"); const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); b.textContent = "Selected"; }
+
+  document.querySelectorAll(".seg-ctl button").forEach((b) => b.addEventListener("click", () => {
+    pmax = +b.dataset.p;
+    document.querySelectorAll(".seg-ctl button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    renderBoard();
+  }));
+  $("#q").addEventListener("input", (e) => { query = e.target.value; renderBoard(); });
+
+  // ---- player ----
+  const canvas = $("#scrub"), ctx = canvas.getContext("2d");
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function draw() {
+    const dpr = window.devicePixelRatio || 1, W = canvas.clientWidth, H = canvas.clientHeight;
+    if (canvas.width !== W * dpr) { canvas.width = W * dpr; canvas.height = H * dpr; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    const now = audio.currentTime || 0, x = (t) => (t / total) * W;
+    SB.sections.forEach((s) => {
+      ctx.fillStyle = s.palette[0]; ctx.globalAlpha = 0.35;
+      ctx.fillRect(x(s.start), 0, Math.max(1, x(Math.min(s.end, total)) - x(s.start)), H);
+    });
+    ctx.globalAlpha = 1;
+    const pk = SB.peaks, bw = W / pk.length, route = cssVar("--route"), muted = cssVar("--muted");
+    pk.forEach((v, i) => {
+      const h = Math.max(2, v * (H - 8)), px = i * bw;
+      ctx.fillStyle = (px / W) * total <= now ? route : muted;
+      ctx.globalAlpha = (px / W) * total <= now ? 0.95 : 0.4;
+      ctx.fillRect(px + 0.5, (H - h) / 2, Math.max(1, bw - 1), h);
+    });
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = cssVar("--ink");
+    all.forEach((sh) => { if (sh.t <= total) ctx.fillRect(x(sh.t), H - 4, 1, 4); });
+    ctx.fillStyle = cssVar("--spinda");
+    ctx.fillRect(x(now) - 1, 0, 2, H);
+  }
+  function current(t) { let cur = all[0]; for (const sh of all) { if (sh.t <= t + 0.02) cur = sh; else break; } return cur; }
+  function markActive(force) {
+    const t = audio.currentTime || 0;
+    const ended = audio.ended;
+    const sh = ended ? all[all.length - 1] : current(t);
+    $("#nowMeta").textContent = `${SB.song.title} · ${fmt0(t)} / ${fmt0(total)} · ${sh.sec.name} · ${sh.id}`;
+    $("#nowLyric").textContent = started ? sh.lyric : "Press play to watch the board follow the song";
+    if (sh.id !== activeId || force) {
+      document.querySelectorAll(".shot.active").forEach((el) => el.classList.remove("active"));
+      activeId = started ? sh.id : null;
+      const el = activeId && document.getElementById("shot-" + activeId);
+      if (el) {
+        el.classList.add("active");
+        if (!force && $("#follow").checked && !audio.paused) el.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+      }
+    }
+    draw();
+  }
+  function setPlayIcon() { $("#play").textContent = audio.paused ? "▶" : "❚❚"; $("#play").setAttribute("aria-label", audio.paused ? "Play" : "Pause"); }
+  function markStarted() { if (!started) { started = true; document.querySelectorAll(".setstart").forEach((b) => (b.disabled = false)); } }
+  function playFrom(t) { markStarted(); audio.currentTime = Math.min(t, total - 0.05); audio.play().catch(() => {}); }
+  $("#play").addEventListener("click", () => { markStarted(); if (audio.paused) audio.play().catch(() => {}); else audio.pause(); });
+  audio.addEventListener("play", () => { setPlayIcon(); markActive(true); const el = activeId && document.getElementById("shot-" + activeId); if (el && $("#follow").checked) el.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }); });
+  audio.addEventListener("pause", setPlayIcon);
+  audio.addEventListener("ended", () => { setPlayIcon(); markActive(); });
+  audio.addEventListener("timeupdate", () => markActive());
+  audio.addEventListener("seeked", () => markActive());
+  let raf = 0; const tick = () => { if (!audio.paused) draw(); raf = requestAnimationFrame(tick); }; raf = requestAnimationFrame(tick);
+  function seekFromEvent(e) { const r = canvas.getBoundingClientRect(); const t = ((e.clientX - r.left) / r.width) * total; markStarted(); audio.currentTime = Math.max(0, Math.min(total - 0.05, t)); markActive(); }
+  canvas.addEventListener("click", seekFromEvent);
+  canvas.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { audio.currentTime = Math.min(total, audio.currentTime + 5); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { audio.currentTime = Math.max(0, audio.currentTime - 5); e.preventDefault(); }
+  });
+  document.addEventListener("keydown", (e) => {
+    const tag = (e.target.tagName || "").toLowerCase();
+    if (e.code === "Space" && !["input", "textarea", "button", "select"].includes(tag) && !e.target.isContentEditable) { e.preventDefault(); $("#play").click(); }
+  });
+  window.addEventListener("resize", draw);
+  if (window.matchMedia) matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", draw);
+
+  // ---- timing changes ----
+  function renderTimes() {
+    const ids = Object.keys(overrides);
+    $("#timesCount").textContent = ids.length ? `${ids.length} shot${ids.length > 1 ? "s" : ""} moved` : "No changes yet";
+    $("#timingOut").value = ids.length ? all.filter((s) => overrides[s.id] != null).map((s) => `${s.id}: ${fmt(s.t0)} → ${fmt(overrides[s.id])}  (${s.lyric})`).join("\n") : "";
+  }
+  function setStart(id) {
+    const t = Math.round((audio.currentTime || 0) * 10) / 10;
+    const sh = all.find((s) => s.id === id);
+    if (Math.abs(sh.t0 - t) < 0.05) delete overrides[id]; else overrides[id] = t;
+    store.set(TKEY, overrides); retime(); renderStrip(); renderBoard(); renderTimes();
+  }
+  $("#copyTimes").addEventListener("click", (e) => { const v = $("#timingOut").value; if (!v) return; copyText(v, e.currentTarget, "Copy timing changes"); });
+  $("#resetTimes").addEventListener("click", () => { overrides = {}; store.set(TKEY, overrides); retime(); renderStrip(); renderBoard(); renderTimes(); });
+
+  renderBoard();
+  renderTimes();
+  $("#qs").innerHTML = SB.questions.map((q) => `<div class="qcard"><h3>${esc(q.q)}</h3><p>${esc(q.why)}</p></div>`).join("");
+  draw();
+})();
+</script>
