@@ -14,6 +14,30 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 const fmt = (t) => { const neg = t < 0; t = Math.abs(t); const m = Math.floor(t / 60), s = t - m * 60; return (neg ? "−" : "") + m + ":" + (s < 10 ? "0" : "") + s.toFixed(1); };
 const clip = (s, n) => (s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : s);
 const modeName = { gag: "GAG", heart: "HEART", epic: "EPIC" };
+// Approved or test renders: renders/<SHOT-ID>.jpg|png replaces that shot's text card.
+const RENDERS = path.join(__dirname, "renders");
+function renderFor(id) {
+  for (const ext of ["jpg", "jpeg", "png", "webp"]) {
+    const f = path.join(RENDERS, `${id}.${ext}`);
+    if (fs.existsSync(f)) return `data:image/${ext === "jpg" ? "jpeg" : ext};base64,` + fs.readFileSync(f).toString("base64");
+  }
+  return null;
+}
+function renderHtml(sh, i, img) {
+  const d = ((all[i + 1] ? all[i + 1].t : END) - sh.t).toFixed(1);
+  return `<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=IBM+Plex+Mono:wght@500&display=block">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:854px;height:480px;overflow:hidden;background:#000;position:relative}
+img{position:absolute;inset:0;width:854px;height:480px;object-fit:cover}
+.cap{position:absolute;left:0;right:0;bottom:0;height:96px;padding:14px 18px 40px;background:linear-gradient(180deg,rgba(10,12,30,0),rgba(10,12,30,.82) 40%);color:#fff;display:flex;align-items:flex-end;gap:12px}
+.id{font:800 18px "Baloo 2","DejaVu Sans",sans-serif;white-space:nowrap}
+.ly{font:700 17px/1.15 "Baloo 2","DejaVu Sans",sans-serif;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.tag{position:absolute;top:12px;right:12px;font:500 11px "IBM Plex Mono","DejaVu Sans Mono",monospace;color:#fff;background:rgba(10,12,30,.6);border-radius:999px;padding:3px 10px}
+</style></head><body><img src="${img}"><div class="tag">TEST RENDER · ${esc(sh.sec.name)} · ${fmt(sh.t)} · ${d}s</div>
+<div class="cap"><span class="id">${esc(sh.id)}</span><span class="ly">${esc(sh.lyric)}</span></div></body></html>`;
+}
 function html(sh, i) {
   const [c0, c1] = sh.sec.palette;
   const d = ((all[i + 1] ? all[i + 1].t : END) - sh.t).toFixed(1);
@@ -50,7 +74,9 @@ ${sh.ui ? `<div class="ui">${esc(clip(sh.ui, 110))}</div>` : '<div class="spacer
   const lines = [];
   for (let i = 0; i < all.length; i++) {
     const sh = all[i];
-    await p.setContent(html(sh, i), { waitUntil: "networkidle" });
+    const img = renderFor(sh.id);
+    await p.setContent(img ? renderHtml(sh, i, img) : html(sh, i), { waitUntil: "networkidle" });
+    if (img) console.log("render:", sh.id);
     await p.evaluate(() => document.fonts.ready);
     const file = path.join(OUT, `${String(i).padStart(3, "0")}-${sh.id}.png`);
     await p.screenshot({ path: file });
