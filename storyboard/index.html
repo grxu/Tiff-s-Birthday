@@ -139,6 +139,10 @@ tbody tr:last-child td { border-bottom: 0; }
 .chip.gag { background: var(--gag-bg); } .chip.heart { background: var(--heart-bg); } .chip.epic { background: var(--epic-bg); }
 .chip.p1 { background: var(--route); color: #fff; }
 .chip.p2 { background: var(--chip); }
+.chip.kind-animate { background: var(--route); color: #fff; }
+.chip.kind-still { background: var(--chip); }
+.chip.kind-editor { background: transparent; border: 1px solid var(--line); }
+.chip.prio { background: var(--sun); color: #1B2140; }
 .chip.p3 { background: transparent; border: 1px dashed var(--line); color: var(--muted); }
 
 .sbody { display: grid; gap: 10px; min-width: 0; align-content: start; }
@@ -292,6 +296,7 @@ body { padding-bottom: 120px; }
       <div class="step"><div><h3>Build character sheets</h3><p>The look is locked: simple doodle comic in mauve ink with small accent colours. Use Higgsfield’s character-sheet workflow for Tiff, Adrian, each cat and the Spinda plush: turnaround, expressions, chibi variant, spiral eyes. Feed these sheets as image references into every keyframe after this.</p></div></div>
       <div class="step"><div><h3>Keyframe each shot</h3><p>Paste the shot’s Copy prompt into <code>Nano Banana Pro</code> or <code>FLUX 3</code> with the character sheets attached. Approve the still before you spend anything on video.</p></div></div>
       <div class="step"><div><h3>Animate</h3><p><b>I2V</b> shots: <code>Seedance 2.5</code> (reference mode) from the approved keyframe. <b>S+E</b> shots (Spinda multiplying, melting, versions merging, the feast): <code>MiniMax H3</code> or <code>Seedance 2.0</code> with a start frame and an end frame. Turn the model’s own audio off, since the song is the soundtrack. Most of these models generate at least 4–5 seconds, while many shots here are 2–3 seconds, so generate a little long and trim to the beat. Draft at 480p, then finalise the takes you keep.</p></div></div>
+      <div class="step"><div><h3>Animate only what stays on screen</h3><p>Only shots of 3 seconds or more get animated (chip: ▶ animate). Shorter shots stay as stills with an editor move (■ still), and graphics are built in the edit (✎ editor). When time is short, work the ★ priority scenes first, in order: missed exit, circling the block, melting, royal cats vs empty plate, plushie invasion, Spinda multiplying, tournament flop, the versions of Adrian, the home bridge, the cat text, and the final line.</p></div></div>
       <div class="step"><div><h3>Text goes in the edit</h3><p>Speech bubbles, notifications, the quiz card, EXIT 41, the role cards and the end card should be added in your editor. Video models garble lettering. The prompts already say ‘no text’ and leave space for it.</p></div></div>
       <div class="step"><div><h3>Cut to the song</h3><p>Lay the song on the timeline first and drop in the cuts at the start times on this board. Big hits worth landing exactly: the chorus drops (0:52.3, 1:55.4, 3:09.7), the stop beats before “oddball life lovely” (1:06, 2:09), the 2-second silence at 3:52 and the final drop at 3:54.8.</p></div></div>
       <div class="step"><div><h3>Reuse on purpose</h3><p>Shots marked <b>Edit</b> are re-cuts or image edits of earlier keyframes (Chorus 2, outro callbacks). Locking the C1-06 living-room framing lets you add clutter for each chorus without regenerating the scene.</p></div></div>
@@ -417,6 +422,13 @@ body { padding-bottom: 120px; }
   const expand = (s) => String(s).replace(/\{(WIFE|HUSBAND|CATS|SPINDA)\}/g, (_, k) => castText(k));
   const fullPrompt = (sh) => `${SB.style[sh.mode] || SB.style.gag}. ${expand(sh.gen.img)}. ${SB.style.suffix}.`;
 
+  // ---- production plan: animate vs still, priority scenes ----
+  const PROD = SB.production || { minAnimSeconds: 3, priorities: [] };
+  const priOf = {};
+  PROD.priorities.forEach((p) => p.shots.forEach((id) => (priOf[id] = p)));
+  const kindOf = (sh) => (sh.gen.how === "Editor" || sh.gen.how === "Edit") ? "editor" : (sh.d >= PROD.minAnimSeconds ? "animate" : "still");
+  const kindLabel = { animate: "▶ animate", still: "■ still", editor: "✎ editor" };
+
   // ---- board ----
   let pmax = 3, query = "", activeId = null;
   const audio = $("#audio");
@@ -458,6 +470,8 @@ body { padding-bottom: 120px; }
         </div>
         <div class="fmeta">
           <span class="chip p${sh.p}">P${sh.p}</span><span class="chip ${sh.mode}">${modeName}</span>
+          <span class="chip kind-${kindOf(sh)}">${kindLabel[kindOf(sh)]}</span>
+          ${priOf[sh.id] ? `<span class="chip prio" title="${esc(priOf[sh.id].scene)}">★ scene ${priOf[sh.id].n}</span>` : ""}
           <span class="chip">${esc(sh.gen.how)}</span>
           ${sh.tags.map((x) => `<span class="chip">#${esc(x)}</span>`).join("")}
         </div>

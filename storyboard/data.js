@@ -463,6 +463,24 @@ window.SB = {
       ] }
   ],
 
+  production: {
+    minAnimSeconds: 3,
+    rule: "Only shots that stay on screen for 3 seconds or more get animated. Shorter shots are stills (with an editor move such as a push-in, shake or pop where it helps). Editor shots are built in the edit.",
+    priorities: [
+      { n: 1, scene: "Missing the exit while catching Pokémon", shots: ["V1-02", "V1-03", "V1-04"] },
+      { n: 2, scene: "Circling the block", shots: ["V1-07", "V1-08"] },
+      { n: 3, scene: "Wife melting in the heat", shots: ["PC-01", "PC-02"] },
+      { n: 4, scene: "Cats get a royal throne while husband waits for dinner", shots: ["PC-04", "PC-05"] },
+      { n: 5, scene: "House completely invaded by plushies", shots: ["DB1-01", "DB1-02", "V2-01", "V2-02"] },
+      { n: 6, scene: "Spinda multiplying 1 → 3 → ridiculous numbers", shots: ["V2-04", "V2-05"] },
+      { n: 7, scene: "Tournament → failing the first-turn Supporter question", shots: ["V2-08", "V2-09", "V2-10"] },
+      { n: 8, scene: "The versions of Adrian accepted by Tiff", shots: ["V3-05", "V3-06", "V3-07"] },
+      { n: 9, scene: "Emotional ‘you’re my home’ bridge", shots: ["BR-03", "BR-04"] },
+      { n: 10, scene: "Cat texts → wife picks the phone up again", shots: ["OU-01", "OU-02"] },
+      { n: 11, scene: "Final ‘being my love? You get that just right.’", shots: ["OU-05", "OU-06"] }
+    ]
+  },
+
   decisions: [
     { q: "Names", a: "Tiff and Adrian, as in the brief." },
     { q: "Format", a: "16:9 landscape." },
