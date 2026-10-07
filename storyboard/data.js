@@ -37,7 +37,7 @@ window.SB = {
       prompt: "Tiff, a cheerful woman, [HAIR — e.g. long wavy hair], no glasses, about the same height as Adrian, cosy muted mustard yellow cardigan, striped socks with mustard stripes, phone almost always in hand with a small Spinda plush keychain hanging from it on a short strap",
       sheet: ["Default: content, cozy, glowing phone light on face", "Gag: spiral ‘Spinda eyes’ when overwhelmed (heat, quiz)", "Flex: confident, organized, clipboard energy", "Heart: soft smile, eyes half-closed", "Melting puddle variant (heat)", "Chibi turnaround"] },
     { key: "HUSBAND", name: "Adrian (husband)", role: "The exhausted-but-happy recipient of all her talents, and the singer. Deadpan by default, melts by the end.",
-      prompt: "Adrian, a lanky man, [HAIR — e.g. short messy hair], no glasses, about the same height as Tiff, muted teal (dark cyan) hoodie, tired-but-fond eyes, deadpan expression by default",
+      prompt: "Adrian, a lanky man, short thick black hair, slightly tousled, with a soft side-swept fringe falling across his forehead and a few loose strands sticking up at the crown, round friendly face, no glasses, about the same height as Tiff, muted teal (dark cyan) hoodie, tired-but-fond eyes, deadpan expression by default",
       sheet: ["Deadpan (default)", "Composure meter: forced smile → eye twitch → steam puff", "Tiny rain cloud over head", "Sparkle eyes (food, her photos)", "Embarrassed-but-touched blush", "Versions: femboy, geek, nerd, cosplayer, card nerd"] },
     { key: "CATS", name: "The cats", role: "Miso (black tabby) and Tofu (white) are the stars; the couple has nine cats, so the other seven turn up in crowd gags. Tofu sends the final text.",
       prompt: "Miso, a chubby black tabby cat, and Tofu, a fluffy round white cat: the two stars of the couple’s nine cats, smug and extremely spoiled",
@@ -511,7 +511,7 @@ window.SB = {
   ],
 
   clientQuestions: [
-    { q: "Photos of Tiff and Adrian", why: "3–5 each: a straight-on face, a 3/4 angle, one full-body and one natural smile. Daylight, no filters, one person per photo, JPG." },
+    { q: "Photos of Tiff", why: "Adrian’s photos are in (8 October). For Tiff, 3–5: a straight-on face, a 3/4 angle, one full-body and one natural smile. Daylight, no filters, one person per photo, JPG." },
     { q: "Photos of Miso and Tofu", why: "2–3 each (face, side, full body) so the markings come out right." },
     { q: "Tiff’s real Spinda plush", why: "2–3 photos, front and side." },
     { q: "Cosplay photos", why: "Any photos of Adrian as Yugi and Tiff as Dark Magician Girl." },
