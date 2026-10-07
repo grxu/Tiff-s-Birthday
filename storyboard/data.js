@@ -475,7 +475,9 @@ window.SB = {
     { q: "Friends", a: "Neutral cartoon avatars with name labels, everywhere they appear." },
     { q: "Audience", a: "Private gift, so Pokémon and Spinda stay front and centre." },
     { q: "‘Someone else’", a: "Both readings: one more plushie, then Tiff makes room for Adrian." },
-    { q: "References", a: "Photos of Tiff, Adrian, the cats and the real Spinda plush will drive the character sheets." }
+    { q: "References", a: "Photos of Tiff, Adrian, the cats and the real Spinda plush will drive the character sheets." },
+    { q: "Client sign-off", a: "Adrian approved the doodle style (mauve ink + accents) on 7 October." },
+    { q: "Deadline", a: "Finished video needed by 20 October." }
   ],
 
   clientQuestions: [
