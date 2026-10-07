@@ -26,25 +26,25 @@ window.SB = {
   },
 
   style: {
-    gag: "2D hand-drawn anime-influenced cartoon, cel shading, clean bold outlines, rounded shapes, bright pastel palette with saturated accents, super-deformed chibi proportions, exaggerated comic expressions, speed lines and impact effects, slice-of-life comedy music video",
-    heart: "2D hand-drawn anime-influenced cartoon, soft cel shading, clean outlines, natural cute proportions, warm golden lighting, gentle bloom, subtle paper grain, tender slice-of-life mood",
-    epic: "2D anime sports-climax style, dramatic spotlights and rim light, low angle, speed lines, high contrast, stadium atmosphere",
+    gag: "Simple doodle comic style (locked look: mauve ink + accent colours): clean smooth black ink outlines of even medium weight, very simple faces with small line or dot eyes, simple expressive mouths and little blush marks, chibi proportions with big heads and small bodies, mostly white fills with flat dusty mauve-pink shading on hair and shadows, small flat muted accent colours only on key items (soft lavender for Tiff's cardigan, muted mustard yellow for Adrian's hoodie, cream with red spots for Spinda), no gradients, hand-drawn sparkle, sweat-drop and impact marks, exaggerated comic reactions, settings drawn simply in the same line style, thin mauve border frame",
+    heart: "Simple doodle comic style (locked look: mauve ink + accent colours): clean smooth black ink outlines, very simple faces with small line or dot eyes and soft smiles, gentler and slightly less chibi proportions, mostly white fills with flat dusty mauve-pink shading plus a pale warm peach wash for lamp light or golden light, small flat muted accent colours only on key items (soft lavender for Tiff's cardigan, muted mustard yellow for Adrian's hoodie, cream with red spots for Spinda), no gradients, calm uncluttered composition, settings drawn simply in the same line style, thin mauve border frame",
+    epic: "Simple doodle comic style (locked look: mauve ink + accent colours), dramatic version: clean black ink outlines, very simple faces, chibi proportions, white fills with dusty mauve-pink shading, bold mauve speed lines and radiating burst lines, simple spotlight cone shapes, low angle, small flat accent colours only on key items (soft lavender for Tiff's cardigan, muted mustard yellow for Adrian's hoodie), no gradients, thin mauve border frame",
     suffix: "16:9 frame, consistent character design, no text, no letters, no logos, no watermark, leave clean space for overlays added in edit"
   },
 
   cast: [
     { key: "WIFE", name: "Tiff (wife)", role: "The star. Chaotic in the moment, a genius at everything she cares about. Never the butt of a joke without also being the hero of the next shot.",
-      prompt: "Tiff, a cheerful woman drawn youthful and cute, [HAIR — e.g. long dark hair with bangs], [GLASSES? yes/no], cozy oversized cardigan, phone almost always in hand with a small Spinda keychain dangling from it",
+      prompt: "Tiff, a cheerful woman, [HAIR — e.g. long wavy hair], [GLASSES? yes/no], cosy soft lavender cardigan, striped socks with lavender stripes, phone almost always in hand with a small Spinda plush keychain hanging from it on a short strap",
       sheet: ["Default: content, cozy, glowing phone light on face", "Gag: spiral ‘Spinda eyes’ when overwhelmed (heat, quiz)", "Flex: confident, organized, clipboard energy", "Heart: soft smile, eyes half-closed", "Melting puddle variant (heat)", "Chibi turnaround"] },
     { key: "HUSBAND", name: "Adrian (husband)", role: "The exhausted-but-happy recipient of all her talents, and the singer. Deadpan by default, melts by the end.",
-      prompt: "Adrian, a lanky man, [HAIR], [GLASSES? yes/no], soft hoodie, tired-but-fond eyes, deadpan expression by default",
+      prompt: "Adrian, a lanky man, [HAIR — e.g. short messy hair], [GLASSES? yes/no], muted mustard yellow hoodie, tired-but-fond eyes, deadpan expression by default",
       sheet: ["Deadpan (default)", "Composure meter: forced smile → eye twitch → steam puff", "Tiny rain cloud over head", "Sparkle eyes (food, her photos)", "Embarrassed-but-touched blush", "Versions: femboy, geek, nerd, cosplayer, card nerd"] },
     { key: "CATS", name: "The cats", role: "Silent jury. They witness every gag, get treated like royalty, and send the final text.",
       prompt: "[CAT 1: name, colour/pattern] and [CAT 2: name, colour/pattern], two chubby, smug, extremely spoiled house cats",
       sheet: ["Royal: crowns, velvet cushions", "Judges holding scorecards", "Party hats, unimpressed", "Holding a phone with one paw (outro)"] },
     { key: "SPINDA", name: "Spinda (plush)", role: "Tiff’s mascot and mirror. Its spiral eyes become the visual shorthand for ‘she’s lost again’.",
-      prompt: "a cream-coloured Spinda plush with red spots and swirly spiral eyes, slightly lopsided and wobbly",
-      sheet: ["Use a photo of Tiff’s real Spinda plush as the reference", "Hero pose", "Wobble/dizzy pose", "Every Spinda has a different spot pattern"] }
+      prompt: "a Spinda plush matching the Spinda reference images (cream body with red spots, spiral eyes), slightly lopsided and wobbly",
+      sheet: ["Spinda reference images uploaded to Higgsfield (media 3fa66b42…, 9dea2be4…); add a photo of Tiff’s real plush when it arrives", "Hero pose", "Wobble/dizzy pose", "Every Spinda has a different spot pattern"] }
   ],
 
   motifs: [
@@ -319,7 +319,7 @@ window.SB = {
       ] },
 
     { key: "v3", name: "Verse 3", mode: "heart", chaos: 0.5, heart: 0.75,
-      intent: "Switch to natural proportions and warm light. Still playful, but now it’s about how she sees him. Exactly 16 bars, one line every 2 bars.",
+      intent: "Switch to heart mode: gentler proportions and a warm peach wash. Still playful, but now it’s about how she sees him. Exactly 16 bars, one line every 2 bars.",
       palette: ["#FFC98B", "#F28C6B", "#7A5C99", "#FFF3E2"],
       shots: [
         { id: "V3-01", t: 139.5, lyric: "You fix my collar, find the perfect disguise,", size: "CU in mirror", cam: "Mirror reflection, gentle push",
@@ -466,7 +466,7 @@ window.SB = {
   decisions: [
     { q: "Names", a: "Tiff and Adrian, as in the brief." },
     { q: "Format", a: "16:9 landscape." },
-    { q: "Style", a: "Anime-influenced: chibi for the jokes, natural proportions and warm light for the sincere beats." },
+    { q: "Style", a: "Locked: simple doodle comic, mauve ink (black line, white fills, dusty mauve-pink shading) plus small accent colours: lavender for Tiff, mustard for Adrian, cream and red for Spinda. Reference shot: the fixed V1-01 car swatch." },
     { q: "Ending", a: "Quiet moment in the 2-second stop, then the whole cast celebrates on the final drop." },
     { q: "Dance breaks", a: "Keep both: plushie-rain dance (1:10) and slow dance (2:13)." },
     { q: "Pre-roll", a: "3 seconds of silence on the GPS screen before the music, mirroring the ‘Recalculating…’ tag." },
