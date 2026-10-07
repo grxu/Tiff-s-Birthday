@@ -72,7 +72,7 @@ button.danger { border-color: var(--spinda); color: var(--spinda); }
   <header style="display:grid;gap:8px">
     <div class="eyebrow">Tiff’s birthday video · renders</div>
     <h1>Render Drop</h1>
-    <p class="lede">Drop Higgsfield renders here and tag each one with its storyboard shot. Claude can open everything uploaded here, so this is how renders get back for review.</p>
+    <p class="lede">Drop Higgsfield renders here and tag each one with its storyboard shot, or file client photos and references into the reference folders. Claude can open everything uploaded here, so this is how renders get back for review.</p>
   </header>
 
   <section class="card" id="uploader" aria-labelledby="up-h">
@@ -84,7 +84,7 @@ button.danger { border-color: var(--spinda); color: var(--spinda); }
     <input type="file" id="file" accept="image/png,image/jpeg,image/webp,image/gif,video/mp4,video/webm" multiple hidden>
     <div class="picked" id="picked"></div>
     <div class="fields">
-      <label class="f" for="shot">Storyboard shot
+      <label class="f" for="shot">Storyboard shot or reference folder
         <select id="shot"></select>
       </label>
       <label class="f" for="label">Round or label
@@ -124,12 +124,24 @@ button.danger { border-color: var(--spinda); color: var(--spinda); }
   const shots = [];
   SB.sections.forEach((sec) => sec.shots.forEach((sh) => shots.push({ id: sh.id, sec: sec.name, lyric: sh.lyric, t: sh.t })));
   const byId = Object.fromEntries(shots.map((s) => [s.id, s]));
+  // Reference folders: photos and references the client sends, kept apart from shot renders.
+  const REFS = [
+    ["REF-TIFF", "Ref: Tiff (photos)"], ["REF-ADRIAN", "Ref: Adrian (photos)"],
+    ["REF-MISO", "Ref: Miso (black tabby)"], ["REF-TOFU", "Ref: Tofu (white cat)"],
+    ["REF-SPINDA", "Ref: Spinda plush"], ["REF-COSPLAY", "Ref: Cosplay (Yugi + Dark Magician Girl)"],
+    ["REF-TRAVEL", "Ref: Travel (Tokyo Racecourse, Cleland, Ski Dubai)"], ["REF-FOOD", "Ref: Food (paomo)"],
+    ["REF-STYLE", "Ref: Style"], ["REF-OTHER", "Ref: Other"]
+  ];
+  const refName = Object.fromEntries(REFS);
   const fmt = (t) => { const neg = t < 0; t = Math.abs(t); const m = Math.floor(t / 60), s = Math.floor(t % 60); return (neg ? "−" : "") + m + ":" + String(s).padStart(2, "0"); };
   const short = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
 
   // Shot picker grouped by section
   const sel = $("#shot");
   const none = document.createElement("option"); none.value = ""; none.textContent = "No specific shot (general / style test)"; sel.appendChild(none);
+  const rg = document.createElement("optgroup"); rg.label = "Reference folders";
+  REFS.forEach(([v, n]) => { const o = document.createElement("option"); o.value = v; o.textContent = n; rg.appendChild(o); });
+  sel.appendChild(rg);
   SB.sections.forEach((sec) => {
     const g = document.createElement("optgroup"); g.label = sec.name;
     sec.shots.forEach((sh) => { const o = document.createElement("option"); o.value = sh.id; o.textContent = `${sh.id} · ${short(sh.lyric, 48)}`; g.appendChild(o); });
@@ -207,12 +219,13 @@ button.danger { border-color: var(--spinda); color: var(--spinda); }
     if (!rows.length) { list.innerHTML = `<p class="empty">No renders yet. Drop the first one above, tagged with its shot.</p>`; return; }
     const groups = new Map();
     rows.forEach((r) => { const k = r.shot || ""; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); });
-    const keys = Array.from(groups.keys()).sort((a, b) => (a === "" ? -1 : b === "" ? 1 : (byId[a]?.t ?? 1e9) - (byId[b]?.t ?? 1e9)));
+    const rank = (k) => (k === "" ? -2e9 : refName[k] ? -1e9 + REFS.findIndex((r) => r[0] === k) : (byId[k]?.t ?? 1e9));
+    const keys = Array.from(groups.keys()).sort((a, b) => rank(a) - rank(b));
     list.innerHTML = "";
     keys.forEach((k) => {
       const g = document.createElement("div"); g.className = "group";
       const h = document.createElement("div"); h.className = "ghead";
-      const h3 = document.createElement("h2"); h3.textContent = k ? k : "General / style tests";
+      const h3 = document.createElement("h2"); h3.textContent = k ? (refName[k] || k) : "General / style tests";
       h.appendChild(h3);
       if (k && byId[k]) { const tc = document.createElement("span"); tc.className = "tc"; tc.textContent = `${byId[k].sec} · ${fmt(byId[k].t)} · ${short(byId[k].lyric, 60)}`; h.appendChild(tc); }
       g.appendChild(h);
