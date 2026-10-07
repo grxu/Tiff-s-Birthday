@@ -44,7 +44,7 @@ window.SB = {
       sheet: ["Royal: crowns, velvet cushions", "Judges holding scorecards", "Party hats, unimpressed", "Holding a phone with one paw (outro)"] },
     { key: "SPINDA", name: "Spinda (plush)", role: "Tiff’s mascot and mirror. Its spiral eyes become the visual shorthand for ‘she’s lost again’.",
       prompt: "a Spinda plush matching the Spinda reference images (cream body with red spots, spiral eyes), slightly lopsided and wobbly",
-      sheet: ["Spinda reference images uploaded to Higgsfield (media 3fa66b42…, 9dea2be4…); add a photo of Tiff’s real plush when it arrives", "Hero pose", "Wobble/dizzy pose", "Every Spinda has a different spot pattern"] }
+      sheet: ["Locked Spinda sheet: Higgsfield job 202ed396… (turnaround, expressions, keychain, three spot patterns)", "Hero pose", "Wobble/dizzy pose", "Every Spinda has a different spot pattern"] }
   ],
 
   motifs: [
@@ -465,7 +465,8 @@ window.SB = {
 
   production: {
     minAnimSeconds: 3,
-    rule: "Only shots that stay on screen for 3 seconds or more get animated. Shorter shots are stills (with an editor move such as a push-in, shake or pop where it helps). Editor shots are built in the edit.",
+    animatePriorityShort: true,
+    rule: "Only shots that stay on screen for 3 seconds or more get animated, plus every priority-scene shot (exception approved 7 October). Other shorter shots are stills with an editor move such as a push-in, shake or pop. Editor shots are built in the edit.",
     priorities: [
       { n: 1, scene: "Missing the exit while catching Pokémon", shots: ["V1-02", "V1-03", "V1-04"] },
       { n: 2, scene: "Circling the block", shots: ["V1-07", "V1-08"] },
@@ -495,7 +496,10 @@ window.SB = {
     { q: "‘Someone else’", a: "Both readings: one more plushie, then Tiff makes room for Adrian." },
     { q: "References", a: "Photos of Tiff, Adrian, the cats and the real Spinda plush will drive the character sheets." },
     { q: "Client sign-off", a: "Adrian approved the doodle style (mauve ink + accents) on 7 October." },
-    { q: "Deadline", a: "Finished video needed by 20 October." }
+    { q: "Deadline", a: "Finished video needed by 20 October." },
+    { q: "Video model", a: "Kling 3.0 (std, sound off): the car-shot test held the doodle style." },
+    { q: "Short priority jokes", a: "Animate them anyway, as 3-second clips trimmed to the beat." },
+    { q: "Tiff and Adrian designs", a: "Wait for the client’s photos before the character sheets." }
   ],
 
   clientQuestions: [

@@ -8,6 +8,8 @@ Commissioned birthday music video for Tiff (from Adrian), set to "My Whole Suppl
 - **Style (locked 2026-10-07): simple doodle comic, "mauve ink + accent colours".** Black line, white fills, dusty mauve-pink shading, small flat accents (lavender for Tiff, mustard for Adrian, cream and red for Spinda). Higgsfield references: style source media `a4261d5e-9bb4-4b57-8754-b8f1f8686c80`; approved car shot job `8ed96cfe-b7cc-4c77-8c3c-de41381c0065`; Spinda media `3fa66b42-4fec-41c2-8eba-e76e4ef81ea8` and `9dea2be4-af59-431a-9b5c-e16568bf0043`.
 - Do not use the earlier anime-style test renders (V1-01, V2-05 and BR-04 from 2026-10-06, and the doodle swatches derived from V1-01) as image references.
 - **Deadline: 20 October.** Adrian (client) approved the doodle style on 7 October.
-- **Animate only shots of 3 seconds or more.** Shorter shots stay as stills (editor moves only). When time is short, do the 11 priority scenes in `SB.production.priorities` (data.js) first.
-- Video default: Kling 3.0, `mode: std`, `sound: off` (the song is the soundtrack), duration = shot length rounded up (min 3s). About 1.5 credits per second.
+- **Animate only shots of 3 seconds or more, plus every priority-scene shot** (exception approved 7 October; short ones become 3-second clips trimmed to the beat). Other short shots stay as stills (editor moves only). When time is short, do the 11 priority scenes in `SB.production.priorities` (data.js) first.
+- Video default: Kling 3.0, `mode: std`, `sound: off` (the song is the soundtrack), duration = shot length rounded up (min 3s). About 1.5 credits per second. The car-shot test (job `948a5d67-4a07-4102-ac49-15bc645a39d3`) held the doodle style.
+- **Spinda sheet locked:** job `202ed396-287f-4bc2-b075-1bcf394cc1a8`. Use it as the Spinda reference in every Spinda shot.
+- **Tiff and Adrian character sheets wait for the client's photos.** Don't design them from the car shot.
 - `storyboard/song.mp3` and rendered animatic MP4s stay out of git.
