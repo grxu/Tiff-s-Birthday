@@ -34,7 +34,7 @@ window.SB = {
 
   cast: [
     { key: "WIFE", name: "Tiff (wife)", role: "The star. Chaotic in the moment, a genius at everything she cares about. Never the butt of a joke without also being the hero of the next shot.",
-      prompt: "Tiff, a cheerful woman, [HAIR — e.g. long wavy hair], no glasses, about the same height as Adrian, cosy muted mustard yellow cardigan, striped socks with mustard stripes, phone almost always in hand with a small Spinda plush keychain hanging from it on a short strap",
+      prompt: "Tiff, a cheerful woman, long straight sleek hair past her shoulders, dark brown fading to a lighter warm brown at the ends, wispy see-through curtain bangs parted slightly to the sides with face-framing strands, a small off-white cat-face hair clip on one side, soft oval face with gentle features and a bright warm smile, no glasses, about the same height as Adrian, cosy muted mustard yellow cardigan over a white top, simple white skirt, socks with mustard stripes, phone almost always in hand with a small Spinda plush keychain hanging from it on a short strap",
       sheet: ["Default: content, cozy, glowing phone light on face", "Gag: spiral ‘Spinda eyes’ when overwhelmed (heat, quiz)", "Flex: confident, organized, clipboard energy", "Heart: soft smile, eyes half-closed", "Melting puddle variant (heat)", "Chibi turnaround"] },
     { key: "HUSBAND", name: "Adrian (husband)", role: "The exhausted-but-happy recipient of all her talents, and the singer. Deadpan by default, melts by the end.",
       prompt: "Adrian, a lanky man, straight thick glossy black hair with a rounded, slightly mushroom-like top and a full heavy fringe falling straight down to just above the eyebrows (chunky strands, slight off-centre part), sides over the tops of his ears, soft oval face with a gently defined jaw (not chubby), calm narrow eyes, no glasses, about the same height as Tiff, short-sleeved muted teal (dark cyan) polo shirt with a small off-white cat-face emblem on the left chest, dark trousers, tired-but-fond eyes, deadpan expression by default",
@@ -511,7 +511,7 @@ window.SB = {
   ],
 
   clientQuestions: [
-    { q: "Photos of Tiff", why: "Adrian’s photos are in (8 October). For Tiff, 3–5: a straight-on face, a 3/4 angle, one full-body and one natural smile. Daylight, no filters, one person per photo, JPG." },
+    { q: "More photos of Tiff (optional)", why: "Two are in (8 October); more angles help. 3–5 in total: a straight-on face, a 3/4 angle, one full-body and one natural smile. Daylight, no filters, one person per photo, JPG." },
     { q: "Photos of Miso and Tofu", why: "2–3 each (face, side, full body) so the markings come out right." },
     { q: "Tiff’s real Spinda plush", why: "2–3 photos, front and side." },
     { q: "Cosplay photos", why: "Any photos of Adrian as Yugi and Tiff as Dark Magician Girl." },
