@@ -80,7 +80,7 @@ Wide shot of a home living room turned into a tiny royal court: a narrow red car
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-### PC-05 · "While I'm waiting for my dinner" (3.9s) · framed between the cats
+### PC-05 · "While I'm waiting for my dinner" (3.9s) · framed between the cats · LOCKED (optional edit: make Tofu clearly white)
 Composition from the user's reference (8 October): a symmetrical one-point-perspective shot framed between two giant foreground figures, with a tiny figure centred at the far end. Here the frame is Miso and Tofu on their thrones, seen from behind; Adrian is the tiny figure. **Use the reference for composition only; don't attach it** (its flat primary-colour style would pull the look off).
 
 **Attach:** [Adrian] (clean sheet) [Adrian-X] [Cats]
