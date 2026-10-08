@@ -60,6 +60,10 @@ Simple doodle comic style matching the character sheet references exactly: bold 
 Medium shot, plain sunny background with a few heat-wave lines. A cute CHIBI version of Tiff (this one shot only: big head, small body), recognisable from her character sheet (long dark-brown hair fading lighter, light-peach cat-face clip on her LEFT side, mustard cardigan, white skirt), stands frozen and wobbly with dizzy SPIRAL eyes like the spiral eyes on her expression sheet, a small happy-confused smile, little sweat drops flying off.
 16:9, no text, no letters, no logos, no watermark.
 ```
+**PC-02 END · LOCKED.**
+
+**Kling motion (later, 3s, start and end frames):** Tiff wobbles on the spot, her spiral eyes spin, then she slowly melts down from the head into a round mustard-and-white puddle, smiling the whole time; steam curls rise as she settles. Camera locked.
+
 **PC-02 END. Image edit. Base:** the PC-02 START render.
 ```
 Edit this image. Keep the background, style, colours and her face exactly the same. Change only her body: chibi Tiff has melted into a cute round puddle on the ground in her mustard and white colours, with her happy face, spiral eyes, cat-face clip and a little tuft of brown hair floating on top of the puddle. No text.
