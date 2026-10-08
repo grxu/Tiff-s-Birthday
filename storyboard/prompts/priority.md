@@ -80,17 +80,18 @@ Wide shot of a home living room turned into a tiny royal court: a narrow red car
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-### PC-05 · "While I'm waiting for my dinner" (3.9s) · cats' point of view
-High angle from Miso and Tofu's thrones, looking down on Adrian (user, 8 October). It ties PC-04's thrones to his lonely dinner.
+### PC-05 · "While I'm waiting for my dinner" (3.9s) · framed between the cats
+Composition from the user's reference (8 October): a symmetrical one-point-perspective shot framed between two giant foreground figures, with a tiny figure centred at the far end. Here the frame is Miso and Tofu on their thrones, seen from behind; Adrian is the tiny figure. **Use the reference for composition only; don't attach it** (its flat primary-colour style would pull the look off).
 
 **Attach:** [Adrian] (clean sheet) [Adrian-X] [Cats]
 ```
-HIGH-ANGLE SHOT FROM THE CATS' POINT OF VIEW: the camera sits just behind and above two small royal thrones on a raised platform, looking DOWN a very long dining table.
+SYMMETRICAL ONE-POINT-PERSPECTIVE SHOT FRAMED BETWEEN THE TWO CATS: the camera sits between and just behind two royal thrones, at the cats' head height, looking straight down the centre line of a very long dining table to the far end.
 
-Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame. Adrian is an adult man drawn with the same normal proportions as his character sheet; he looks small only because he is far away and below, never childlike or chibi.
+Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame. Adrian is an adult man drawn with the same normal proportions as his character sheet; he looks small only because he is far away, never childlike or chibi.
 
-FOREGROUND, bottom of the frame: the backs of Miso (a chubby black tabby) and Tofu (a fluffy round white cat), exactly as the cat sheet, sitting on red velvet thrones, each wearing a small gold crown, seen from behind; beside each of them a silver plate with salmon. Tofu's head is turned slightly so one smug blue eye shows.
-BACKGROUND, far end of a very long white table running away from the camera: Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), sits alone under a single hanging lamp in a pool of light, an empty white plate in front of him, holding a fork and knife upright in his fists, glancing at his phone propped against a glass, deadpan and lonely. A tiny grey rain cloud hovers over his head. Plain white walls with mauve shading; the rest of the room dim.
+LEFT AND RIGHT EDGES, huge in the foreground and cropped by the frame like two pillars: on the left, Miso (a chubby black tabby) on a red velvet throne; on the right, Tofu (a fluffy round white cat) on a red velvet throne; both seen from behind, exactly as the cat sheet, each wearing a small gold crown near the top corners of the frame, their tails curling down into the bottom corners. A silver plate of salmon sits on each throne's armrest.
+CENTRE, far away: the very long white table runs straight away from the camera in strict one-point perspective. At its far end, small and perfectly centred, Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), sits alone under a single hanging lamp in a pool of light, an empty white plate in front of him, holding a fork and knife upright in his fists, glancing at his phone propped against a glass, deadpan and lonely. A tiny grey rain cloud hovers over his head.
+Plain white walls and floor with soft mauve shading; lots of calm empty space between the cats and Adrian.
 Leave the phone screen blank (text added in edit).
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
