@@ -80,15 +80,22 @@ Wide shot of a home living room turned into a tiny royal court: a narrow red car
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-### PC-05 · "While I'm waiting for my dinner" (3.9s)
-**Attach:** [Adrian] [Adrian-X] [Cats]
-```
-Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame. Adrian drawn with the same normal adult proportions as his character sheet, not chibi, not childlike.
+### PC-05 · "While I'm waiting for my dinner" (3.9s) · cats' point of view
+High angle from Miso and Tofu's thrones, looking down on Adrian (user, 8 October). It ties PC-04's thrones to his lonely dinner.
 
-Wide shot: Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), sits alone at the far end of a very long, empty dining table under a single hanging lamp. An empty white plate in front of him; he holds a fork and knife upright in his fists while glancing at his phone propped against a glass. Dignified, lonely, deadpan. A tiny grey rain cloud hovers above his head. Through an open doorway behind him, Miso the black tabby and Tofu the white cat eat from fine china plates on a little table with a candle.
+**Attach:** [Adrian] (clean sheet) [Adrian-X] [Cats]
+```
+HIGH-ANGLE SHOT FROM THE CATS' POINT OF VIEW: the camera sits just behind and above two small royal thrones on a raised platform, looking DOWN a very long dining table.
+
+Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame. Adrian is an adult man drawn with the same normal proportions as his character sheet; he looks small only because he is far away and below, never childlike or chibi.
+
+FOREGROUND, bottom of the frame: the backs of Miso (a chubby black tabby) and Tofu (a fluffy round white cat), exactly as the cat sheet, sitting on red velvet thrones, each wearing a small gold crown, seen from behind; beside each of them a silver plate with salmon. Tofu's head is turned slightly so one smug blue eye shows.
+BACKGROUND, far end of a very long white table running away from the camera: Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), sits alone under a single hanging lamp in a pool of light, an empty white plate in front of him, holding a fork and knife upright in his fists, glancing at his phone propped against a glass, deadpan and lonely. A tiny grey rain cloud hovers over his head. Plain white walls with mauve shading; the rest of the room dim.
 Leave the phone screen blank (text added in edit).
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
+
+**Kling motion (later, 3.9s → 4s clip):** Miso flicks a tail and takes a bite of salmon; far below, Adrian checks his phone, sighs, and looks up at the cats; the rain cloud drips once. Camera locked.
 
 ## Scene 5 · House invaded by plushies
 
