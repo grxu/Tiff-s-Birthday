@@ -104,7 +104,9 @@ Leave the phone screen blank (text added in edit).
 
 ## Scene 5 · House invaded by plushies
 
-### DB1-01 · Dance break, plushies start falling (5.3s)
+### DB1-01 · Dance break, plushies start falling (5.3s) · LOCKED
+
+**Kling motion (later, 6s):** Tiff and Adrian keep dancing goofily, bouncing on the spot, arms flailing out of sync; Miso and Tofu hop around their feet; the round plushies drop from the ceiling one at a time and bounce off the floor with a squash. Camera locked, wide.
 **Attach:** [Tiff] [Adrian] [Cats]
 ```
 Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes and little blush marks, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, hand-drawn motion lines, thin mauve border frame. Tiff and Adrian are adults of about the same height with the same normal proportions as their character sheets, not chibi.
