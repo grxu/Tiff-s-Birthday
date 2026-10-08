@@ -80,26 +80,27 @@ Wide shot of a home living room turned into a tiny royal court: a narrow red car
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-### PC-05 · "While I'm waiting for my dinner" (3.9s) · framed between the cats, red carpet to a table for two · LOCKED (needs a small edit: add his empty plate)
-
-**Plate edit (base: the locked render):** Edit this image. Keep everything exactly the same. Add only one empty white dinner plate on the small round table in front of Adrian. No other changes, no text.
-User (8 October): keep the framing between the two cats, give the cats PC-04's red-carpet royal treatment, and make Adrian's table a small table for two (him and Tiff) rather than a long table. Composition reference for framing only; don't attach it.
+### PC-05 · "While I'm waiting for my dinner" (3.9s) · dark room, Adrian in a triangle of light
+User (8 October): keep the framing between the cats on their thrones and the red carpet; make the room DARK with Adrian lit by a triangular cone of light from a chandelier above him; redo Adrian (the last one was off-model); his hands hold either his phone or a fork and spoon, never both. Chosen: **fork and spoon**, phone glowing on the table. Alternative hands line below.
 
 **Attach:** [Adrian] (clean sheet) [Adrian-X] [Cats]
 ```
-SYMMETRICAL ONE-POINT-PERSPECTIVE SHOT FRAMED BETWEEN THE TWO CATS: the camera sits between and just behind two royal thrones, at the cats' head height, looking straight down the room along a red carpet.
+SYMMETRICAL ONE-POINT-PERSPECTIVE SHOT, NIGHT, DARK ROOM: the camera sits between and just behind two royal thrones, looking straight down a red carpet to a small table where Adrian sits in a single triangle of light.
 
-Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame. Adrian is an adult man drawn with the same normal proportions as his character sheet; he looks small only because he is far away, never childlike or chibi.
+Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, flat colour, no gradients except the soft edge of the light cone, thin mauve border frame. The room is dark: walls and floor in deep dusky mauve-grey shadow, with no other light sources.
 
-LEFT AND RIGHT EDGES, huge in the foreground and cropped by the frame like two pillars: on the left, Miso (a chubby black tabby) on a red velvet throne; on the right, Tofu (a fluffy round, clearly bright WHITE cat with only light mauve shading at the edges) on a red velvet throne; both seen from behind, exactly as the cat sheet, each wearing a small gold crown near the top corners of the frame, their tails curling down into the bottom corners. A silver plate of salmon sits on each throne's armrest. A small crystal chandelier hangs at the top centre, above the cats.
-CENTRE: a royal red carpet with a decorated border, exactly like a palace carpet, starts between the two thrones and runs straight away from the camera in strict one-point perspective down the middle of a plain white room, and then STOPS short, a few steps before the far end.
-FAR END, small and perfectly centred, on the bare white floor just past the end of the carpet: a small, plain round table for two with two simple chairs. Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), sits alone on one chair under a single bare hanging bulb, an empty white plate in front of him, holding a fork and knife upright in his fists, glancing at his phone propped against a glass, deadpan and lonely. The second chair, across from him, is EMPTY. A tiny grey rain cloud hovers over his head.
-Lots of calm empty white space around the table; the luxury stays on the cats' side.
+LIGHT: a small crystal chandelier hangs directly above Adrian's table and casts one clear, sharp-edged TRIANGLE of warm pale light straight down, wide at the bottom, covering Adrian, his table and the end of the red carpet. Everything outside the triangle stays dark.
+
+LEFT AND RIGHT EDGES, large in the foreground and cropped by the frame like two pillars: the tall backs of two red velvet thrones. On the left throne, Miso (a chubby black tabby); on the right, Tofu (a fluffy round, clearly WHITE cat); both seen from behind in near-silhouette, exactly as the cat sheet, their small gold crowns catching a glint of light, a silver plate of salmon on each armrest.
+CENTRE: the red carpet with a decorated border runs from the thrones straight down the middle of the dark room and STOPS just before the lit table.
+MIDDLE DISTANCE, centred, inside the triangle of light, large enough that his face reads clearly (about a third of the frame height): a small plain round table for two. Adrian sits behind it FACING THE CAMERA, exactly as his character sheet: straight thick glossy black hair with a smooth rounded top and a full heavy fringe falling straight to his eyebrows (neat, not messy or spiky), soft oval face, calm narrow eyes, deadpan, muted slate-teal polo with a small light-peach cat-face emblem on the left chest. Adult proportions, same as his sheet, not chibi, not childlike. In his right fist he holds a FORK upright and in his left fist a SPOON upright, both resting on the table edge; an empty white plate in front of him; his phone lies face-up beside the plate, its screen glowing softly. A tiny grey rain cloud hovers over his head. The second chair, on our side of the table, has its back to the camera and is EMPTY.
 Leave the phone screen blank (text added in edit).
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-**Kling motion (later, 3.9s → 4s clip):** Miso flicks a tail and Tofu takes a bite of salmon; at the far end Adrian checks his phone, sighs, and glances at the empty chair across from him; the rain cloud drips once. Very slow push-in down the red carpet.
+**Alternative hands (phone instead):** replace the fork-and-spoon sentence with: *"He holds his phone in both hands in front of his chest, looking down at its softly glowing screen; an empty white plate with a fork and spoon laid neatly beside it sits in front of him."*
+
+**Kling motion (later, 3.9s → 4s clip):** Miso flicks a tail and Tofu takes a bite of salmon in the dark; in the light, Adrian glances down at his phone on the table (nothing), sighs, then looks at the empty chair across from him, still holding his fork and spoon upright; the rain cloud drips once. Very slow push-in down the red carpet toward the light.
 
 ## Scene 5 · House invaded by plushies
 
