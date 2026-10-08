@@ -80,7 +80,7 @@ Wide shot of a home living room turned into a tiny royal court: a narrow red car
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-### PC-05 · "While I'm waiting for my dinner" (3.9s) · dark room, Adrian in a triangle of light
+### PC-05 · "While I'm waiting for my dinner" (3.9s) · dark room, Adrian in a triangle of light · LOCKED (8 October)
 User (8 October): keep the framing between the cats on their thrones and the red carpet; make the room DARK with Adrian lit by a triangular cone of light from a chandelier above him; redo Adrian (the last one was off-model); his hands hold either his phone or a fork and spoon, never both. Chosen: **fork and spoon**, phone glowing on the table. Alternative hands line below.
 
 **Attach:** [Adrian] (clean sheet) [Adrian-X] [Cats]
