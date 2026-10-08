@@ -118,6 +118,10 @@ Wide shot of their living room: white walls, a soft rounded white sofa with dust
 ### DB1-02 · The plushie downpour (5.2s, start + end)
 **DB1-02 START:** use the DB1-01 render as the start frame (same room, same dance). No new image needed.
 
+**DB1-02 END · LOCKED.**
+
+**Kling motion (later, 6s, start = DB1-01, end = this frame):** Plushies pour down from the ceiling faster and faster, piling up around the dancing couple; the camera cranes up and back to a high angle as the pile rises to their shoulders; one last plushie lands on Adrian's head; Miso and Tofu scramble to the top of the pile.
+
 **DB1-02 END. Image edit. Base:** the DB1-01 render.
 ```
 Edit this image into a higher camera angle looking down on the same living room, keeping the same style, room and characters. The room is now filled shoulder-deep with hundreds of colourful round cartoon creature plushies covering every surface: sofa, shelves, table. Tiff pokes out of the pile in the middle, thrilled, arms up. Adrian pokes out beside her, politely drowning, with one plushie sitting on top of his head. Miso and Tofu sit on top of the pile. No text.
