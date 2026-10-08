@@ -80,7 +80,9 @@ Wide shot of a home living room turned into a tiny royal court: a narrow red car
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-### PC-05 · "While I'm waiting for my dinner" (3.9s) · framed between the cats, red carpet to a table for two
+### PC-05 · "While I'm waiting for my dinner" (3.9s) · framed between the cats, red carpet to a table for two · LOCKED (needs a small edit: add his empty plate)
+
+**Plate edit (base: the locked render):** Edit this image. Keep everything exactly the same. Add only one empty white dinner plate on the small round table in front of Adrian. No other changes, no text.
 User (8 October): keep the framing between the two cats, give the cats PC-04's red-carpet royal treatment, and make Adrian's table a small table for two (him and Tiff) rather than a long table. Composition reference for framing only; don't attach it.
 
 **Attach:** [Adrian] (clean sheet) [Adrian-X] [Cats]
@@ -97,7 +99,7 @@ Leave the phone screen blank (text added in edit).
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-**Kling motion (later, 3.9s → 4s clip):** Miso flicks a tail and takes a bite of salmon; far below, Adrian checks his phone, sighs, and looks up at the cats; the rain cloud drips once. Camera locked.
+**Kling motion (later, 3.9s → 4s clip):** Miso flicks a tail and Tofu takes a bite of salmon; at the far end Adrian checks his phone, sighs, and glances at the empty chair across from him; the rain cloud drips once. Very slow push-in down the red carpet.
 
 ## Scene 5 · House invaded by plushies
 
