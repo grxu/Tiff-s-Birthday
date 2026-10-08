@@ -80,18 +80,19 @@ Wide shot of a home living room turned into a tiny royal court: a narrow red car
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-### PC-05 · "While I'm waiting for my dinner" (3.9s) · framed between the cats · LOCKED (optional edit: make Tofu clearly white)
-Composition from the user's reference (8 October): a symmetrical one-point-perspective shot framed between two giant foreground figures, with a tiny figure centred at the far end. Here the frame is Miso and Tofu on their thrones, seen from behind; Adrian is the tiny figure. **Use the reference for composition only; don't attach it** (its flat primary-colour style would pull the look off).
+### PC-05 · "While I'm waiting for my dinner" (3.9s) · framed between the cats, red carpet to a table for two
+User (8 October): keep the framing between the two cats, give the cats PC-04's red-carpet royal treatment, and make Adrian's table a small table for two (him and Tiff) rather than a long table. Composition reference for framing only; don't attach it.
 
 **Attach:** [Adrian] (clean sheet) [Adrian-X] [Cats]
 ```
-SYMMETRICAL ONE-POINT-PERSPECTIVE SHOT FRAMED BETWEEN THE TWO CATS: the camera sits between and just behind two royal thrones, at the cats' head height, looking straight down the centre line of a very long dining table to the far end.
+SYMMETRICAL ONE-POINT-PERSPECTIVE SHOT FRAMED BETWEEN THE TWO CATS: the camera sits between and just behind two royal thrones, at the cats' head height, looking straight down the room along a red carpet.
 
 Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame. Adrian is an adult man drawn with the same normal proportions as his character sheet; he looks small only because he is far away, never childlike or chibi.
 
-LEFT AND RIGHT EDGES, huge in the foreground and cropped by the frame like two pillars: on the left, Miso (a chubby black tabby) on a red velvet throne; on the right, Tofu (a fluffy round white cat) on a red velvet throne; both seen from behind, exactly as the cat sheet, each wearing a small gold crown near the top corners of the frame, their tails curling down into the bottom corners. A silver plate of salmon sits on each throne's armrest.
-CENTRE, far away: the very long white table runs straight away from the camera in strict one-point perspective. At its far end, small and perfectly centred, Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), sits alone under a single hanging lamp in a pool of light, an empty white plate in front of him, holding a fork and knife upright in his fists, glancing at his phone propped against a glass, deadpan and lonely. A tiny grey rain cloud hovers over his head.
-Plain white walls and floor with soft mauve shading; lots of calm empty space between the cats and Adrian.
+LEFT AND RIGHT EDGES, huge in the foreground and cropped by the frame like two pillars: on the left, Miso (a chubby black tabby) on a red velvet throne; on the right, Tofu (a fluffy round, clearly bright WHITE cat with only light mauve shading at the edges) on a red velvet throne; both seen from behind, exactly as the cat sheet, each wearing a small gold crown near the top corners of the frame, their tails curling down into the bottom corners. A silver plate of salmon sits on each throne's armrest. A small crystal chandelier hangs at the top centre, above the cats.
+CENTRE: a royal red carpet with a decorated border, exactly like a palace carpet, starts between the two thrones and runs straight away from the camera in strict one-point perspective down the middle of a plain white room, and then STOPS short, a few steps before the far end.
+FAR END, small and perfectly centred, on the bare white floor just past the end of the carpet: a small, plain round table for two with two simple chairs. Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), sits alone on one chair under a single bare hanging bulb, an empty white plate in front of him, holding a fork and knife upright in his fists, glancing at his phone propped against a glass, deadpan and lonely. The second chair, across from him, is EMPTY. A tiny grey rain cloud hovers over his head.
+Lots of calm empty white space around the table; the luxury stays on the cats' side.
 Leave the phone screen blank (text added in edit).
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
