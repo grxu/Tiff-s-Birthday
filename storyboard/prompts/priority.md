@@ -45,10 +45,15 @@ Wide shot outside a simple white front door. Tiff, exactly as her character shee
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 
-### PC-02 · "you forget what to do" (1.7s, start + end)
+### PC-02a · spiral-eyes beat (0.47s, editor crop, no generation) · LOCKED
+A one-beat close-up on the spiral eyes, cropped from the first PC-02 test render (the frame with two Tiffs, left half). Editor: snap zoom in and a small spin on the spirals; add the thin mauve frame back, because the crop loses it. Upload that original test render to Render Drop as PC-02a so the final crop comes from the full-resolution file.
+
+### PC-02 · "you forget what to do" (now 1.23s after the close-up, start + end)
 The one place Tiff goes chibi on purpose: it's a gag beat.
 
-**PC-02 START. Attach:** [Tiff] [Tiff-X]
+**PC-02 START · LOCKED. Attach:** [Tiff-X] only (attaching both sheets made a two-Tiff "sheet" layout). Start the prompt with: SINGLE PANEL WITH EXACTLY ONE CHARACTER: one chibi Tiff, full body, standing alone in the centre of the frame. Not a character sheet, no close-up inset, no second version of her.
+
+Original prompt:
 ```
 Simple doodle comic style matching the character sheet references exactly: bold clean black ink outlines, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame.
 
