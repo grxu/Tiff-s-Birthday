@@ -34,7 +34,9 @@ Never attach a finished shot as a style reference. The one exception is an **ima
 
 ## Scene 3 · Tiff melting in the heat
 
-### PC-01 · "And when the weather turns hot" (1.7s)
+### PC-01 · "And when the weather turns hot" (1.7s) · LOCKED
+
+**Kling motion (later, 3s):** The smug sun slowly swells bigger and its smirk widens; heat-shimmer lines ripple up from the path; the thermometer's red line bulges at the top; Tiff sways slightly, squinting. Camera locked.
 **Attach:** [Tiff] [Tiff-X]
 ```
 Simple doodle comic style matching the character sheet references exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes and little blush marks, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, hand-drawn heat-wave lines, thin mauve border frame. Tiff drawn with the same normal adult proportions as her character sheet, not chibi.
