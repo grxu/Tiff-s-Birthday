@@ -197,6 +197,8 @@ Wide shot of their white living room flooded by a giant wave made of hundreds of
 ### V2-08 · "You've played in big league" (3.7s, epic)
 **Attach:** [Tiff] [Tiff-X]
 ```
+EXACTLY ONE TIFF IN THE IMAGE.
+
 Simple doodle comic style matching the character sheet references exactly, dramatic version: bold clean black ink outlines, simple faces, white fills with dusty mauve-pink shading, bold mauve speed lines and radiating burst lines, simple spotlight cones, low camera angle, small flat muted accent colours, no gradients, thin mauve border frame. Tiff drawn with the same normal adult proportions as her character sheet, not chibi.
 
 Low-angle wide shot of a huge card-game tournament stage. Tiff, exactly as her character sheet (long brown hair blowing back, light-peach clip on her LEFT side, mustard cardigan over a white top), walks toward the camera in slow motion wearing dark sunglasses and a flowing mauve cape, holding a deck of cards in one hand, confident champion smile. Sweeping spotlights, a roaring cartoon crowd in silhouette, falling confetti, a giant gold trophy on a plinth behind her, a big blank jumbotron screen and a blank banner across the top of the stage (both filled in the edit).
@@ -206,6 +208,8 @@ Low-angle wide shot of a huge card-game tournament stage. Tiff, exactly as her c
 ### V2-09 · "But first-turn Supporters?" (1.9s, editor shot; buzzer slap only)
 **Attach:** [Tiff] [Tiff-X]
 ```
+EXACTLY ONE TIFF IN THE IMAGE.
+
 Simple doodle comic style matching the character sheet references exactly: bold clean black ink outlines, simple faces with small dot eyes, white fills with dusty mauve-pink shading, small flat muted accent colours, no gradients, impact lines, thin mauve border frame. Tiff drawn with the same normal adult proportions as her character sheet.
 
 Medium shot on the tournament stage under spotlights: Tiff (sunglasses pushed up on her head, mustard cardigan, light-peach clip on her LEFT side) slams her palm down on a big red game-show buzzer on a podium, with a huge confident grin and impact lines around the buzzer. Leave the upper half of the frame clear for a question card added in the edit.
@@ -215,6 +219,8 @@ Medium shot on the tournament stage under spotlights: Tiff (sunglasses pushed up
 ### V2-10 · "You still fail the test." (1.9s)
 **Attach:** [Tiff] [Tiff-X] [Adrian-X] [Cats]
 ```
+EXACTLY ONE TIFF, ONE ADRIAN AND TWO CATS IN THE IMAGE.
+
 Simple doodle comic style matching the reference images exactly: bold clean black ink outlines, simple faces with small dot eyes, white fills with dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame. Tiff and Adrian drawn with the same normal adult proportions as their character sheets, not chibi.
 
 Wide shot of the same tournament stage, now dark, lit by one single spotlight. In the spotlight, Tiff (mustard cardigan, light-peach clip on her LEFT side) stands baffled with dizzy SPIRAL eyes like her expression sheet and a confused little mouth. To one side, Adrian (slate-teal polo with cat emblem) facepalms. At a small judges' table in front, Miso the black tabby and Tofu the white cat, exactly as the cat sheet, hold up blank white scorecards with stern faces.
