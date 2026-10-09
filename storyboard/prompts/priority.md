@@ -134,7 +134,7 @@ Make variant A, then build B to D as image edits of A so Adrian stays identical.
 ```
 Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame. Adrian drawn with the same normal adult proportions as his character sheet, not chibi.
 
-Medium shot, same height as the subject: Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), stands holding a plate of dinner with both hands, staring in disbelief at a white dining chair. Sitting on the chair, filling it completely, is a big round colourful cartoon creature plushie that stares right back at him. White walls with dusty mauve shading.
+Medium shot, same height as the subject: Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), stands holding a plate of dinner with both hands, staring in disbelief at a white dining chair. Sitting on the chair, filling it completely, is a big round colourful cartoon creature plushie that stares right back at him, the same style as the round, colourful creature plushies from the dance (no real Pokémon). White walls with dusty mauve shading.
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
 **V2-01 B, C, D. Image edits. Base:** V2-01 A. Change one line each time:
