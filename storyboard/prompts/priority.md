@@ -147,7 +147,7 @@ After this, B, C and D use the Snorlax version as their base.
 
 **V2-01 B, C, D. Image edits. Base:** V2-01 A. Change one line each time:
 ```
-B: Edit this image. Keep Adrian, his plate, pose and the style exactly the same; make his face slightly more disbelieving. Replace the chair and Snorlax with a second white chair holding a big Psyduck plush (yellow, holding its head, confused face). No text.
+(B · LOCKED 9 October) B: Edit this image. Keep Adrian, his plate, pose and the style exactly the same; make his face slightly more disbelieving. Replace the chair and Snorlax with a second white chair holding a big Psyduck plush (yellow, holding its head, confused face). No text.
 C: Edit this image. Keep Adrian, his plate and the style exactly the same; his eyebrows rise higher. Replace the chair and Snorlax with the white sofa from the living room, stacked to the ceiling with a wall of colourful Pokémon plushies (Pikachu, Jigglypuff, Eevee, Psyduck, Snorlax) mixed with round creature plushies. No text.
 D: Edit this image. Keep Adrian, his plate and the style exactly the same; his jaw drops. Replace the chair and Snorlax with a white bed where a row of Pokémon plushies (Pikachu, Jigglypuff, Eevee) is tucked in under a mauve duvet, heads on the pillows, as if asleep. No text.
 ```
