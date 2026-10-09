@@ -181,7 +181,9 @@ Edit this image. Keep the table, wall, style and the first Spinda exactly the sa
 ```
 No labels: the reason for three is still being kept back.
 
-### V2-05 · "has to be three." (1.6s)
+### V2-05 · "has to be three." (1.6s) · LOCKED (9 October)
+
+**Kling motion (later, 3s):** The Spinda wave curls and crashes across the room from left to right; Tiff rides it on her big Spinda, arms out; Adrian is knocked off his feet and tumbles away; loose Spindas bounce past the camera.
 **Attach:** [Tiff] [Adrian-X] [Spinda]
 ```
 Simple doodle comic style matching the reference images exactly: bold clean black ink outlines of even medium weight, simple faces with small dot eyes, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, bold splash and motion lines, thin mauve border frame. Tiff and Adrian drawn with the same normal adult proportions as their character sheets, not chibi.
