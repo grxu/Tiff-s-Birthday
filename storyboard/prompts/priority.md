@@ -137,6 +137,8 @@ Simple doodle comic style matching the reference images exactly: bold clean blac
 Medium shot, same height as the subject: Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), stands holding a plate of dinner with both hands, staring in disbelief at a white dining chair. Sitting on the chair, filling it completely, is a big round colourful cartoon creature plushie that stares right back at him, the same style as the round, colourful creature plushies from the dance (no real Pokémon). White walls with dusty mauve shading.
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
+**V2-01 A · SNORLAX · LOCKED (9 October).** Base for B, C and D.
+
 **V2-01 A · SNORLAX EDIT (user, 9 October). Base:** the first V2-01 A render (Adrian with the steak plate).
 ```
 Edit this image. Keep Adrian, his face, his plate of food, the chair, the wall and the style exactly the same. Replace only the penguin plushie with a big, round Snorlax plush that fills the whole chair and spills over its edges: dark blue-teal body (deeper and darker than Adrian's polo), a big cream belly and cream face, small pointed ears, stubby arms and feet with little cream claws, eyes closed, fast asleep, drawn in the same bold black doodle line. No text.
