@@ -152,7 +152,9 @@ After this, B, C and D use the Snorlax version as their base.
 D: Edit this image. Keep Adrian, his plate and the style exactly the same; his jaw drops. Replace the chair and Snorlax with a white bed where a row of Pokémon plushies (Pikachu, Jigglypuff, Eevee) is tucked in under a mauve duvet, heads on the pillows, as if asleep. No text.
 ```
 
-### V2-02 · "still room for someone else" (3.5s)
+### V2-02 · "still room for someone else" (3.5s) · LOCKED (9 October, after one edit: Pokémon plushies added, Tiff looks up at Adrian)
+
+**Kling motion (later, 4s):** Tiff pats the free spot twice and smiles up at Adrian; he walks in, squeezes into the gap beside her, and the plushies around them wobble and settle; one Psyduck tips onto his shoulder. Camera locked, slight push-in.
 **Attach:** [Tiff] [Tiff-X] [Adrian]
 ```
 Simple doodle comic style matching the reference images exactly: bold clean black ink outlines, simple faces with small dot eyes and soft smiles, white fills with flat dusty mauve-pink shading plus a pale warm peach wash, small flat muted accent colours, no gradients, calm composition, thin mauve border frame. Tiff and Adrian drawn with the same normal adult proportions as their character sheets, not chibi.
