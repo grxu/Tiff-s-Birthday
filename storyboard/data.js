@@ -493,6 +493,7 @@ window.SB = {
     { q: "Style", a: "Locked: simple doodle comic, mauve ink (black line, white fills, dusty mauve-pink shading) plus small accent colours: mustard for Tiff, teal (dark cyan) for Adrian, cream and red for Spinda (colours changed 8 October). Reference: the locked character sheets (the old V1-01 car swatch is retired)." },
     { q: "Evening look", a: "Tiff wears her braided variant (braid over her right shoulder) for the night-time home scenes: BR-04 and the whole outro, OU-01 to OU-06 (decided 8 October)." },
     { q: "Versions of Adrian", a: "Femboy (cute, skirt and hair clip), geek, nerd, card collector and Yugi cosplay. Build the four V3-06 cuts as image edits of one base so Tiff stays identical." },
+    { q: "Real Pokémon plushies", a: "Allowed (private gift). V2-01 uses a Snorlax filling the chair, then Psyduck, a sofa wall and a bed of Pokémon plushies (9 October). The dance-break plushies stay generic round creatures." },
     { q: "Car props (V1)", a: "Spinda hangs only from Tiff's phone as a keychain. The rear-view mirror carries a hanging charm shaped like a bank card with a dollar coin (mustard stripe, green coin; reference storyboard/refs/mirror-charm.png), decided 8 October." },
     { q: "Ending", a: "Quiet moment in the 2-second stop, then the whole cast celebrates on the final drop." },
     { q: "Dance breaks", a: "Keep both: plushie-rain dance (1:10) and slow dance (2:13)." },

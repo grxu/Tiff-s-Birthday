@@ -137,11 +137,17 @@ Simple doodle comic style matching the reference images exactly: bold clean blac
 Medium shot, same height as the subject: Adrian, exactly as his character sheet (straight thick black hair with a heavy fringe, muted slate-teal polo with a small light-peach cat-face emblem), stands holding a plate of dinner with both hands, staring in disbelief at a white dining chair. Sitting on the chair, filling it completely, is a big round colourful cartoon creature plushie that stares right back at him, the same style as the round, colourful creature plushies from the dance (no real Pokémon). White walls with dusty mauve shading.
 16:9, consistent character design, no text, no letters, no logos, no watermark.
 ```
+**V2-01 A · SNORLAX EDIT (user, 9 October). Base:** the first V2-01 A render (Adrian with the steak plate).
+```
+Edit this image. Keep Adrian, his face, his plate of food, the chair, the wall and the style exactly the same. Replace only the penguin plushie with a big, round Snorlax plush that fills the whole chair and spills over its edges: dark blue-teal body (deeper and darker than Adrian's polo), a big cream belly and cream face, small pointed ears, stubby arms and feet with little cream claws, eyes closed, fast asleep, drawn in the same bold black doodle line. No text.
+```
+After this, B, C and D use the Snorlax version as their base.
+
 **V2-01 B, C, D. Image edits. Base:** V2-01 A. Change one line each time:
 ```
-B: Edit this image. Keep Adrian, his plate, pose and the style exactly the same; make his face slightly more disbelieving. Replace the chair with a second white chair holding a different big plushie (a different colour and shape). No text.
-C: Edit this image. Keep Adrian, his plate and the style exactly the same; his eyebrows rise higher. Replace the chair with the white sofa from the living room, stacked to the ceiling with a wall of colourful plushies. No text.
-D: Edit this image. Keep Adrian, his plate and the style exactly the same; his jaw drops. Replace the chair with a white bed where a row of plushies is tucked in under a mauve duvet, heads on the pillows, as if asleep. No text.
+B: Edit this image. Keep Adrian, his plate, pose and the style exactly the same; make his face slightly more disbelieving. Replace the chair and Snorlax with a second white chair holding a big Psyduck plush (yellow, holding its head, confused face). No text.
+C: Edit this image. Keep Adrian, his plate and the style exactly the same; his eyebrows rise higher. Replace the chair and Snorlax with the white sofa from the living room, stacked to the ceiling with a wall of colourful Pokémon plushies (Pikachu, Jigglypuff, Eevee, Psyduck, Snorlax) mixed with round creature plushies. No text.
+D: Edit this image. Keep Adrian, his plate and the style exactly the same; his jaw drops. Replace the chair and Snorlax with a white bed where a row of Pokémon plushies (Pikachu, Jigglypuff, Eevee) is tucked in under a mauve duvet, heads on the pillows, as if asleep. No text.
 ```
 
 ### V2-02 · "still room for someone else" (3.5s)
