@@ -165,7 +165,9 @@ Their living room: a soft rounded white sofa with dusty mauve-pink shading, comp
 
 ## Scene 6 · Spinda multiplying
 
-### V2-04 · "And now every Spinda plushie" (2.0s, start + end)
+### V2-04 · "And now every Spinda plushie" (2.0s, start + end) · LOCKED (9 October; the end frame came first, the start is an edit of it with two Spindas removed)
+
+**Kling motion (later, 3s, start and end frames):** The lone Spinda wobbles slightly; POOF, a second Spinda appears on the left in a puff of smoke; POOF, a third appears on the right; all three settle and smile. Camera locked.
 **V2-04 START. Attach:** [Spinda]
 ```
 Simple doodle comic style matching the reference image exactly: bold clean black ink outlines, white fills with flat dusty mauve-pink shading, small flat muted accent colours, no gradients, thin mauve border frame.
