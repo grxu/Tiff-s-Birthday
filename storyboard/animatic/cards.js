@@ -5,7 +5,7 @@ global.window = {};
 require(path.join(__dirname, "..", "data.js"));
 const SB = window.SB;
 const OUT = process.argv[2] || path.join(__dirname, "build");
-fs.mkdirSync(OUT, { recursive: true });
+if (require.main === module) fs.mkdirSync(OUT, { recursive: true });
 const PRE = 3, FPS = 24;
 const all = [];
 SB.sections.forEach((sec) => sec.shots.forEach((sh) => all.push({ ...sh, sec })));
@@ -68,7 +68,8 @@ body{width:854px;height:480px;overflow:hidden;font-family:Figtree,"DejaVu Sans",
 ${sh.ui ? `<div class="ui">${esc(clip(sh.ui, 110))}</div>` : '<div class="spacer"></div>'}
 </div></body></html>`;
 }
-(async () => {
+module.exports = { html, all, END };
+if (require.main === module) (async () => {
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: 854, height: 480 } });
   const lines = [];

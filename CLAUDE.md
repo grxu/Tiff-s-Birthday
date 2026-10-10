@@ -1,6 +1,6 @@
 # Tiff's birthday music video
 
-Commissioned birthday music video for Tiff (from Adrian), set to "My Whole Supply". The storyboard lives in `storyboard/` (`data.js` is the source of truth; `index.html` renders it). The animatic is rebuilt with `storyboard/animatic/build.sh`; a single-section animatic from the locked renders is `node storyboard/animatic/section.js V1` (480p, song timing).
+Commissioned birthday music video for Tiff (from Adrian), set to "My Whole Supply". The storyboard lives in `storyboard/` (`data.js` is the source of truth; `index.html` renders it). The animatic is rebuilt with `storyboard/animatic/build.sh`; a single-section animatic from the locked renders is `node storyboard/animatic/section.js V1` (480p, song timing), and the full film with renders where they exist and storyboard cards elsewhere is `node storyboard/animatic/section.js ALL 560` (560p). Extra frames are named `<ID>b/c/d` (cuts or push-in steps) and `<ID>-end` (start+end shots); `renders/wip.txt` lists frames still to adjust.
 
 ## Working rules
 
