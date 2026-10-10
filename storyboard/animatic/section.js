@@ -22,6 +22,9 @@ const OUT = process.argv[4] || path.join(__dirname, SEC === "ALL" ? `animatic-al
 const BUILD = fs.mkdtempSync(path.join(os.tmpdir(), "section-"));
 const RENDERS = path.join(__dirname, "renders");
 const WIPFILE = path.join(RENDERS, "wip.txt");
+// on-screen text and graphics from ../overlays (node render.js there); NOTEXT=1 leaves them out
+const TEXT = path.join(__dirname, "..", "overlays", "png");
+const textFor = (name) => { const f = name && path.join(TEXT, `${name}.png`); return !process.env.NOTEXT && f && fs.existsSync(f) ? f : null; };
 const WIP = new Set(fs.existsSync(WIPFILE) ? fs.readFileSync(WIPFILE, "utf8").split(/\s+/).filter((l) => l && !l.startsWith("#")) : []);
 const find = (name) => ["jpg", "jpeg", "png"].map((e) => path.join(RENDERS, `${name}.${e}`)).find(fs.existsSync);
 const frames = (id) => {
@@ -37,7 +40,7 @@ const frames = (id) => {
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const fmt = (t) => { const neg = t < 0; t = Math.abs(t); const m = Math.floor(t / 60), s = t - m * 60; return (neg ? "−" : "") + m + ":" + (s < 10 ? "0" : "") + s.toFixed(1); };
 
-const overlay = (sh, dur, label, name) => `<!doctype html><html><head><meta charset="utf-8">
+const overlay = (sh, dur, label, name, hasText) => `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=IBM+Plex+Mono:wght@500&display=block">
 <style>*{box-sizing:border-box;margin:0}body{width:${BW}px;height:${BH}px;background:transparent;position:relative;overflow:hidden}
 .tag{position:absolute;top:12px;left:12px;font:500 11px "IBM Plex Mono","DejaVu Sans Mono",monospace;color:#fff;background:rgba(40,20,40,.62);border-radius:999px;padding:3px 10px}
@@ -45,7 +48,7 @@ const overlay = (sh, dur, label, name) => `<!doctype html><html><head><meta char
 .ui{position:absolute;top:12px;right:12px;max-width:380px;font:500 11px/1.35 "IBM Plex Mono","DejaVu Sans Mono",monospace;color:#3a2140;background:rgba(255,255,255,.9);border-radius:8px;padding:4px 9px}
 .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 20px 14px;background:linear-gradient(180deg,rgba(40,20,40,0),rgba(40,20,40,.78) 55%);color:#fff;font:800 19px/1.15 "Baloo 2","DejaVu Sans",sans-serif;text-align:center;text-wrap:balance}
 </style></head><body><div class="tag">${esc(sh.id)}${label ? " " + esc(label) : ""} · ${fmt(sh.t)} · ${dur.toFixed(1)}s${sh.gen && /Editor/.test(sh.gen.how) ? " · EDITOR" : ""}${WIP.has(sh.id) || WIP.has(name) ? " · <b>WIP</b>" : ""}</div>
-${sh.ui ? `<div class="ui">EDIT ▸ ${esc(sh.ui)}</div>` : ""}
+${sh.ui && !hasText ? `<div class="ui">EDIT ▸ ${esc(sh.ui)}</div>` : ""}
 <div class="cap">${esc(sh.lyric === "(same line)" ? "" : sh.lyric)}</div></body></html>`;
 
 const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "yuv420p", "-r", String(FPS)];
@@ -61,7 +64,13 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
     // reused shots (gen.of, e.g. C2-01 = C1-01) play the source shot's frames
     // re-cut shots (gen.frames, e.g. OU-04) play a list of other shots' frames in order
     const list = sh.gen && sh.gen.frames ? sh.gen.frames.map((n) => ({ img: find(n), label: `= ${n}` })).filter((f) => f.img) : [];
-    const fr = own.length ? own : list.length ? list : !src ? own : frames(src).map((f) => ({ ...f, label: `= ${src}${f.label ? " " + f.label : ""}` }));
+    let fr = own.length ? own.map((f) => ({ ...f, text: textFor(path.parse(f.img).name) }))
+      : list.length ? list
+      : !src ? own
+      // a reused frame takes the reusing shot's own text (C2-03 has its own timer): C1-03-end -> C2-03-end
+      : frames(src).map((f) => ({ ...f, label: `= ${src}${f.label ? " " + f.label : ""}`, text: textFor(sh.id + path.parse(f.img).name.slice(src.length)) }));
+    // a full-frame graphic with no render (the OU-07 end card) stands in as the picture
+    if (!fr.length && textFor(sh.id)) fr = [{ img: textFor(sh.id), label: "" }];
     if (!fr.length) {
       if (SEC !== "ALL") throw new Error("missing render for " + sh.id);
       await p.setContent(cards.html(sh, all.indexOf(sh)), { waitUntil: "networkidle" });
@@ -77,14 +86,17 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
     }
     for (const [j, f] of fr.entries()) {
       const a = Math.round((n * j) / fr.length), m = Math.round((n * (j + 1)) / fr.length) - a;
-      await p.setContent(overlay(sh, (f1 - f0) / FPS, f.label, path.parse(f.img).name), { waitUntil: "networkidle" });
+      await p.setContent(overlay(sh, (f1 - f0) / FPS, f.label, path.parse(f.img).name, !!f.text || f.img.startsWith(TEXT)), { waitUntil: "networkidle" });
       await p.evaluate(() => document.fonts.ready);
       const ov = path.join(BUILD, `ov-${k}.png`);
       await p.screenshot({ path: ov, omitBackground: true });
       const seg = path.join(BUILD, `seg-${String(k++).padStart(3, "0")}.mp4`);
       // slow push-in (1.00 -> 1.06) on a 2x plate for smooth sub-pixel motion
-      execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-loop", "1", "-i", f.img, "-i", ov, "-filter_complex",
-        `[0]scale=${W * 2}:${H * 2}:force_original_aspect_ratio=increase,crop=${W * 2}:${H * 2},zoompan=z='1+0.06*on/${m}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${m}:s=${W}x${H}:fps=${FPS}[bg];[1]scale=${W}:${H}[ov];[bg][ov]overlay,format=yuv420p`,
+      // the shot's text overlay goes onto the plate before the push-in, so it stays locked to the picture
+      const txt = f.text ? ["-loop", "1", "-i", f.text] : [];
+      const plate = f.text ? `[0]scale=${W * 2}:${H * 2}:force_original_aspect_ratio=increase,crop=${W * 2}:${H * 2}[p];[2]scale=${W * 2}:${H * 2}[t];[p][t]overlay` : `[0]scale=${W * 2}:${H * 2}:force_original_aspect_ratio=increase,crop=${W * 2}:${H * 2}`;
+      execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-loop", "1", "-i", f.img, "-i", ov, ...txt, "-filter_complex",
+        `${plate},zoompan=z='1+0.06*on/${m}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${m}:s=${W}x${H}:fps=${FPS}[bg];[1]scale=${W}:${H}[ov];[bg][ov]overlay,format=yuv420p`,
         "-frames:v", String(m), ...enc, seg]);
       parts.push(`file '${seg}'`);
       nRender++;
