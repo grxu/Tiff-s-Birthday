@@ -2,7 +2,7 @@
 
 Scenes 1 and 2 are locked (V1-02 to V1-04, V1-07, V1-08), and so is the BR-03 map plate. This file covers the rest of `SB.production.priorities`.
 
-Model: Nano Banana Pro, 16:9, one image each (about 2 credits). **About 31 images, about 62 credits in total.**
+Model: **Nano Banana 2.1, 16:9, 2K, high thinking, batch 1** (2 credits per image; user's default from 10 October). **About 31 images, about 62 credits in total.**
 
 ## Attachment kit
 
