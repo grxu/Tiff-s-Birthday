@@ -56,6 +56,7 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
   let k = 0, nRender = 0, nCard = 0;
   for (const sh of shots) {
     const f0 = Math.round((sh.t - T0) * FPS), f1 = Math.round((endOf(sh) - T0) * FPS), n = f1 - f0;
+    if (n <= 0) { console.log(sh.id, fmt(sh.t), "skipped (no screen time)"); continue; }
     const fr = frames(sh.id);
     if (!fr.length) {
       if (SEC !== "ALL") throw new Error("missing render for " + sh.id);
