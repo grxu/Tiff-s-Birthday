@@ -3,7 +3,7 @@
 // Each shot: renders/<SHOT-ID>.jpg with a slow push-in, plus a transparent overlay
 // (shot ID, song time, lyric, editor note). Extra frames split the shot evenly:
 // <ID>b/c/d… are further cuts or push-in steps, <ID>-end is the end frame of a start+end shot.
-// Shots without a render fall back to their storyboard card (ALL only). IDs listed in
+// Shots with gen.of reuse that shot's frames. Shots without a render fall back to their storyboard card (ALL only). IDs listed in
 // renders/wip.txt are tagged WIP. Audio is the matching slice of ../song.mp3.
 const fs = require("fs"), path = require("path"), os = require("os");
 const { execFileSync, execSync } = require("child_process");
@@ -57,7 +57,9 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
   for (const sh of shots) {
     const f0 = Math.round((sh.t - T0) * FPS), f1 = Math.round((endOf(sh) - T0) * FPS), n = f1 - f0;
     if (n <= 0) { console.log(sh.id, fmt(sh.t), "skipped (no screen time)"); continue; }
-    const fr = frames(sh.id);
+    const own = frames(sh.id), src = sh.gen && sh.gen.of;
+    // reused shots (gen.of, e.g. C2-01 = C1-01) play the source shot's frames
+    const fr = own.length || !src ? own : frames(src).map((f) => ({ ...f, label: `= ${src}${f.label ? " " + f.label : ""}` }));
     if (!fr.length) {
       if (SEC !== "ALL") throw new Error("missing render for " + sh.id);
       await p.setContent(cards.html(sh, all.indexOf(sh)), { waitUntil: "networkidle" });

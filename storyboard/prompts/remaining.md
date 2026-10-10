@@ -6,30 +6,35 @@ Model: **Nano Banana 2.1, 16:9, 2K, high thinking, batch 1** (2 credits per imag
 
 ## The plan at a glance
 
-| Batch | Shots | Images | Credits | Depends on |
+**Choruses reuse Chorus 1 (decided 10 October).** C2-01 to C2-06 and FC-01 to FC-05 play the C1-01 to C1-06 images and Kling clips, retimed to each chorus; only FC-06 to FC-08 (their own lyrics) get new images. So the C2 and FC-01 to FC-05 prompts below are kept for reference only and are not rendered.
+
+| Batch | Shots | Images | Credits | Status |
 |---|---|---|---|---|
-| 1 · Intro + pre-chorus | GPS plate (PR-01 and IN-01), IN-02, PC-03, PC-06 | 4 | 8 | none |
-| 2 · Chorus 1 | C1-01, C1-02, C1-03 start + end, C1-04, C1-05 A + B, C1-06 | 8 | 16 | none (C1-03 end is an edit of its start) |
-| 3 · Verse 2 + Chorus 2 | V2-03, V2-06, V2-07, C2-01, C2-03 start + end, C2-04, C2-06 | 8 | 16 | batch 2 (C2-01, C2-04 and C2-06 are edits of the C1 frames) |
-| 4 · Dance break 2, Verse 3, Bridge | DB2-01, V3-01, V3-02, V3-03, V3-04 start + end, V3-08, BR-01, BR-02 | 9 | 18 | none |
-| 5 · Final chorus | FC-01, FC-02, FC-03 start + end, FC-04 ×4, FC-05 ×3, FC-06, FC-07, FC-08 ×2 | 15 | 30 | none |
+| 1 · Intro + pre-chorus | GPS plate (PR-01 and IN-01), IN-02, PC-03, PC-06 | 4 | 8 | **Done 10 October** (job IDs in `renders-manifest.md`) |
+| 2 · Chorus 1 (used in all three choruses) | C1-01, C1-02, C1-03 start + end, C1-04, C1-05 A + B, C1-06 | 8 | 16 | next |
+| 3 · Verse 2 | V2-03, V2-06, V2-07 | 3 | 6 | |
+| 4 · Dance break 2, Verse 3, Bridge | DB2-01, V3-01, V3-02, V3-03, V3-04 start + end, V3-08, BR-01, BR-02 | 9 | 18 | |
+| 5 · Final chorus, own lines | FC-06, FC-07, FC-08 A + B | 4 | 8 | |
 | 6 · Outro + fixes | OU-03, OU-08, PC-04 (seven cats), V1-10 (white sofa) | 4 | 8 | V1-10 and an edit-based PC-04 need their job IDs |
-| **Total** | | **48** | **96** | |
+| **Still to render** | | **28** | **56** | |
 
-Allow about 20 more credits for redos. On top of that come the fixes you still want on the WIP frames (DB1-01, DB1-02, OU-01, OU-02, V3-06 d): tell me what to change and I'll quote each.
+Allow about 20 more credits for redos, plus the fixes you still want on the WIP frames (DB1-01, DB1-02, OU-01, OU-02, V3-06 d).
 
-**No generation needed:** PR-01 and IN-01 are motion graphics over the GPS plate, PC-02a is a crop, C2-02 and C2-05 are retimes of the C1 clips, OU-04 re-cuts V1-04, PC-02 and V1-10, and OU-07 is the end card.
+**No generation needed:** PR-01 and IN-01 are motion graphics over the GPS plate, PC-02a is a crop, the Chorus 2 and final-chorus repeats reuse Chorus 1, OU-04 re-cuts V1-04, PC-02 and V1-10, and OU-07 is the end card.
 
-## Credits after the images
+## Credits
 
-Balance 305.5 − 96 images = **about 210 left** (about 190 after redos).
+Balance about 297.5 after batch 1 − 56 images − about 20 redos = **about 221 for animation**.
 
 | Animation (Kling 3.0 std, sound off, 1.5 credits/s) | Seconds | Credits |
 |---|---|---|
-| Priority shots (24 clips; DB1-02 and OU-06 are now 10s each) | 100 | 150 |
-| Every other shot of 3s or more (27 clips) | 120 | 180 |
+| Priority shots (24 clips; DB1-02 and OU-06 are 10s each) | 100 | 150 |
+| Chorus clips C1-01 to C1-06, cut to the longest of their three uses (4, 4, 3, 3, 3 + 3, 4) | 24 | 36 |
+| Every other shot of 3s or more | about 87 | about 130 |
 
-Images plus priority animation fit, with about 40 to 60 credits spare. That spare covers roughly 6 to 8 of the other clips: the strongest candidates are V1-11, DB2-01, FC-08, FC-06, C1-01 and BR-01. Everything else plays as a still with an editor push-in, unless you top up or some of the Kling clips you already made (about 340 credits' worth, 7 to 9 October) are usable.
+Priority plus the chorus clips (each used three times) come to about 186, leaving about 35 for a few hero shots (V1-11, DB2-01, FC-08 are the best candidates). The rest play as stills with an editor push-in unless you top up or some of the Kling clips you made on 7 to 9 October are usable.
+
+The final chorus was planned in heart mode (golden light). Reusing the Chorus 1 clips there, give them a warm golden grade in the edit so the last chorus still feels different.
 
 ## How the prompts are written
 
@@ -39,7 +44,7 @@ Looks: Tiff wears her day look everywhere here except OU-03 and OU-08, which are
 
 ---
 
-## Batch 1 · Intro + pre-chorus (4 images, 8 credits)
+## Batch 1 · Intro + pre-chorus (4 images, 8 credits) · DONE
 
 ### GPS plate · PR-01 + IN-01 (one plate for both)
 **Attach:** [Spinda]
@@ -157,7 +162,9 @@ Locked frontal wide shot of the [HOME] living room, everything in it: Tiff [TIFF
 
 ---
 
-## Batch 3 · Verse 2 + Chorus 2 (8 images, 16 credits)
+## Batch 3 · Verse 2 (3 images, 6 credits)
+
+The C2 prompts in this section are reference only: Chorus 2 reuses Chorus 1.
 
 ### V2-03 · Spinda hero (3.5s)
 **Attach:** [Tiff] [Tiff-X] [Spinda]
@@ -306,7 +313,9 @@ Low, floor-level wide shot in the [HOME] living room. Adrian [ADRIAN] lies on hi
 
 ---
 
-## Batch 5 · Final chorus (15 images, 30 credits)
+## Batch 5 · Final chorus (4 images, 8 credits: FC-06, FC-07, FC-08 A + B)
+
+FC-01 to FC-05 are reference only: they reuse Chorus 1.
 
 ### FC-01 · the full party (3.5s)
 **Attach:** [Tiff] [Adrian] [Cats]
