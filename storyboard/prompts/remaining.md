@@ -6,17 +6,17 @@ Model: **Nano Banana 2.1, 16:9, 2K, high thinking, batch 1** (2 credits per imag
 
 ## The plan at a glance
 
-**Choruses reuse Chorus 1 (decided 10 October).** C2-01 to C2-06 and FC-01 to FC-05 play the C1-01 to C1-06 images and Kling clips, retimed to each chorus; only FC-06 to FC-08 (their own lyrics) get new images. So the C2 and FC-01 to FC-05 prompts below are kept for reference only and are not rendered.
+**Choruses reuse Chorus 1 (decided 10 October).** C2-01 to C2-06 and FC-01 to FC-05 play the C1-01 to C1-06 images and Kling clips, retimed to each chorus; only FC-06 to FC-08 (their own lyrics) get new images, plus two final-chorus exceptions (user, 10 October): FC-03 is the couple cosplay (Adrian as Yugi, Tiff as Dark Magician Girl) and FC-04 shows the real trips. The C2 prompts and FC-01, FC-02 and FC-05 below are kept for reference only and are not rendered.
 
 | Batch | Shots | Images | Credits | Status |
 |---|---|---|---|---|
 | 1 · Intro + pre-chorus | GPS plate (PR-01 and IN-01), IN-02, PC-03, PC-06 | 4 | 8 | **Done 10 October** (job IDs in `renders-manifest.md`) |
-| 2 · Chorus 1 (used in all three choruses) | C1-01, C1-02, C1-03 start + end, C1-04, C1-05 A + B, C1-06 | 8 | 16 | next |
+| 2 · Chorus 1 (used in all three choruses) | C1-01, C1-02, C1-03 start + end, C1-04, C1-05 A + B, C1-06 | 8 | 16 | **Done 10 October** |
 | 3 · Verse 2 | V2-03, V2-06, V2-07 | 3 | 6 | |
 | 4 · Dance break 2, Verse 3, Bridge | DB2-01, V3-01, V3-02, V3-03, V3-04 start + end, V3-08, BR-01, BR-02 | 9 | 18 | |
-| 5 · Final chorus, own lines | FC-06, FC-07, FC-08 A + B | 4 | 8 | |
+| 5 · Final chorus, own shots | FC-03 start + end (couple cosplay), FC-04 A to C (real trips), FC-06, FC-07, FC-08 A + B | 9 | 18 | |
 | 6 · Outro + fixes | OU-03, OU-08, PC-04 (seven cats), V1-10 (white sofa) | 4 | 8 | V1-10 and an edit-based PC-04 need their job IDs |
-| **Still to render** | | **28** | **56** | |
+| **Still to render** | | **25** | **50** | |
 
 Allow about 20 more credits for redos, plus the fixes you still want on the WIP frames (DB1-01, DB1-02, OU-01, OU-02, V3-06 d).
 
@@ -24,15 +24,16 @@ Allow about 20 more credits for redos, plus the fixes you still want on the WIP 
 
 ## Credits
 
-Balance about 297.5 after batch 1 − 56 images − about 20 redos = **about 221 for animation**.
+Balance about 297.5 after batch 1 − 66 images − about 20 redos = **about 211 for animation**.
 
 | Animation (Kling 3.0 std, sound off, 1.5 credits/s) | Seconds | Credits |
 |---|---|---|
 | Priority shots (24 clips; DB1-02 and OU-06 are 10s each) | 100 | 150 |
 | Chorus clips C1-01 to C1-06, cut to the longest of their three uses (4, 4, 3, 3, 3 + 3, 4) | 24 | 36 |
+| FC-03 couple-cosplay transformation (start + end, FC-04 stays stills) | 3 | 4.5 |
 | Every other shot of 3s or more | about 87 | about 130 |
 
-Priority plus the chorus clips (each used three times) come to about 186, leaving about 35 for a few hero shots (V1-11, DB2-01, FC-08 are the best candidates). The rest play as stills with an editor push-in unless you top up or some of the Kling clips you made on 7 to 9 October are usable.
+Priority, the chorus clips (each used three times) and FC-03 come to about 190, leaving about 20 for a hero shot or two (V1-11, DB2-01, FC-08 are the best candidates). The rest play as stills with an editor push-in unless you top up or some of the Kling clips you made on 7 to 9 October are usable.
 
 The final chorus was planned in heart mode (golden light). Reusing the Chorus 1 clips there, give them a warm golden grade in the edit so the last chorus still feels different.
 
@@ -87,7 +88,7 @@ Editor: the text "come to the living room 🎉" on the phone.
 
 ---
 
-## Batch 2 · Chorus 1 (8 images, 16 credits)
+## Batch 2 · Chorus 1 (8 images, 16 credits) · DONE
 
 The role-card titles (WARDROBE EXPERT and the rest) and every ✗ / ✓ are added in the edit.
 
@@ -313,9 +314,9 @@ Low, floor-level wide shot in the [HOME] living room. Adrian [ADRIAN] lies on hi
 
 ---
 
-## Batch 5 · Final chorus (4 images, 8 credits: FC-06, FC-07, FC-08 A + B)
+## Batch 5 · Final chorus (9 images, 18 credits: FC-03 start + end, FC-04 A to C, FC-06, FC-07, FC-08 A + B)
 
-FC-01 to FC-05 are reference only: they reuse Chorus 1.
+FC-01, FC-02 and FC-05 are reference only: they reuse Chorus 1.
 
 ### FC-01 · the full party (3.5s)
 **Attach:** [Tiff] [Adrian] [Cats]
@@ -350,13 +351,12 @@ Medium shot of Tiff [TIFF] and Adrian [ADRIAN] standing side by side in everyday
 Edit this image. Keep the framing and their faces exactly. Both are now transformed in a burst of sparkles: Adrian as Yugi Muto (spiky tri-colour hair, dark jacket, gold duel disk) and Tiff as Dark Magician Girl (long blonde wig, tall pointed blue-and-pink hat, staff), striking a dramatic duel pose together back to back. Same doodle style, no text.
 ```
 
-### FC-04 A to D · travel (2.4s, four fast cuts)
-**Attach:** [Tiff] [Adrian] for each.
+### FC-04 A to C · the real trips (2.4s, three cuts of about 0.8s, stills)
+**Attach:** [Tiff] [Adrian] for each. Places described in words; the client's travel photos in Render Drop stay out of the attachments (they pull toward realism).
 ```
-A) EXACTLY ONE TIFF AND ONE ADRIAN. [STYLE heart] In the grandstand at a big racecourse (Tokyo Racecourse), cheering as horses gallop past on the green turf below. Tiff points the way confidently; Adrian does a double-take. [END]
-B) EXACTLY ONE TIFF, ONE ADRIAN AND ONE KOALA. [STYLE heart] At a wildlife sanctuary among eucalyptus trees (Cleland Wildlife Sanctuary): Tiff gently meets a sleepy koala in a tree while Adrian holds the map, surprised she found it first. [END]
-C) EXACTLY ONE TIFF, ONE ADRIAN AND TWO PENGUINS. [STYLE heart] Inside a huge indoor ski slope with snow (Ski Dubai), both in puffy winter jackets in their colours, waving at two little penguins waddling past. [END]
-D) EXACTLY ONE TIFF AND ONE ADRIAN. [STYLE heart] Window seats on a train, countryside rushing past: Tiff holds the colour-tabbed itinerary and points at the next stop; Adrian looks at her impressed. [END]
+A) EXACTLY ONE TIFF AND ONE ADRIAN. [STYLE heart] In the grandstand at Tokyo Racecourse, horses galloping past on the green turf below: Tiff points the way with total confidence; Adrian, beside her, does a double-take. [END]
+B) EXACTLY ONE TIFF, ONE ADRIAN AND ONE KOALA. [STYLE heart] At Cleland Wildlife Sanctuary among eucalyptus trees: Tiff gently meets a sleepy koala on a low branch, while Adrian holds the map, surprised she found it first. [END]
+C) EXACTLY ONE TIFF, ONE ADRIAN AND TWO PENGUINS. [STYLE heart] Inside the huge indoor snow slope of Ski Dubai, both in puffy winter jackets in their colours (mustard for her, slate teal for him), waving at two little penguins waddling past. [END]
 ```
 
 ### FC-05 A to C · slower montage (2.8s)
