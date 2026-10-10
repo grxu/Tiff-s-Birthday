@@ -8,10 +8,10 @@ Model: Nano Banana Pro, 16:9, one image each (about 2 credits). **About 31 image
 
 | Tag | What | Where |
 |---|---|---|
-| **[Tiff]** | Tiff main sheet, **clean** (chibi removed) | `refs/tiff-main-nochibi.png`; until it's uploaded, the original `73339f83-b96b-4fd2-b64d-fcd45fb70f3a` |
+| **[Tiff]** | Tiff main sheet, **clean** (chibi removed) | media `16f06fa1-7303-4c6b-b43c-b139879f2ea8` (clean, from `refs/tiff-main-nochibi.png`) |
 | **[Tiff-X]** | Tiff expressions (incl. spiral eyes) | `d7be5ac7-f8ab-4044-80a5-0c98c8380da3` |
 | **[Tiff-B]** | Tiff braided (evening at home) | `66bd348d-a934-43d4-874a-b7890f79a42a` |
-| **[Adrian]** | Adrian turnaround, **clean** (chibi removed) | `refs/adrian-turnaround-nochibi.png`; until then `1dba4b79-d73f-4936-9a58-30116509b26e` |
+| **[Adrian]** | Adrian turnaround, **clean** (chibi removed) | media `edf7de02-e83a-4d0b-9e45-c90324193821` (clean, from `refs/adrian-turnaround-nochibi.png`) |
 | **[Adrian-X]** | Adrian expressions | `27973f43-740e-4030-81a1-0487f7b5060f` |
 | **[Spinda]** | Spinda sheet | job `202ed396-287f-4bc2-b075-1bcf394cc1a8` |
 | **[Cats]** | Miso & Tofu sheet | job `25d53917-3177-498c-abc1-e07aae8a1a38` |
