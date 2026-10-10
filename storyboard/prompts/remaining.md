@@ -15,8 +15,8 @@ Model: **Nano Banana 2.1, 16:9, 2K, high thinking, batch 1** (2 credits per imag
 | 3 · Verse 2 | V2-03, V2-06, V2-07 | 3 | 6 | **Done 10 October** |
 | 4 · Dance break 2, Verse 3, Bridge | DB2-01, V3-01, V3-02, V3-03, V3-04 start + end, V3-08, BR-01, BR-02 | 9 | 18 | **Done 10 October** |
 | 5 · Final chorus, own shots | FC-03 start + end (couple cosplay), FC-04 A to C (real trips), FC-06, FC-07, FC-08 A + B | 9 | 18 | **Done 10 October** |
-| 6 · Outro + fixes | OU-03, OU-08, PC-04 (seven cats), V1-10 (white sofa) | 4 | 8 | V1-10 and an edit-based PC-04 need their job IDs |
-| **Still to render** | | **4** | **8** | |
+| 6 · Outro + fixes | OU-03, OU-08, PC-04 (seven cats, fresh render), V1-10 (white sofa) | 4 | 8 | **Done 10 October** except V1-10 (needs its job ID or an upload) |
+| **Still to render** | | **1** (V1-10) | **2** | |
 
 Allow about 20 more credits for redos, plus the fixes you still want on the WIP frames (DB1-01, DB1-02, OU-01, OU-02, V3-06 d).
 
