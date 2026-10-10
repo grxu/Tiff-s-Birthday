@@ -278,14 +278,9 @@ window.SB = {
           note: "Rules check: the player who goes first can’t play a Supporter on their first turn; the player going second can. Saying ‘you go first’ keeps the quiz correct for card players watching." },
         { id: "V2-10", t: 111.5, lyric: "You still fail the test.", size: "WS", cam: "Spotlights snap off one by one",
           action: "BZZZT. A huge red ✗. Record scratch. Spotlights die. The crowd goes silent. Adrian facepalms. The cats sit at a judges’ table holding up ‘0’ scorecards. Tiff, spiral eyes, confused.",
-          act: "Tiff: genuinely baffled. Adrian: disbelief.", ui: "Big red ✗ · scorecards: 0 0", sfx: "BZZZT + record scratch", trans: "Into the build", tags: ["cats", "spinda"], p: 1, mode: "gag",
+          act: "Tiff: genuinely baffled. Adrian: disbelief.", ui: "Big red ✗ · scorecards: 0 0", sfx: "BZZZT + record scratch", trans: "Smash cut to Chorus 2", tags: ["cats", "spinda"], p: 1, mode: "gag",
           gen: { how: "I2V", img: "Darkened tournament stage with one spotlight, {WIFE} with dizzy spiral eyes and a confused face, {HUSBAND} facepalming, two cats at a judges' table holding up scorecards", motion: "Spotlights click off one by one; cats raise scorecards." },
-          note: "Punchline of the verse." },
-        { id: "V2-11", t: 113.8, lyric: "(6-second build into Chorus 2)", size: "MS → CU", cam: "Empty arena, slow push in",
-          action: "The arena is empty. Tiff sits on the edge of the stage, still spiral-eyed. Adrian sits down beside her and hands her a Spinda. She hugs it; her eyes go back to normal. Behind them the cats flip their scorecards from ‘0’ to ‘♥’. On the last beat she grins at him.",
-          act: "Tiff: baffled → comforted. Adrian: gentle.", ui: "Scorecards flip: 0 → ♥", sfx: "Build", trans: "Smash cut to Chorus 2 on the drop", tags: ["spinda", "cats"], p: 2, mode: "heart",
-          gen: { how: "I2V", img: "Empty dim tournament stage, {WIFE} sitting on the stage edge with spiral eyes, {HUSBAND} sitting beside her handing her a Spinda plush, two cats behind them holding scorecards", motion: "She hugs the plush and smiles; cats flip their cards." },
-          note: "Keeps the ‘never mean’ rule: the joke lands, then he looks after her before the chorus celebrates her again." }
+          note: "Punchline of the verse." }
       ] },
 
     { key: "c2", name: "Chorus 2", mode: "gag", chaos: 0.95, heart: 0.5,
@@ -495,6 +490,7 @@ window.SB = {
     { q: "Versions of Adrian", a: "Femboy (cute, skirt and hair clip), geek, nerd, card collector and Yugi cosplay. Build the four V3-06 cuts as image edits of one base so Tiff stays identical." },
     { q: "Real Pokémon plushies", a: "Allowed (private gift). V2-01 uses a Snorlax filling the chair, then Psyduck, a sofa wall and a bed of Pokémon plushies (9 October). The dance-break plushies stay generic round creatures." },
     { q: "Car props (V1)", a: "Spinda hangs only from Tiff's phone as a keychain. The rear-view mirror carries a hanging charm shaped like a bank card with a dollar coin (mustard stripe, green coin; reference storyboard/refs/mirror-charm.png), decided 8 October." },
+    { q: "Chorus 2 lead-in", a: "V2-11 (the empty-arena comfort beat) is cut (10 October): after the retiming it had no screen time, so the buzzer fail (V2-10) smash-cuts into Chorus 2 at 1:53.8." },
     { q: "Ending", a: "Quiet moment in the 2-second stop, then the whole cast celebrates on the final drop." },
     { q: "Dance breaks", a: "Keep both: plushie-rain dance (1:10) and slow dance (2:13)." },
     { q: "Pre-roll", a: "3 seconds of silence on the GPS screen before the music, mirroring the ‘Recalculating…’ tag." },
