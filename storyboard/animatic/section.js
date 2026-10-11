@@ -44,18 +44,20 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
   const parts = [];
   let k = 0, nRender = 0, nCard = 0, nClip = 0;
   // m frames of a clip: sped up to fit (start+end clips) or at real speed and cut; the clone pad covers rounding
-  // at the cut; the text overlay sits on the clip as a placeholder (AE tracks it later)
-  const clipSeg = async (sh, c, m, text, label, name) => {
+  // at the cut; the text overlays sit on the clip as placeholders (AE tracks them later), each over its share of
+  // the clip (a start+end clip shows the start frame's text, then the end frame's)
+  const clipSeg = async (sh, c, m, texts, label, name) => {
     const T = m / FPS, fit = c.fit;
-    await p.setContent(overlay(sh, T, `${label ? label + " " : ""}CLIP${fit ? ` ${(c.seconds / T).toFixed(1)}×` : ""}`, name, !!text), { waitUntil: "networkidle" });
+    texts = texts.filter((t) => t.file);
+    await p.setContent(overlay(sh, T, `${label ? label + " " : ""}CLIP${fit ? ` ${(c.seconds / T).toFixed(1)}×` : ""}`, name, texts.length > 0), { waitUntil: "networkidle" });
     await p.evaluate(() => document.fonts.ready);
     const ov = path.join(BUILD, `ov-${k}.png`);
     await p.screenshot({ path: ov, omitBackground: true });
     const seg = path.join(BUILD, `seg-${String(k++).padStart(3, "0")}.mp4`);
     const v = `[0]${fit ? `setpts=PTS*${(T / c.seconds).toFixed(5)},` : ""}fps=${FPS},scale=${W}:${H}:force_original_aspect_ratio=increase,crop=${W}:${H},tpad=stop_mode=clone:stop_duration=5`;
-    const graph = text ? `${v}[c];[2]scale=${W}:${H}[t];[c][t]overlay[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`
-      : `${v}[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`;
-    execFileSync("ffmpeg", ["-y", "-nostdin", "-loglevel", "error", "-i", c.file, "-loop", "1", "-i", ov, ...(text ? ["-loop", "1", "-i", text] : []),
+    const graph = v + texts.map((t, i) => `[c${i}];[${i + 2}]scale=${W}:${H}[t${i}];[c${i}][t${i}]overlay=enable='between(n,${t.a},${t.b - 1})'`).join("")
+      + `[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`;
+    execFileSync("ffmpeg", ["-y", "-nostdin", "-loglevel", "error", "-i", c.file, "-loop", "1", "-i", ov, ...texts.flatMap((t) => ["-loop", "1", "-i", t.file]),
       "-filter_complex", graph, "-an", "-frames:v", String(m), ...enc, seg]);
     parts.push(`file '${seg}'`);
     nClip++;
@@ -65,7 +67,8 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
     if (n <= 0) { console.log(sh.id, fmt(sh.t), "skipped (no screen time)"); continue; }
     const pl = plan(sh);
     if (pl.clip) {
-      await clipSeg(sh, pl.clip, n, textFor(pl.text), "", sh.id);
+      const k = pl.frames.length;
+      await clipSeg(sh, pl.clip, n, pl.frames.map((f, j) => ({ file: textFor(f.text), a: Math.round((n * j) / k), b: Math.round((n * (j + 1)) / k) })), "", sh.id);
       console.log(sh.id, fmt(sh.t), n + "f", `clip ${pl.clip.seconds.toFixed(1)}s ${pl.clip.fit ? "sped up" : "cut"}`);
       continue;
     }
@@ -86,7 +89,7 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
     }
     for (const [j, f] of fr.entries()) {
       const a = Math.round((n * j) / fr.length), m = Math.round((n * (j + 1)) / fr.length) - a;
-      if (f.clip) { await clipSeg(sh, f.clip, m, f.text, f.label, path.parse(f.img).name); continue; }
+      if (f.clip) { await clipSeg(sh, f.clip, m, [{ file: f.text, a: 0, b: m }], f.label, path.parse(f.img).name); continue; }
       await p.setContent(overlay(sh, (f1 - f0) / FPS, f.label, path.parse(f.img).name, !!f.text || f.img.startsWith(TEXT)), { waitUntil: "networkidle" });
       await p.evaluate(() => document.fonts.ready);
       const ov = path.join(BUILD, `ov-${k}.png`);

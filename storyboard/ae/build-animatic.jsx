@@ -152,7 +152,11 @@
       tr.setValueAtTime(HEAD + (sh.clip.fit ? sh.dur : last), last);
       span(L, 0, len);
       L.name = sh.id + (sh.clip.fit ? " clip (fitted)" : " clip");
-      addOverlay(comp, sh.text, 0, len, null);
+      // each frame's text over its share (a start+end clip shows the start frame's text, then the end frame's)
+      for (var q = 0; q < sh.frames.length; q++) {
+        var qa = HEAD + (sh.dur * q) / sh.frames.length, qb = HEAD + (sh.dur * (q + 1)) / sh.frames.length;
+        if (sh.frames[q].text) addOverlay(comp, sh.frames[q].text, q === 0 ? 0 : qa, q === sh.frames.length - 1 ? len : qb, null);
+      }
     } else {
       // stills (also stand in for a clip that has not been downloaded yet)
       var n = sh.frames.length;
