@@ -40,3 +40,14 @@ Edit of the V3-06 base (job `27d7927b-1df1-40ca-9799-2752fdddad8d`, Render Drop 
 ```
 Edit this image. Keep Tiff and Adrian in the same positions and sizes, with the same outfits, the plain white background and the framing exactly. Adrian now holds open a trading-card binder toward Tiff, showing her a page of colourful cards in clear sleeves, explaining proudly with a happy, slightly nerdy smile, one finger tapping a card. Tiff leans in beside him, looking at the binder with bright, curious eyes and a big smile, pointing at one card as if to say "that one!". A single trading card peeks out of the top of his sneaker, a tiny nod to "cards in my shoe". Card faces are simple shapes and colours, no readable text. Same simple doodle comic style. No text.
 ```
+
+## V3-07 START · card-collector Adrian has three hands (edit, don't regenerate)
+Attach only the V3-07 start frame. With a mask: paint the extra hand + its bit of sleeve and use the short prompt.
+Short (masked):
+```
+Swirling pink and peach light trails and plain background, matching the surroundings. No hand, no arm.
+```
+Full (no mask):
+```
+Edit this image. Fix one anatomy mistake only: the card-collector Adrian on the right (brown hoodie, card binder under his arm) has three hands. Remove the extra open hand reaching out from his sleeve toward the centre of the image, just below the stack of books, together with the piece of sleeve it comes from, and fill that space with the same swirling light trails and background. He keeps exactly two hands: one shaking the Yugi Adrian's hand, and one holding the card binder against his side. Keep everything else exactly the same: all five versions of Adrian, their faces, outfits and poses, the swirl and sparkles, the framing and the border. No text.
+```
