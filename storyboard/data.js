@@ -345,7 +345,7 @@ window.SB = {
           act: "Tiff: easy acceptance.", ui: "", sfx: "", trans: "Cut on the beat", tags: ["versions"], p: 1, mode: "heart",
           gen: { how: "I2V", img: "{HUSBAND} standing among many versions of himself in different outfits and styles, {WIFE} walking calmly between them smiling", motion: "Slow dolly forward as she walks through." } },
         { id: "V3-06", t: 157.9, lyric: "Femboy, geek, nerd, cards in my shoe—", size: "4 × ~0.9s cuts", cam: "Same framing each cut, Tiff in the same spot",
-          action: "Femboy: cute outfit and hair clip, Tiff gives a thumbs up. Geek: gadgets and monitors. Nerd: glasses, books and games. Cards in shoe: a card sticks out of his sneaker; she plucks it and sleeves it.",
+          action: "Femboy: cute outfit and hair clip, Tiff gives a thumbs up. Geek: gadgets and monitors. Nerd: glasses, books and games. Cards: he shows her his card binder and they geek out over it together, one card still peeking from his sneaker.",
           act: "Tiff: the exact same loving face every time. That’s the joke.", ui: "Optional tiny labels: FEMBOY · GEEK · NERD · CARDS IN SHOE", sfx: "One beat-hit per cut", trans: "Light swirl", tags: ["versions"], p: 1, mode: "gag",
           gen: { how: "I2V ×4", img: "Four keyframes with identical framing: {HUSBAND} as a cute femboy in a skirt and hair clip; as a geek surrounded by gadgets; as a nerd with glasses and stacks of books and games; with a trading card sticking out of his sneaker; {WIFE} beside him with the same adoring smile each time", motion: "Tiny reaction per cut: thumbs up / nod / heart eyes / pluck the card." },
           note: "Decided: cute and playful (skirt, hair clip, a little blush). It must read as affectionate and celebratory." },

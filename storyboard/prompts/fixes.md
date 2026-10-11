@@ -34,3 +34,9 @@ Attach OU-01 (base) + the cat sheet (job `25d53917-3177-498c-abc1-e07aae8a1a38`)
 ```
 Edit this image. Keep the room, the floor lamp on the left, the sofa, cushions, the round coffee table, the lighting, the framing and both characters' designs exactly (Tiff in her braided evening look with the light-peach cat clip and mustard cardigan; Adrian in the slate-teal polo with the cat emblem). Change the moment: Tiff now snatches her phone back up from the coffee table and holds it close, with sparkling star eyes and a huge delighted open-mouthed smile, the little Spinda keychain swinging from the phone, motion lines on her arm. Adrian turns his head toward Tofu with a flat, deadpan, disbelieving look, half-lidded eyes. Add Tofu, the fluffy round white cat with sky-blue eyes exactly as in the cat sheet, sitting on the sofa cushion to the right of Adrian, looking innocent, one front paw resting on a second phone with a softly glowing blank screen. No text.
 ```
+
+## V3-06 D · talking trading cards (instead of plucking a card from his shoe)
+Edit of the V3-06 base (job `27d7927b-1df1-40ca-9799-2752fdddad8d`, Render Drop "V3-06 BASE"), the same base as the femboy/geek/nerd cuts, so Tiff matches. Attach only that frame.
+```
+Edit this image. Keep Tiff and Adrian in the same positions and sizes, with the same outfits, the plain white background and the framing exactly. Adrian now holds open a trading-card binder toward Tiff, showing her a page of colourful cards in clear sleeves, explaining proudly with a happy, slightly nerdy smile, one finger tapping a card. Tiff leans in beside him, looking at the binder with bright, curious eyes and a big smile, pointing at one card as if to say "that one!". A single trading card peeks out of the top of his sneaker, a tiny nod to "cards in my shoe". Card faces are simple shapes and colours, no readable text. Same simple doodle comic style. No text.
+```
