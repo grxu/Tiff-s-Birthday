@@ -25,3 +25,12 @@ cd "$(dirname "$0")/../animatic" && mkdir -p clips
 [ -f clips/C1-05.mp4 ] || curl -sSfL -o clips/C1-05.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_5eec9ab8-69c0-4b90-a4d3-f00c5e636717.mp4" && echo C1-05
 [ -f clips/C1-05b.mp4 ] || curl -sSfL -o clips/C1-05b.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_9a3541fc-871e-4581-993b-15cfdcd27fc2.mp4" && echo C1-05b
 [ -f clips/FC-08.mp4 ] || curl -sSfL -o clips/FC-08.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_c6d925e9-29df-44ce-aedd-233e1f47a5ee.mp4" && echo FC-08
+[ -f clips/C1-02.mp4 ] || curl -sSfL -o clips/C1-02.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_74cbedc2-3652-4043-b7a8-0930054b0f6d.mp4" && echo C1-02
+[ -f clips/FC-04c.mp4 ] || curl -sSfL -o clips/FC-04c.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_cf3c6fe9-744a-4fde-9f9a-48167cfdb9fc.mp4" && echo FC-04c
+[ -f clips/FC-07.mp4 ] || curl -sSfL -o clips/FC-07.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_06d369b8-7bc0-4bb8-a4a8-10afd2f3549f.mp4" && echo FC-07
+[ -f clips/FC-08b.mp4 ] || curl -sSfL -o clips/FC-08b.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_fb41466a-bfd5-4b54-85a6-e944321957d9.mp4" && echo FC-08b
+[ -f clips/FC-04b.mp4 ] || curl -sSfL -o clips/FC-04b.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_ef7277e7-b8a4-4344-bff6-964fad7239b1.mp4" && echo FC-04b
+[ -f clips/C1-01.mp4 ] || curl -sSfL -o clips/C1-01.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_cdfee533-8c1b-414b-bf69-f7dac6bfe852.mp4" && echo C1-01
+[ -f clips/FC-04.mp4 ] || curl -sSfL -o clips/FC-04.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_3539d6db-d6a8-446e-9d2e-f668569cfb5e.mp4" && echo FC-04
+[ -f clips/FC-06.mp4 ] || curl -sSfL -o clips/FC-06.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_1369d004-02be-4198-b3e3-4778dab9e625.mp4" && echo FC-06
+[ -f clips/FC-03.mp4 ] || curl -sSfL -o clips/FC-03.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_7d097849-3515-4dc4-be4c-6a213dd87450.mp4" && echo FC-03
