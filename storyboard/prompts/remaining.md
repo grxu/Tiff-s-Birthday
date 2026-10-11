@@ -15,8 +15,8 @@ Model: **Nano Banana 2.1, 16:9, 2K, high thinking, batch 1** (2 credits per imag
 | 3 · Verse 2 | V2-03, V2-06, V2-07 | 3 | 6 | **Done 10 October** |
 | 4 · Dance break 2, Verse 3, Bridge | DB2-01, V3-01, V3-02, V3-03, V3-04 start + end, V3-08, BR-01, BR-02 | 9 | 18 | **Done 10 October** |
 | 5 · Final chorus, own shots | FC-03 start + end (couple cosplay), FC-04 A to C (real trips), FC-06, FC-07, FC-08 A + B | 9 | 18 | **Done 10 October** |
-| 6 · Outro + fixes | OU-03, OU-08, PC-04 (seven cats, fresh render), V1-10 (white sofa) | 4 | 8 | **Done 10 October** except V1-10 (needs its job ID or an upload) |
-| **Still to render** | | **1** (V1-10) | **2** | |
+| 6 · Outro + fixes | OU-03, OU-08, PC-04 (seven cats, fresh render), V1-10 (white sofa) | 4 | 8 | **Done 10 October**; V1-10's sofa recolour dropped (user, 11 October: keep it as is) |
+| **Still to render** | | **0** | **0** | |
 
 Allow about 20 more credits for redos, plus the fixes you still want on the WIP frames (DB1-01, DB1-02, OU-01, OU-02, V3-06 d).
 
@@ -430,5 +430,5 @@ Medium close-up of Tiff [TIFF (evening)] on the white sofa, holding her phone wi
 ### PC-04 · seven court cats
 Either a masked edit of your PC-04 (send me its Higgsfield job ID; I mask the floor cats and redraw seven, and make the floor white), or a fresh render from the PC-04 prompt in `priority.md` with "EXACTLY SEVEN SMALL CATS ON THE FLOOR" in the count guard.
 
-### V1-10 · white sofa
+### V1-10 · white sofa (dropped 11 October: the user keeps the mauve sofa)
 An image edit of your V1-10 (job ID needed): "Recolour the sofa to white with dusty mauve-pink shading, like the house sofa; change nothing else."

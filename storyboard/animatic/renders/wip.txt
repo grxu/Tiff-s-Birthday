@@ -2,4 +2,3 @@
 # One shot ID or frame name per line, e.g. V3-06d for one cut of V3-06.
 OU-01
 OU-02
-V1-10
