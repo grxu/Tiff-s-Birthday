@@ -431,7 +431,7 @@ window.SB = {
         { id: "OU-02", t: 219.6, lyric: "—unless the cats text first.", size: "Insert → WS", cam: "Insert on phone, pull back to reveal the cat",
           action: "PING. The notification is from the cat. Tiff snatches the phone instantly. Reveal: Tofu, the white cat, at the other end of the couch with a paw on Adrian’s phone. Adrian stares at Tofu. Tofu stares back. He gives up and flops.",
           act: "Cat: innocent. Adrian: defeated.", ui: "Notification from Tofu: “where is my dinner”", sfx: "THE ping", trans: "Cut", tags: ["phone", "cats"], p: 1, mode: "gag",
-          gen: { how: "I2V", img: "A smug cat sitting on the end of a couch with one paw on a phone, {HUSBAND} staring at it in disbelief, {WIFE} grabbing her phone", motion: "Cat blinks slowly; he flops back onto the couch." } },
+          gen: { how: "I2V", img: "A smug cat sitting on the end of a couch with one paw on a phone, {HUSBAND} staring at it in disbelief, {WIFE} grabbing her phone", motion: "Cat blinks slowly; he flops back onto the couch.", base: "OU-01 (image edit of the same set, 11 October)" } },
         { id: "OU-03", t: 221.9, lyric: "I love you, darling. You’re the best and the worst", size: "MS hug", cam: "Locked",
           action: "Adrian hugs her. Labels pop above her: BEST ❤️ and WORST 😂. Optional: her role card flips over to show a stats back: Weakness: Directions ×2 · Heat ×2.",
           act: "Both: laughing.", ui: "BEST ❤️ / WORST 😂", sfx: "Two pops", trans: "Fast cuts", tags: ["cards"], p: 1, mode: "gag",

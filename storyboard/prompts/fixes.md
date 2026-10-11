@@ -19,3 +19,18 @@ Attach only the V2-01 C frame (no character sheets, so Adrian is not redrawn). I
 ```
 Edit this image. Replace the white sofa with a wide, tall white wooden shelf unit with three or four open shelves, white with dusty mauve-pink shading and the same black doodle outlines. The same Pokémon plushies now fill every shelf: rows of Pikachu, Jigglypuff, Eevee, Psyduck, Snorlax, Bulbasaur, Squirtle and the others, sitting shoulder to shoulder, some squeezed in sideways, a few spilling over the top and off the ends of the shelves. Keep Adrian exactly as he is: same position, pose, face and outfit, holding the same plate of steak, potatoes and broccoli. Keep the camera framing, the mauve wall on the left, the plushie pile around the edges and the thin mauve border. Same simple doodle comic style, flat muted colours, no gradients. No text.
 ```
+
+## OU-01 / OU-02 continuity (same set as OU-03, OU-05, OU-08: lamp left, white sofa, round table)
+OU-02 is remade as an image edit of OU-01 (back-to-back moments in one room). Optional first: OU-01 phone face-down, as the storyboard says.
+
+### OU-01 (optional) · phone face-down
+Attach only OU-01.
+```
+Edit this image. Keep everything exactly the same. Only turn the phone on the table face-down so its plain pink back shows, with the little Spinda keychain still attached and lying beside it.
+```
+
+### OU-02 · edit of OU-01
+Attach OU-01 (base) + the cat sheet (job `25d53917-3177-498c-abc1-e07aae8a1a38`).
+```
+Edit this image. Keep the room, the floor lamp on the left, the sofa, cushions, the round coffee table, the lighting, the framing and both characters' designs exactly (Tiff in her braided evening look with the light-peach cat clip and mustard cardigan; Adrian in the slate-teal polo with the cat emblem). Change the moment: Tiff now snatches her phone back up from the coffee table and holds it close, with sparkling star eyes and a huge delighted open-mouthed smile, the little Spinda keychain swinging from the phone, motion lines on her arm. Adrian turns his head toward Tofu with a flat, deadpan, disbelieving look, half-lidded eyes. Add Tofu, the fluffy round white cat with sky-blue eyes exactly as in the cat sheet, sitting on the sofa cushion to the right of Adrian, looking innocent, one front paw resting on a second phone with a softly glowing blank screen. No text.
+```
