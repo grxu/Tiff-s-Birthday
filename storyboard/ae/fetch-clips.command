@@ -22,3 +22,6 @@ cd "$(dirname "$0")/../animatic" && mkdir -p clips
 [ -f clips/OU-02.mp4 ] || curl -sSfL -o clips/OU-02.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_094253_340510bc-0e9b-47e7-b69c-df16b49a0089.mp4" && echo OU-02
 [ -f clips/OU-05.mp4 ] || curl -sSfL -o clips/OU-05.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_094253_9cda6fc5-1be3-424b-ad1e-af42b1d08bbe.mp4" && echo OU-05
 [ -f clips/OU-06.mp4 ] || curl -sSfL -o clips/OU-06.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_094253_a6a5c36d-ed9e-4f59-9539-1165ea10e508.mp4" && echo OU-06
+[ -f clips/C1-05.mp4 ] || curl -sSfL -o clips/C1-05.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_5eec9ab8-69c0-4b90-a4d3-f00c5e636717.mp4" && echo C1-05
+[ -f clips/C1-05b.mp4 ] || curl -sSfL -o clips/C1-05b.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_9a3541fc-871e-4581-993b-15cfdcd27fc2.mp4" && echo C1-05b
+[ -f clips/FC-08.mp4 ] || curl -sSfL -o clips/FC-08.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_113628_c6d925e9-29df-44ce-aedd-233e1f47a5ee.mp4" && echo FC-08

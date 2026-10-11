@@ -5,9 +5,10 @@
 // What it makes, all in the "Tiff Animatic" folder:
 //   Tiff Animatic 1080p   the edit: the song, one layer per shot at its song time, a marker per shot (ID + lyric).
 //                         Slide or trim a shot layer to retime it: every shot comp has spare frames on both sides.
-//   Shots/<ID>            one comp per shot: its clip (time-remapped, so its speed is two keyframes you can move)
-//                         or its stills (each with a 100->106% push-in), then its on-screen text: every bubble,
-//                         card or sign is a null "<ID> <type>" with its graphic and live text layers parented to it,
+//   Shots/<ID>            one comp per shot: its clip (time-remapped, so its speed is two keyframes you can move),
+//                         one clip per frame for shots cut from several frames (C1-05, FC-04, FC-08), or its stills
+//                         (each with a 100->106% push-in); then its on-screen text: every bubble, card or sign is a
+//                         null "<ID> <type>" with its graphic and live text layers parented to it,
 //                         so you can animate the whole item or edit the words. A guide layer shows the lyric and
 //                         editor note; guide layers never render.
 #include "animatic-data.jsxinc"
@@ -159,6 +160,22 @@
         var f = sh.frames[j];
         var a = HEAD + (sh.dur * j) / n, b = HEAD + (sh.dur * (j + 1)) / n;
         var tin = j === 0 ? 0 : a, tout = j === n - 1 ? len : b, pic = null;
+        var fclip = f.clip ? footage(f.clip.file, fClips) : null;
+        if (fclip) {
+          // a frame with its own clip (C1-05b, FC-08b...) plays it at real speed from the start of its share
+          var C = comp.layers.add(fclip), flast = f.clip.seconds - 1 / FPS;
+          C.transform.scale.setValue(cover(fclip));
+          C.timeRemapEnabled = true;
+          var ftr = C.property("ADBE Time Remapping");
+          while (ftr.numKeys) ftr.removeKey(1);
+          C.startTime = 0;
+          ftr.setValueAtTime(a, 0);
+          ftr.setValueAtTime(a + flast, flast);
+          span(C, tin, tout);
+          C.name = (f.img ? f.img.split("/").pop().replace(/\.[^.]+$/, "") : sh.id) + " clip";
+          if (f.text) addOverlay(comp, f.text, tin, tout, null);
+          continue;
+        }
         if (f.img) {
           var still = footage(f.img, fStills);
           if (still) {

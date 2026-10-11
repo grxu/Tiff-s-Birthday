@@ -43,27 +43,30 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
   const p = await b.newPage({ viewport: { width: BW, height: BH }, deviceScaleFactor: H / BH });
   const parts = [];
   let k = 0, nRender = 0, nCard = 0, nClip = 0;
+  // m frames of a clip: sped up to fit (start+end clips) or at real speed and cut; the clone pad covers rounding
+  // at the cut; the text overlay sits on the clip as a placeholder (AE tracks it later)
+  const clipSeg = async (sh, c, m, text, label, name) => {
+    const T = m / FPS, fit = c.fit;
+    await p.setContent(overlay(sh, T, `${label ? label + " " : ""}CLIP${fit ? ` ${(c.seconds / T).toFixed(1)}×` : ""}`, name, !!text), { waitUntil: "networkidle" });
+    await p.evaluate(() => document.fonts.ready);
+    const ov = path.join(BUILD, `ov-${k}.png`);
+    await p.screenshot({ path: ov, omitBackground: true });
+    const seg = path.join(BUILD, `seg-${String(k++).padStart(3, "0")}.mp4`);
+    const v = `[0]${fit ? `setpts=PTS*${(T / c.seconds).toFixed(5)},` : ""}fps=${FPS},scale=${W}:${H}:force_original_aspect_ratio=increase,crop=${W}:${H},tpad=stop_mode=clone:stop_duration=5`;
+    const graph = text ? `${v}[c];[2]scale=${W}:${H}[t];[c][t]overlay[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`
+      : `${v}[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`;
+    execFileSync("ffmpeg", ["-y", "-nostdin", "-loglevel", "error", "-i", c.file, "-loop", "1", "-i", ov, ...(text ? ["-loop", "1", "-i", text] : []),
+      "-filter_complex", graph, "-an", "-frames:v", String(m), ...enc, seg]);
+    parts.push(`file '${seg}'`);
+    nClip++;
+  };
   for (const sh of shots) {
     const f0 = Math.round((sh.t - T0) * FPS), f1 = Math.round((endOf(sh) - T0) * FPS), n = f1 - f0;
     if (n <= 0) { console.log(sh.id, fmt(sh.t), "skipped (no screen time)"); continue; }
     const pl = plan(sh);
     if (pl.clip) {
-      const clip = pl.clip.file, T = n / FPS, D = pl.clip.seconds, fit = pl.clip.fit;
-      const text = textFor(pl.text);
-      await p.setContent(overlay(sh, T, `CLIP${fit ? ` ${(D / T).toFixed(1)}×` : ""}`, sh.id, !!text), { waitUntil: "networkidle" });
-      await p.evaluate(() => document.fonts.ready);
-      const ov = path.join(BUILD, `ov-${k}.png`);
-      await p.screenshot({ path: ov, omitBackground: true });
-      const seg = path.join(BUILD, `seg-${String(k++).padStart(3, "0")}.mp4`);
-      // the clone pad covers rounding at the cut; the text overlay sits on the clip as a placeholder (AE tracks it later)
-      const v = `[0]${fit ? `setpts=PTS*${(T / D).toFixed(5)},` : ""}fps=${FPS},scale=${W}:${H}:force_original_aspect_ratio=increase,crop=${W}:${H},tpad=stop_mode=clone:stop_duration=5`;
-      const graph = text ? `${v}[c];[2]scale=${W}:${H}[t];[c][t]overlay[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`
-        : `${v}[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`;
-      execFileSync("ffmpeg", ["-y", "-nostdin", "-loglevel", "error", "-i", clip, "-loop", "1", "-i", ov, ...(text ? ["-loop", "1", "-i", text] : []),
-        "-filter_complex", graph, "-an", "-frames:v", String(n), ...enc, seg]);
-      parts.push(`file '${seg}'`);
-      nClip++;
-      console.log(sh.id, fmt(sh.t), n + "f", `clip ${D.toFixed(1)}s ${fit ? "sped up" : "cut"}`);
+      await clipSeg(sh, pl.clip, n, textFor(pl.text), "", sh.id);
+      console.log(sh.id, fmt(sh.t), n + "f", `clip ${pl.clip.seconds.toFixed(1)}s ${pl.clip.fit ? "sped up" : "cut"}`);
       continue;
     }
     // a full-frame graphic with no render (the OU-07 end card) stands in as the picture
@@ -83,6 +86,7 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
     }
     for (const [j, f] of fr.entries()) {
       const a = Math.round((n * j) / fr.length), m = Math.round((n * (j + 1)) / fr.length) - a;
+      if (f.clip) { await clipSeg(sh, f.clip, m, f.text, f.label, path.parse(f.img).name); continue; }
       await p.setContent(overlay(sh, (f1 - f0) / FPS, f.label, path.parse(f.img).name, !!f.text || f.img.startsWith(TEXT)), { waitUntil: "networkidle" });
       await p.evaluate(() => document.fonts.ready);
       const ov = path.join(BUILD, `ov-${k}.png`);
@@ -98,7 +102,7 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
       parts.push(`file '${seg}'`);
       nRender++;
     }
-    console.log(sh.id, fmt(sh.t), n + "f", fr.length + " frame(s)");
+    console.log(sh.id, fmt(sh.t), n + "f", fr.length + " frame(s)" + (fr.some((f) => f.clip) ? `, ${fr.filter((f) => f.clip).length} as clips` : ""));
   }
   await b.close();
   fs.writeFileSync(path.join(BUILD, "list.txt"), parts.join("\n") + "\n");

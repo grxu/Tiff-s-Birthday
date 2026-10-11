@@ -144,7 +144,7 @@ print(json.dumps(out))`], { input: JSON.stringify(crops) }).toString());
       id: sh.id, sec: sh.sec.name || sh.id.split("-")[0], start: Math.round((sh.t - T0) * 1000) / 1000, dur: Math.round(pl.dur * 1000) / 1000,
       lyric: sh.lyric === "(same line)" ? "" : sh.lyric || "", ui: sh.ui || "", how: (sh.gen && sh.gen.how) || "",
       clip: pl.clip ? { file: rel(pl.clip.file), seconds: pl.clip.seconds, fit: pl.clip.fit } : null, text: pl.text,
-      frames: pl.frames.map((f) => ({ img: f.img ? rel(f.img) : null, label: f.label, text: f.text })),
+      frames: pl.frames.map((f) => ({ img: f.img ? rel(f.img) : null, label: f.label, text: f.text, clip: f.clip ? { file: rel(f.clip.file), seconds: f.clip.seconds } : null })),
     };
   }).filter((s) => s.dur > 0);
   const data = { fps: FPS, w: W, h: H, t0: T0, duration: Math.round((T1 - T0) * 1000) / 1000, song: "../song.mp3", shots, overlays };

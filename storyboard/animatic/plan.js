@@ -26,12 +26,12 @@ const clipFor = (id) => { const f = id && path.join(CLIPS, `${id}.mp4`); return 
 const seconds = (f) => parseFloat(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString());
 
 // clip: { file, seconds, fit } (fit = start+end clip sped up so its end frame lands) or null; text: its overlay key
-// frames: [{ img, label, text }], the stills (also the fallback when a clip is missing); img is null for a
-// full-frame overlay (the text is the picture)
+// frames: [{ img, label, text, clip }], the stills (also the fallback when a clip is missing); img is null for a
+// full-frame overlay (the text is the picture). A single frame or a start+end pair is one picture, so the shot's
+// clip (<ID>.mp4) plays the whole shot; a shot cut from several frames (b/c/d, or a gen.frames re-cut) plays each
+// frame's own clip (<frame>.mp4, real speed, cut at its share) where there is one, e.g. C1-05b.mp4, FC-08b.mp4.
 const plan = (sh) => {
   const dur = endOf(sh) - sh.t, src = sh.gen && sh.gen.of;
-  const file = clipFor(sh.id) || clipFor(src), D = file && seconds(file);
-  const clip = file ? { file, seconds: D, fit: /S\+E/.test((sh.gen && sh.gen.how) || "") && D > dur } : null;
   const own = frames(sh.id), name = (f) => path.parse(f).name;
   // gen.frames re-cuts a list of other shots' frames in order (OU-04)
   const list = sh.gen && sh.gen.frames ? sh.gen.frames.map((n) => ({ img: find(n), label: `= ${n}`, text: null })).filter((f) => f.img) : [];
@@ -41,6 +41,10 @@ const plan = (sh) => {
     // a reused frame takes the reusing shot's own text (C2-03 has its own timer): C1-03-end -> C2-03-end
     : frames(src).map((f) => ({ ...f, label: `= ${src}${f.label ? " " + f.label : ""}`, text: textKey(sh.id + name(f.img).slice(src.length)) }));
   if (!fr.length && textKey(sh.id)) fr = [{ img: null, label: "", text: sh.id }];
+  const cuts = fr.length > 1 && !/END$/.test(fr[fr.length - 1].label);
+  const file = !cuts && (clipFor(sh.id) || clipFor(src)), D = file && seconds(file);
+  const clip = file ? { file, seconds: D, fit: /S\+E/.test((sh.gen && sh.gen.how) || "") && D > dur } : null;
+  if (cuts) fr = fr.map((f) => { const c = f.img && clipFor(name(f.img)); return c ? { ...f, clip: { file: c, seconds: seconds(c), fit: false } } : f; });
   return { sh, dur, clip, text: textKey(sh.id), frames: fr };
 };
 
