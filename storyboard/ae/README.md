@@ -9,8 +9,11 @@
    - `storyboard/animatic/renders/`: the stills
    - `storyboard/animatic/clips/`: the Kling clips
    - `storyboard/song.mp3`: the song
-2. **Clips:** the full kit zip already has them in `animatic/clips/`. Otherwise double-click `fetch-clips.command` (Mac) or `fetch-clips.bat` (Windows) to download them. Shots whose clip is missing fall back to their stills.
-3. **Song:** the kit zip has `song.mp3` in `storyboard/`; otherwise put it there.
+2. **Clips:** nothing to do. On its first run the script downloads any missing Kling clip from Higgsfield into `animatic/clips/` (with curl, built into macOS and Windows 10+; about 230 MB).
+   - If AE blocks it, turn on **Preferences > Scripting & Expressions > Allow Scripts to Write Files and Access Network** and run the script again.
+   - Or double-click `fetch-clips.command` (Mac) or `fetch-clips.bat` (Windows) to download them yourself.
+   - A shot whose clip is missing is built from its stills.
+3. **Song:** put `song.mp3` in `storyboard/` (next to the `ae` and `animatic` folders).
 4. **Fonts:** install every `.ttf` in the kit zip's `fonts/` folder, then restart AE. Without the zip, get them free from fonts.google.com (static weights):
    - Baloo 2 (Bold, ExtraBold)
    - Nunito (ExtraBold, Black)
@@ -51,4 +54,4 @@ When the storyboard, renders, clips or `overlays/spec.js` change:
 1. Run `node export.js` in this folder (in the repo). It rewrites `animatic-data.jsxinc` and `graphics/`.
 2. Run the script again in a new or empty project.
 
-New clips go in `animatic/clips.json` (shot ID → Higgsfield URL). `node ../animatic/fetch-clips.js` downloads them, and `export.js` regenerates the two fetch scripts.
+New clips go in `animatic/clips.json` (shot ID → Higgsfield URL). `node ../animatic/fetch-clips.js` downloads them here, and `export.js` passes the URLs to the build script and regenerates the two fetch scripts.

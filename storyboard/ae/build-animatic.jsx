@@ -11,7 +11,8 @@
 //                         null "<ID> <type>" with its graphic and live text layers parented to it,
 //                         so you can animate the whole item or edit the words. A guide layer shows the lyric and
 //                         editor note; guide layers never render.
-// A new project is saved as storyboard/ae/Tiff Animatic.aep when the build ends (never over an existing file).
+// Missing Kling clips are downloaded from Higgsfield first (curl). A new project is saved as
+// storyboard/ae/Tiff Animatic.aep when the build ends (never over an existing file).
 #include "animatic-data.jsxinc"
 
 (function () {
@@ -25,6 +26,40 @@
     for (var i = 0; i < parts.length - 1; i++) dir = parts[i] === ".." ? dir.parent : new Folder(dir.fsName + "/" + parts[i]);
     return new File(dir.fsName + "/" + parts[parts.length - 1]);
   }
+
+  // clips that are not here yet are downloaded from Higgsfield with curl (macOS and Windows 10+ have it);
+  // a clip that fails stays missing and its shot is built from its stills
+  function fetchClips() {
+    var need = [], seen = {}, URLS = D.clipUrls || {};
+    for (var i = 0; i < D.shots.length; i++) {
+      var sh = D.shots[i], files = sh.clip ? [sh.clip.file] : [];
+      for (var j = 0; j < sh.frames.length; j++) if (sh.frames[j].clip) files.push(sh.frames[j].clip.file);
+      for (var k = 0; k < files.length; k++) {
+        if (seen[files[k]] || !URLS[files[k]] || resolve(files[k]).exists) continue;
+        seen[files[k]] = true;
+        need.push(files[k]);
+      }
+    }
+    if (!need.length) return "";
+    var win = null, txt = null, got = 0, win32 = $.os.indexOf("Windows") >= 0;
+    try { win = new Window("palette", "Tiff animatic"); txt = win.add("statictext", undefined, ""); txt.characters = 50; win.show(); } catch (e) { win = null; }
+    for (var n = 0; n < need.length; n++) {
+      var f = resolve(need[n]), url = URLS[need[n]];
+      if (win) { txt.text = "Downloading clip " + (n + 1) + " of " + need.length + ": " + f.displayName; win.update(); }
+      var cmd = win32
+        ? 'cmd.exe /c curl.exe -sSfL --create-dirs -o "' + f.fsName + '" "' + url + '" && echo OK || del /q "' + f.fsName + '"'
+        : "curl -sSfL --create-dirs -o '" + f.fsName.replace(/'/g, "'\\''") + "' '" + url + "' && echo OK || rm -f '" + f.fsName.replace(/'/g, "'\\''") + "'";
+      try { if (/OK/.test(system.callSystem(cmd))) got++; }
+      catch (e) {
+        if (win) win.close();
+        return "\n\nClips not downloaded (" + e.message + "). Turn on Preferences > Scripting & Expressions > " +
+          "\"Allow Scripts to Write Files and Access Network\" and run the script again, or run fetch-clips in this folder.";
+      }
+    }
+    if (win) win.close();
+    return "\nDownloaded " + got + " of " + need.length + " clips into animatic/clips.";
+  }
+  var fetched = fetchClips();
 
   if (!app.project) app.newProject();
   var proj = app.project;
@@ -118,7 +153,7 @@
   }
 
   function addGuide(comp, sh) {
-    var txt = sh.id + (sh.lyric ? "  ·  " + sh.lyric : "") + (sh.ui ? "\rEDIT ▸ " + sh.ui : "");
+    var txt = sh.id + (sh.lyric ? "  \u00b7  " + sh.lyric : "") + (sh.ui ? "\rEDIT \u25b8 " + sh.ui : "");
     var L = comp.layers.addText(txt);
     var prop = L.property("ADBE Text Properties").property("ADBE Text Document"), td = prop.value;
     td.fontSize = 30; td.applyFill = true; td.fillColor = [1, 1, 1]; td.applyStroke = true; td.strokeColor = [0, 0, 0];
@@ -223,7 +258,7 @@
   edit.openInViewer();
   app.endUndoGroup();
 
-  var msg = "Built " + D.shots.length + " shots into \"Tiff Animatic 1080p\".";
+  var msg = "Built " + D.shots.length + " shots into \"Tiff Animatic 1080p\"." + fetched;
   // a new project is saved next to this script as "Tiff Animatic.aep" (or "... 2.aep", never over an old one)
   if (!proj.file) {
     var out = new File(base.fsName + "/Tiff Animatic.aep");
