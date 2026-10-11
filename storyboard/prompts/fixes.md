@@ -13,3 +13,9 @@ Edit this image. Keep the room, the bookshelf, sofa, plants, coffee table, TV, T
 ```
 
 Open: anime characters to add (none named yet); Spinda kept out of the dance break to save the V2-03/V2-04 reveal.
+
+## V2-01 C · sofa becomes a shelf ("every chair and shelf")
+Attach only the V2-01 C frame (no character sheets, so Adrian is not redrawn). If he drifts, add the clean Adrian turnaround `edf7de02-e83a-4d0b-9e45-c90324193821` and "Adrian matches the attached character sheet; adult proportions, not chibi."
+```
+Edit this image. Replace the white sofa with a wide, tall white wooden shelf unit with three or four open shelves, white with dusty mauve-pink shading and the same black doodle outlines. The same Pokémon plushies now fill every shelf: rows of Pikachu, Jigglypuff, Eevee, Psyduck, Snorlax, Bulbasaur, Squirtle and the others, sitting shoulder to shoulder, some squeezed in sideways, a few spilling over the top and off the ends of the shelves. Keep Adrian exactly as he is: same position, pose, face and outfit, holding the same plate of steak, potatoes and broccoli. Keep the camera framing, the mauve wall on the left, the plushie pile around the edges and the thin mauve border. Same simple doodle comic style, flat muted colours, no gradients. No text.
+```
