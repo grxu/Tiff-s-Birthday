@@ -1,6 +1,6 @@
 // Renders spec.js into transparent 1920x1080 PNGs in overlays/png/<frame>.png, and a preview of
 // each over its render (overlays/preview/<frame>.jpg, git-ignored) for checking placement.
-// Usage: node render.js [frame ...]   (no args = all)
+// Usage: node render.js [frame ...]   (no args = all). ../ae/export.js reuses R and page for the After Effects layers.
 const fs = require("fs"), path = require("path");
 const { execFileSync, execSync } = require("child_process");
 const { chromium } = require(execSync("npm root -g").toString().trim() + "/playwright");
@@ -75,7 +75,8 @@ const page = (items) => `<!doctype html><html><head><meta charset="utf-8">
 .sticker{background:#fff;border:6px solid ${C.ink};border-radius:20px;padding:10px 32px;font:800 76px 'Baloo 2','Noto Color Emoji';color:${C.ink};box-shadow:10px 10px 0 ${C.mauve}}
 </style></head><body>${items.map((o) => R[o.type](o)).join("\n")}</body></html>`;
 
-(async () => {
+module.exports = { R, page, W, H, C };
+if (require.main === module) (async () => {
   const want = process.argv.slice(2);
   const keys = Object.keys(SPEC).filter((k) => !want.length || want.includes(k));
   const b = await chromium.launch();

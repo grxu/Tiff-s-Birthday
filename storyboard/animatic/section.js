@@ -1,46 +1,28 @@
 // Builds an animatic from the locked renders, in song time.
-// Usage: node section.js <shot-prefix|ALL> [height] [out.mp4]   e.g. node section.js V1, node section.js ALL 560
-// Each shot: renders/<SHOT-ID>.jpg with a slow push-in, plus a transparent overlay
-// (shot ID, song time, lyric, editor note). Extra frames split the shot evenly:
-// <ID>b/c/d… are further cuts or push-in steps, <ID>-end is the end frame of a start+end shot.
-// Shots with gen.of reuse that shot's frames; gen.frames lists other frames to re-cut. Shots without a render fall back to their storyboard card (ALL only). IDs listed in
-// renders/wip.txt are tagged WIP. Audio is the matching slice of ../song.mp3.
-// A Kling clip at clips/<SHOT-ID>.mp4 (git-ignored) replaces the shot's stills. Clips run longer than their shots
-// (min 3s): start+end clips are sped up to fit so the end frame lands; the rest play at real speed, cut at the shot's end.
+// Usage: node section.js <shot-prefix|ALL> [height] [out.mp4]   e.g. node section.js V1, node section.js ALL (1080p default)
+// plan.js picks each shot's picture: its Kling clip, its stills (each with a slow push-in; extra frames split the shot
+// evenly) or its full-frame overlay. On top go the on-screen text (../overlays/png) and an info overlay (shot ID,
+// song time, lyric, editor note). Clips run longer than their shots (min 3s): start+end clips are sped up to fit so
+// the end frame lands; the rest play at real speed, cut at the shot's end. Shots with no picture fall back to their
+// storyboard card (ALL only). IDs listed in renders/wip.txt are tagged WIP. Audio is the matching slice of ../song.mp3.
 const fs = require("fs"), path = require("path"), os = require("os");
 const { execFileSync, execSync } = require("child_process");
 const { chromium } = require(execSync("npm root -g").toString().trim() + "/playwright");
 const cards = require("./cards.js");
-const SB = window.SB;
+const { all, SB, endOf, plan } = require("./plan.js");
 const SEC = (process.argv[2] || "V1").toUpperCase();
-const H = parseInt(process.argv[3] || "480", 10), W = Math.round((H * 16) / 9 / 2) * 2, FPS = 24;
+const H = parseInt(process.argv[3] || "1080", 10), W = Math.round((H * 16) / 9 / 2) * 2, FPS = 24;
 const BW = 854, BH = 480; // overlays and cards are laid out at 854x480 and scaled up
-const all = cards.all;
 const shots = SEC === "ALL" ? all : all.filter((sh) => sh.id.split("-")[0] === SEC);
 if (!shots.length) throw new Error("no shots in section " + SEC);
-const endOf = (sh) => { const n = all[all.indexOf(sh) + 1]; return n ? n.t : SB.song.end; };
 const T0 = shots[0].t, T1 = endOf(shots[shots.length - 1]);
 const OUT = process.argv[4] || path.join(__dirname, SEC === "ALL" ? `animatic-all-${H}p.mp4` : `animatic-${SEC.toLowerCase()}-only-${H}p.mp4`);
 const BUILD = fs.mkdtempSync(path.join(os.tmpdir(), "section-"));
-const RENDERS = path.join(__dirname, "renders");
-const WIPFILE = path.join(RENDERS, "wip.txt");
+const WIPFILE = path.join(__dirname, "renders", "wip.txt");
 // on-screen text and graphics from ../overlays (node render.js there); NOTEXT=1 leaves them out
 const TEXT = path.join(__dirname, "..", "overlays", "png");
 const textFor = (name) => { const f = name && path.join(TEXT, `${name}.png`); return !process.env.NOTEXT && f && fs.existsSync(f) ? f : null; };
 const WIP = new Set(fs.existsSync(WIPFILE) ? fs.readFileSync(WIPFILE, "utf8").split(/\s+/).filter((l) => l && !l.startsWith("#")) : []);
-const find = (name) => ["jpg", "jpeg", "png"].map((e) => path.join(RENDERS, `${name}.${e}`)).find(fs.existsSync);
-const clipFor = (id) => { const f = id && path.join(__dirname, "clips", `${id}.mp4`); return f && fs.existsSync(f) ? f : null; };
-const seconds = (f) => parseFloat(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString());
-const frames = (id) => {
-  const base = find(id);
-  if (!base) return [];
-  const out = [{ img: base, label: "" }];
-  for (const s of "bcdef") { const f = find(id + s); if (f) out.push({ img: f, label: "" }); }
-  const end = find(id + "-end");
-  if (end) { out[0].label = "START"; out.push({ img: end, label: "END" }); }
-  else if (out.length > 1) out.forEach((f, j) => (f.label = `${j + 1}/${out.length}`));
-  return out;
-};
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const fmt = (t) => { const neg = t < 0; t = Math.abs(t); const m = Math.floor(t / 60), s = t - m * 60; return (neg ? "−" : "") + m + ":" + (s < 10 ? "0" : "") + s.toFixed(1); };
 
@@ -64,11 +46,10 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
   for (const sh of shots) {
     const f0 = Math.round((sh.t - T0) * FPS), f1 = Math.round((endOf(sh) - T0) * FPS), n = f1 - f0;
     if (n <= 0) { console.log(sh.id, fmt(sh.t), "skipped (no screen time)"); continue; }
-    const own = frames(sh.id), src = sh.gen && sh.gen.of;
-    const clip = clipFor(sh.id) || clipFor(src);
-    if (clip) {
-      const T = n / FPS, D = seconds(clip), fit = /S\+E/.test((sh.gen && sh.gen.how) || "") && D > T;
-      const text = textFor(sh.id);
+    const pl = plan(sh);
+    if (pl.clip) {
+      const clip = pl.clip.file, T = n / FPS, D = pl.clip.seconds, fit = pl.clip.fit;
+      const text = textFor(pl.text);
       await p.setContent(overlay(sh, T, `CLIP${fit ? ` ${(D / T).toFixed(1)}×` : ""}`, sh.id, !!text), { waitUntil: "networkidle" });
       await p.evaluate(() => document.fonts.ready);
       const ov = path.join(BUILD, `ov-${k}.png`);
@@ -85,16 +66,8 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
       console.log(sh.id, fmt(sh.t), n + "f", `clip ${D.toFixed(1)}s ${fit ? "sped up" : "cut"}`);
       continue;
     }
-    // reused shots (gen.of, e.g. C2-01 = C1-01) play the source shot's frames
-    // re-cut shots (gen.frames, e.g. OU-04) play a list of other shots' frames in order
-    const list = sh.gen && sh.gen.frames ? sh.gen.frames.map((n) => ({ img: find(n), label: `= ${n}` })).filter((f) => f.img) : [];
-    let fr = own.length ? own.map((f) => ({ ...f, text: textFor(path.parse(f.img).name) }))
-      : list.length ? list
-      : !src ? own
-      // a reused frame takes the reusing shot's own text (C2-03 has its own timer): C1-03-end -> C2-03-end
-      : frames(src).map((f) => ({ ...f, label: `= ${src}${f.label ? " " + f.label : ""}`, text: textFor(sh.id + path.parse(f.img).name.slice(src.length)) }));
     // a full-frame graphic with no render (the OU-07 end card) stands in as the picture
-    if (!fr.length && textFor(sh.id)) fr = [{ img: textFor(sh.id), label: "" }];
+    const fr = pl.frames.map((f) => ({ ...f, img: f.img || textFor(f.text), text: f.img ? textFor(f.text) : null })).filter((f) => f.img);
     if (!fr.length) {
       if (SEC !== "ALL") throw new Error("missing render for " + sh.id);
       await p.setContent(cards.html(sh, all.indexOf(sh)), { waitUntil: "networkidle" });
