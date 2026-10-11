@@ -41,7 +41,10 @@ Edit of the V3-06 base (job `27d7927b-1df1-40ca-9799-2752fdddad8d`, Render Drop 
 Edit this image. Keep Tiff and Adrian in the same positions and sizes, with the same outfits, the plain white background and the framing exactly. Adrian now holds open a trading-card binder toward Tiff, showing her a page of colourful cards in clear sleeves, explaining proudly with a happy, slightly nerdy smile, one finger tapping a card. Tiff leans in beside him, looking at the binder with bright, curious eyes and a big smile, pointing at one card as if to say "that one!". A single trading card peeks out of the top of his sneaker, a tiny nod to "cards in my shoe". Card faces are simple shapes and colours, no readable text. Same simple doodle comic style. No text.
 ```
 
-## V3-07 START · card-collector Adrian has three hands (edit, don't regenerate)
+## V3-07 START · card-collector Adrian has three hands
+
+**11 October: the edit failed; re-rendered by Claude as job `f5a35f01-ef63-4268-b6e4-8545b69a77d0`** (old start `87866adc…` as composition reference + clean Adrian turnaround + Adrian expressions; nobody holds hands, each version holds his own prop). The edit prompts below are kept for reference.
+
 Attach only the V3-07 start frame. With a mask: paint the extra hand + its bit of sleeve and use the short prompt.
 Short (masked):
 ```
