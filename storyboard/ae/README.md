@@ -9,9 +9,9 @@
    - `storyboard/animatic/renders/`: the stills
    - `storyboard/animatic/clips/`: the Kling clips
    - `storyboard/song.mp3`: the song
-2. **Clips:** double-click `fetch-clips.command` (Mac) or `fetch-clips.bat` (Windows). It downloads the Kling clips into `animatic/clips/`. Shots whose clip is missing fall back to their stills.
-3. **Song:** put `song.mp3` in `storyboard/`.
-4. **Fonts** (free, from fonts.google.com; install the static weights):
+2. **Clips:** the full kit zip already has them in `animatic/clips/`. Otherwise double-click `fetch-clips.command` (Mac) or `fetch-clips.bat` (Windows) to download them. Shots whose clip is missing fall back to their stills.
+3. **Song:** the kit zip has `song.mp3` in `storyboard/`; otherwise put it there.
+4. **Fonts:** install every `.ttf` in the kit zip's `fonts/` folder, then restart AE. Without the zip, get them free from fonts.google.com (static weights):
    - Baloo 2 (Bold, ExtraBold)
    - Nunito (ExtraBold, Black)
    - Overpass (ExtraBold, Black)
@@ -22,6 +22,8 @@
 ## Build
 
 In After Effects, choose **File > Scripts > Run Script File…** and pick `build-animatic.jsx`. It takes a minute. An alert at the end lists anything missing.
+
+A new project is saved as `Tiff Animatic.aep` in this folder. If that file exists, it's saved as `Tiff Animatic 2.aep` (then 3, and so on), so an older edit is never overwritten. After that, open the .aep directly.
 
 ## What you get (folder "Tiff Animatic")
 

@@ -11,6 +11,7 @@
 //                         null "<ID> <type>" with its graphic and live text layers parented to it,
 //                         so you can animate the whole item or edit the words. A guide layer shows the lyric and
 //                         editor note; guide layers never render.
+// A new project is saved as storyboard/ae/Tiff Animatic.aep when the build ends (never over an existing file).
 #include "animatic-data.jsxinc"
 
 (function () {
@@ -223,6 +224,13 @@
   app.endUndoGroup();
 
   var msg = "Built " + D.shots.length + " shots into \"Tiff Animatic 1080p\".";
+  // a new project is saved next to this script as "Tiff Animatic.aep" (or "... 2.aep", never over an old one)
+  if (!proj.file) {
+    var out = new File(base.fsName + "/Tiff Animatic.aep");
+    for (var n = 2; out.exists; n++) out = new File(base.fsName + "/Tiff Animatic " + n + ".aep");
+    try { proj.save(out); msg += "\nSaved as " + out.fsName; }
+    catch (e) { msg += "\nNot saved (" + e.message + "): use File > Save As."; }
+  }
   if (missing.length) msg += "\n\nMissing files (placeholders left empty):\n" + missing.join("\n");
   var fonts = [];
   for (var k in badFonts) if (badFonts.hasOwnProperty(k)) fonts.push(k);
