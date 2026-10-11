@@ -78,7 +78,7 @@ module.exports = {
   "V3-06": [{ type: "tag", x: 60, y: 60, w: 300, text: "FEMBOY" }],
   "V3-06b": [{ type: "tag", x: 60, y: 60, w: 260, text: "GEEK" }],
   "V3-06c": [{ type: "tag", x: 60, y: 60, w: 260, text: "NERD" }],
-  "V3-06d": [{ type: "tag", x: 60, y: 60, w: 420, text: "CARDS IN SHOE" }],
+  "V3-06d": [{ type: "tag", x: 60, y: 60, w: 460, text: "CARD COLLECTOR" }],
   "V3-08": [{ type: "signtext", x: 95, y: 195, w: 320, rot: -19, size: 76, text: "GO\nADRIAN!!!" }],
 
   // Bridge
