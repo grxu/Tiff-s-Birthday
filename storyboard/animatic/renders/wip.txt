@@ -1,4 +1,2 @@
 # Renders still to be adjusted (Render Drop verdict "work"); the animatic tags them WIP.
 # One shot ID or frame name per line, e.g. V3-06d for one cut of V3-06.
-OU-01
-OU-02
