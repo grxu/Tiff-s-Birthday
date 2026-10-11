@@ -5,6 +5,8 @@
 // <ID>b/c/d… are further cuts or push-in steps, <ID>-end is the end frame of a start+end shot.
 // Shots with gen.of reuse that shot's frames; gen.frames lists other frames to re-cut. Shots without a render fall back to their storyboard card (ALL only). IDs listed in
 // renders/wip.txt are tagged WIP. Audio is the matching slice of ../song.mp3.
+// A Kling clip at clips/<SHOT-ID>.mp4 (git-ignored) replaces the shot's stills. Clips run longer than their shots
+// (min 3s): start+end clips are sped up to fit so the end frame lands; the rest play at real speed, cut at the shot's end.
 const fs = require("fs"), path = require("path"), os = require("os");
 const { execFileSync, execSync } = require("child_process");
 const { chromium } = require(execSync("npm root -g").toString().trim() + "/playwright");
@@ -27,6 +29,8 @@ const TEXT = path.join(__dirname, "..", "overlays", "png");
 const textFor = (name) => { const f = name && path.join(TEXT, `${name}.png`); return !process.env.NOTEXT && f && fs.existsSync(f) ? f : null; };
 const WIP = new Set(fs.existsSync(WIPFILE) ? fs.readFileSync(WIPFILE, "utf8").split(/\s+/).filter((l) => l && !l.startsWith("#")) : []);
 const find = (name) => ["jpg", "jpeg", "png"].map((e) => path.join(RENDERS, `${name}.${e}`)).find(fs.existsSync);
+const clipFor = (id) => { const f = id && path.join(__dirname, "clips", `${id}.mp4`); return f && fs.existsSync(f) ? f : null; };
+const seconds = (f) => parseFloat(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString());
 const frames = (id) => {
   const base = find(id);
   if (!base) return [];
@@ -56,11 +60,31 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: BW, height: BH }, deviceScaleFactor: H / BH });
   const parts = [];
-  let k = 0, nRender = 0, nCard = 0;
+  let k = 0, nRender = 0, nCard = 0, nClip = 0;
   for (const sh of shots) {
     const f0 = Math.round((sh.t - T0) * FPS), f1 = Math.round((endOf(sh) - T0) * FPS), n = f1 - f0;
     if (n <= 0) { console.log(sh.id, fmt(sh.t), "skipped (no screen time)"); continue; }
     const own = frames(sh.id), src = sh.gen && sh.gen.of;
+    const clip = clipFor(sh.id) || clipFor(src);
+    if (clip) {
+      const T = n / FPS, D = seconds(clip), fit = /S\+E/.test((sh.gen && sh.gen.how) || "") && D > T;
+      const text = textFor(sh.id);
+      await p.setContent(overlay(sh, T, `CLIP${fit ? ` ${(D / T).toFixed(1)}×` : ""}`, sh.id, !!text), { waitUntil: "networkidle" });
+      await p.evaluate(() => document.fonts.ready);
+      const ov = path.join(BUILD, `ov-${k}.png`);
+      await p.screenshot({ path: ov, omitBackground: true });
+      const seg = path.join(BUILD, `seg-${String(k++).padStart(3, "0")}.mp4`);
+      // the clone pad covers rounding at the cut; the text overlay sits on the clip as a placeholder (AE tracks it later)
+      const v = `[0]${fit ? `setpts=PTS*${(T / D).toFixed(5)},` : ""}fps=${FPS},scale=${W}:${H}:force_original_aspect_ratio=increase,crop=${W}:${H},tpad=stop_mode=clone:stop_duration=5`;
+      const graph = text ? `${v}[c];[2]scale=${W}:${H}[t];[c][t]overlay[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`
+        : `${v}[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`;
+      execFileSync("ffmpeg", ["-y", "-nostdin", "-loglevel", "error", "-i", clip, "-loop", "1", "-i", ov, ...(text ? ["-loop", "1", "-i", text] : []),
+        "-filter_complex", graph, "-an", "-frames:v", String(n), ...enc, seg]);
+      parts.push(`file '${seg}'`);
+      nClip++;
+      console.log(sh.id, fmt(sh.t), n + "f", `clip ${D.toFixed(1)}s ${fit ? "sped up" : "cut"}`);
+      continue;
+    }
     // reused shots (gen.of, e.g. C2-01 = C1-01) play the source shot's frames
     // re-cut shots (gen.frames, e.g. OU-04) play a list of other shots' frames in order
     const list = sh.gen && sh.gen.frames ? sh.gen.frames.map((n) => ({ img: find(n), label: `= ${n}` })).filter((f) => f.img) : [];
@@ -115,5 +139,5 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
     "-af", `adelay=${delay}:all=1,apad,afade=t=in:d=0.15,afade=t=out:st=${(dur - 0.4).toFixed(3)}:d=0.4`,
     "-t", dur.toFixed(3), "-movflags", "+faststart", OUT]);
   fs.rmSync(BUILD, { recursive: true, force: true });
-  console.log(`${OUT}  ${W}x${H}  song ${fmt(T0)} to ${fmt(T1)} (${dur.toFixed(1)}s)  ${nRender} render frames, ${nCard} cards`);
+  console.log(`${OUT}  ${W}x${H}  song ${fmt(T0)} to ${fmt(T1)} (${dur.toFixed(1)}s)  ${nClip} clips, ${nRender} render frames, ${nCard} cards`);
 })();
