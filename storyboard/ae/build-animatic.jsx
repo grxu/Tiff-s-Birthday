@@ -27,15 +27,17 @@
     return new File(dir.fsName + "/" + parts[parts.length - 1]);
   }
 
-  // clips that are not here yet are downloaded from Higgsfield with curl (macOS and Windows 10+ have it);
+  // clips that are not here yet (or were replaced) are downloaded from Higgsfield with curl (macOS and Windows 10+ have it);
   // a clip that fails stays missing and its shot is built from its stills
   function fetchClips() {
-    var need = [], seen = {}, URLS = D.clipUrls || {};
+    var need = [], seen = {}, URLS = D.clipUrls || {}, SIZES = D.clipSizes || {};
     for (var i = 0; i < D.shots.length; i++) {
       var sh = D.shots[i], files = sh.clip ? [sh.clip.file] : [];
       for (var j = 0; j < sh.frames.length; j++) if (sh.frames[j].clip) files.push(sh.frames[j].clip.file);
       for (var k = 0; k < files.length; k++) {
-        if (seen[files[k]] || !URLS[files[k]] || resolve(files[k]).exists) continue;
+        var have = resolve(files[k]);
+        // skip a clip that is here, unless its size shows it was replaced since (then it is downloaded again)
+        if (seen[files[k]] || !URLS[files[k]] || (have.exists && (!SIZES[files[k]] || have.length === SIZES[files[k]]))) continue;
         seen[files[k]] = true;
         need.push(files[k]);
       }
@@ -190,6 +192,13 @@
       tr.setValueAtTime(HEAD + (sh.clip.fit ? sh.dur : last), last);
       span(L, 0, len);
       L.name = sh.id + (sh.clip.fit ? " clip (fitted)" : " clip");
+      // a camera move done in AE on a locked Kling clip (PC-04: its own tilt made the carpet crawl)
+      if (sh.move === "tilt-up") {
+        var cs = cover(clipItem), dy = H * 0.06;
+        L.transform.scale.setValue([cs[0] * 1.12, cs[1] * 1.12]);
+        L.transform.position.setValueAtTime(HEAD, [W / 2, H / 2 - dy]);
+        L.transform.position.setValueAtTime(HEAD + sh.dur, [W / 2, H / 2 + dy]);
+      }
       // each frame's text over its share (a start+end clip shows the start frame's text, then the end frame's)
       for (var q = 0; q < sh.frames.length; q++) {
         var qa = HEAD + (sh.dur * q) / sh.frames.length, qb = HEAD + (sh.dur * (q + 1)) / sh.frames.length;

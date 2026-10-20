@@ -94,9 +94,9 @@ module.exports = {
   "FC-04": [{ type: "card", hidden: true, x: 50, y: 60, title: "TRAVEL PLANNER" }],
   "FC-04b": [{ type: "card", hidden: true, x: 50, y: 60, title: "TRAVEL PLANNER" }],
   "FC-04c": [{ type: "card", hidden: true, x: 50, y: 60, title: "TRAVEL PLANNER" }],
-  "FC-05": [{ type: "card", hidden: true, x: 50, y: 60, title: "MY HOME", gold: true }],
-  "FC-05b": [{ type: "card", hidden: true, x: 50, y: 60, title: "MY HOME", gold: true }],
-  "FC-06": [{ type: "card", hidden: true, x: 40, y: 24, title: "EVERY VERSION · ACCEPTED", gold: true }],
+  "FC-05": [{ type: "card", x: 50, y: 60, title: "MY HOME", gold: true }],
+  "FC-05b": [{ type: "card", x: 50, y: 60, title: "MY HOME", gold: true }],
+  "FC-06": [{ type: "card", x: 40, y: 24, title: "EVERY VERSION · ACCEPTED", gold: true }],
 
   // Outro
   "OU-01": [{ type: "bubble", x: 1360, y: 40, w: 520, tail: "left", text: "Put down the phone." }],

@@ -4,9 +4,9 @@
 |---|---|---|---|
 | 1 | V1-02 | Replace the road fork through the windshield with roadside scenery; mask only the window into the locked frame | Prompt below; user renders in Higgsfield, then Claude composites the window |
 | 2 | V1-06 | WhatsApp group chat on the V1-05 phone plate, replacing the three avatar panels | Done in `overlays/spec.js` (`wahead` + `wa` items); AE layers ready |
-| 3 | PC-04 | The red carpet crawls in the Kling clip | Re-render with a locked camera (7 credits, needs a yes); move done in AE |
-| 4 | C1 / C2 / FC | Hide the top-left role cards (WARDROBE EXPERT, COSPLAY CREW, TRAVEL PLANNER, PHOTOGRAPHER, CHEF, MY HOME, EVERY VERSION · ACCEPTED) | Done: `hidden: true` in `spec.js`; left out of the animatic, built switched off in AE |
-| 5 | BR-02 | User removed the "4) 5) 6) 7)" numbers | Waiting for the edited file in Render Drop |
+| 3 | PC-04 | The red carpet crawls in the Kling clip | **Done:** re-rendered with a locked camera (job `ab6258e0…`, 7 credits); the tilt is an AE move (`gen.ae: "tilt-up"`) |
+| 4 | C1 / C2 / FC | Hide the top-left role cards (WARDROBE EXPERT, COSPLAY CREW, TRAVEL PLANNER, PHOTOGRAPHER, CHEF) | Done: `hidden: true` in `spec.js`; left out of the animatic, built switched off in AE. The gold payoff cards MY HOME (FC-05) and EVERY VERSION · ACCEPTED (FC-06) stay (user) |
+| 5 | BR-02 | User removed the "4) 5) 6) 7)" numbers | **Done:** the edit from Render Drop is in `renders/BR-02.jpg` |
 
 ## 1 · V1-02 window: image edit
 

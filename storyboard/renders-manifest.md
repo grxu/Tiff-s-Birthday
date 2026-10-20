@@ -187,3 +187,11 @@ Start frames are the user's own Higgsfield jobs. No text in the clips: the overl
 
 - **PC-04:** fresh render with seven floor cats done 10 October (job `2168721b…`); check the cat count. If it still drifts, a masked edit of this job is the next step.
 - **V1-10:** sofa recolour (needs its job ID).
+
+## 20 October · revisions (Kling 3.0 pro 1080p, sound off, 7 credits)
+
+| Shot | Start image | Clip | Job ID |
+|---|---|---|---|
+| PC-04 | `df6186db-706c-4bfc-9adc-162247182ffc` | 4s, locked camera (the old clip's tilt made the carpet crawl; the tilt is now an AE move) | `ab6258e0-fd78-4be1-ad2c-addccd02132e` (replaces `afa787d5…`) |
+
+BR-02: the user's edit without the "4) 5) 6) 7)" numbers, from Render Drop (asset `838430d25666c1a2b758ac0c38daf406`).
