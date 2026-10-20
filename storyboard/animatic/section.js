@@ -54,10 +54,12 @@ const enc = ["-c:v", "libx264", "-preset", "medium", "-crf", "22", "-pix_fmt", "
     const ov = path.join(BUILD, `ov-${k}.png`);
     await p.screenshot({ path: ov, omitBackground: true });
     const seg = path.join(BUILD, `seg-${String(k++).padStart(3, "0")}.mp4`);
-    const v = `[0]${fit ? `setpts=PTS*${(T / c.seconds).toFixed(5)},` : ""}fps=${FPS},scale=${W}:${H}:force_original_aspect_ratio=increase,crop=${W}:${H},tpad=stop_mode=clone:stop_duration=5`;
+    // a patch (patches/<clip>.png, the clip's own size) is laid over the clip first: PC-04's carpet is held still
+    const P = texts.length + 2;
+    const v = `[0]${fit ? `setpts=PTS*${(T / c.seconds).toFixed(5)},` : ""}fps=${FPS}${c.patch ? `[raw];[${P}]format=rgba[pt];[raw][pt]overlay` : ""},scale=${W}:${H}:force_original_aspect_ratio=increase,crop=${W}:${H},tpad=stop_mode=clone:stop_duration=5`;
     const graph = v + texts.map((t, i) => `[c${i}];[${i + 2}]scale=${W}:${H}[t${i}];[c${i}][t${i}]overlay=enable='between(n,${t.a},${t.b - 1})'`).join("")
       + `[v];[1]scale=${W}:${H}[ov];[v][ov]overlay,format=yuv420p`;
-    execFileSync("ffmpeg", ["-y", "-nostdin", "-loglevel", "error", "-i", c.file, "-loop", "1", "-i", ov, ...texts.flatMap((t) => ["-loop", "1", "-i", t.file]),
+    execFileSync("ffmpeg", ["-y", "-nostdin", "-loglevel", "error", "-i", c.file, "-loop", "1", "-i", ov, ...texts.flatMap((t) => ["-loop", "1", "-i", t.file]), ...(c.patch ? ["-loop", "1", "-i", c.patch] : []),
       "-filter_complex", graph, "-an", "-frames:v", String(m), ...enc, seg]);
     parts.push(`file '${seg}'`);
     nClip++;

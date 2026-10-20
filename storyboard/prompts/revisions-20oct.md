@@ -52,3 +52,8 @@ Static locked-off camera: the camera does not move, tilt, pan or zoom at all. Th
 ## 4 · Role cards
 
 Every `card` item under C1-, C2- and FC- keys has `hidden: true`. render.js leaves them out of the overlay PNGs, so the animatic no longer shows them. export.js keeps them, and build-animatic.jsx builds them with their eyes switched off, named `<ID> card (hidden)`. Switch the eyes back on to show one, or delete `hidden: true` in spec.js and re-export.
+
+## Follow-up (20 October, later)
+
+- **V1-02:** the user's New Final from Render Drop (asset `cc096b9a30b8a6b833c4458d0ca519fd`) is now `renders/V1-02.jpg`, used whole. Its lines are redrawn a few pixels off the old frame, so a window-only mask would show seams around his head and the pillars. The old clip (road fork) is out of clips.json, so V1-02 plays the still until a Kling re-run (5.25 credits, needs a yes).
+- **PC-04:** the locked-camera clip's carpet still shimmered, so the user asked to mask it with the Higgsfield frame. `animatic/patches/PC-04.png` is that frame scaled to the clip's 1928×1076 (it lines up with the first frame). Its alpha covers the carpet, the step and a 22 px margin, minus anything that moves (the cats), with a 4 px soft edge. Over the clip, the carpet's frame-to-frame change drops from about 9 to about 2 grey levels (compression noise).

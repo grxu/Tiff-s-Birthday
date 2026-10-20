@@ -195,3 +195,5 @@ Start frames are the user's own Higgsfield jobs. No text in the clips: the overl
 | PC-04 | `df6186db-706c-4bfc-9adc-162247182ffc` | 4s, locked camera (the old clip's tilt made the carpet crawl; the tilt is now an AE move) | `ab6258e0-fd78-4be1-ad2c-addccd02132e` (replaces `afa787d5…`) |
 
 BR-02: the user's edit without the "4) 5) 6) 7)" numbers, from Render Drop (asset `838430d25666c1a2b758ac0c38daf406`).
+V1-02: the user's New Final (Render Drop asset `cc096b9a30b8a6b833c4458d0ca519fd`); the old V1-02 clip (`6ea9afd5…`, road fork) is retired.
+PC-04 patch: `animatic/patches/PC-04.png`, from Render Drop asset `9b12ad1ea5a1cca48f190154fef449d4` (the PC-04 start frame).

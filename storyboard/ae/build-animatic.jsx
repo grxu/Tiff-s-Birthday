@@ -192,6 +192,16 @@
       tr.setValueAtTime(HEAD + (sh.clip.fit ? sh.dur : last), last);
       span(L, 0, len);
       L.name = sh.id + (sh.clip.fit ? " clip (fitted)" : " clip");
+      // a still patch over part of the clip (PC-04: the carpet, so it can't crawl), parented so it follows any move
+      var patch = sh.clip.patch ? footage(sh.clip.patch, fStills) : null;
+      if (patch) {
+        var Pt = comp.layers.add(patch);
+        span(Pt, 0, len);
+        Pt.parent = L;
+        Pt.transform.position.setValue([clipItem.width / 2, clipItem.height / 2]);
+        Pt.transform.scale.setValue([100 * clipItem.width / patch.width, 100 * clipItem.height / patch.height]);
+        Pt.name = sh.id + " patch (still)";
+      }
       // a camera move done in AE on a locked Kling clip (PC-04: its own tilt made the carpet crawl)
       if (sh.move === "tilt-up") {
         var cs = cover(clipItem), dy = H * 0.06;

@@ -2,7 +2,6 @@
 rem Downloads the Kling clips into storyboard\animatic\clips (double-click on Windows).
 cd /d "%~dp0..\animatic"
 if not exist clips mkdir clips
-if not exist clips\V1-02.mp4 curl.exe -sSfL -o clips\V1-02.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_085725_6ea9afd5-542b-4a7e-bf3f-ed1ae0f6a10f.mp4" && echo V1-02
 if not exist clips\V1-03.mp4 curl.exe -sSfL -o clips\V1-03.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_085728_499d9244-18cd-48a5-8b27-1a29b833f118.mp4" && echo V1-03
 if not exist clips\V1-04.mp4 curl.exe -sSfL -o clips\V1-04.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_085728_f09cc022-d25a-4668-9911-942ff2510cb9.mp4" && echo V1-04
 if not exist clips\V1-08.mp4 curl.exe -sSfL -o clips\V1-08.mp4 "https://d8j0ntlcm91z4.cloudfront.net/user_3F9g5MvyxWEcBzuFjPmI97hrMM7/hf_20261011_085725_058da155-a9b1-486c-91f7-14de7ea70085.mp4" && echo V1-08
