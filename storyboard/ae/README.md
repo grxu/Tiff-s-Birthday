@@ -45,6 +45,7 @@ A new project is saved as `Tiff Animatic.aep` in this folder. If that file exist
     - Its graphic (the box or shape, from `graphics/`) and its **live text layers** are parented to that null.
     - Animate the null to move, pop or scale the whole item; edit the text layers to change wording or fonts.
     - On stills, the nulls are parented to the still, so the text follows the push-in.
+    - Items marked `hidden` in `overlays/spec.js` (the chorus role cards) are built switched off and named `… (hidden)`. Turn their eyes on to bring one back.
   - **GUIDE layer:** shows the shot ID, lyric and editor note. Guide layers never render.
 
 ## Rebuild after changes

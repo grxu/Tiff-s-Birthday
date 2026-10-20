@@ -149,6 +149,8 @@
       N.transform.position.setValue(c);
       for (var k = 0; k < kids.length; k++) kids[k].parent = N;
       if (parent) N.parent = parent;
+      // a hidden item (the chorus role cards) is built switched off: turn its layers' eyes on to bring it back
+      if (it.hidden) { N.name += " (hidden)"; N.enabled = false; for (var h = 0; h < kids.length; h++) kids[h].enabled = false; }
     }
   }
 

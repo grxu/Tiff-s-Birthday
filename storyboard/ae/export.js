@@ -26,12 +26,13 @@ const psName = (family, weight) => {
   return w[best];
 };
 
-// Runs in the page: wraps every text node of item i in a span, measures it, and returns the lettering.
+// Runs in the page: wraps every text node of item i in a span, measures it, and returns the lettering
+// (text inside SVG or a [data-gfx] element, like the V1-06 group icon, stays in the graphic).
 const measure = (i) => {
   const root = document.body.children[i];
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   const nodes = [];
-  for (let n = walker.nextNode(); n; n = walker.nextNode()) if (n.nodeValue.trim() && !n.parentElement.closest("svg")) nodes.push(n);
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) if (n.nodeValue.trim() && !n.parentElement.closest("svg, [data-gfx]")) nodes.push(n);
   const spans = nodes.map((n) => { const s = document.createElement("span"); s.className = "__t"; n.replaceWith(s); s.appendChild(n); return s; });
   // line breaks are read with every transform off, so rotated items still split by line top
   const flat = document.createElement("style");
@@ -112,7 +113,7 @@ const measure = (i) => {
         crops.push({ file, x: clip.x, y: clip.y });
       }
       overlays[key].push({
-        type: items[i].type, graphic: clip.width > 0 ? { file: rel(file), x: clip.x, y: clip.y } : null,
+        type: items[i].type, hidden: !!items[i].hidden, graphic: clip.width > 0 ? { file: rel(file), x: clip.x, y: clip.y } : null,
         texts: texts.map(({ family, weight, ...t }) => ({ ...t, font: psName(family, weight) })),
       });
     }

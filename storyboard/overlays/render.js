@@ -13,6 +13,8 @@ fs.mkdirSync(OUT, { recursive: true }); fs.mkdirSync(PREV, { recursive: true });
 const C = { ink: "#1d1a1c", mauve: "#b27a92", mauveL: "#ecd5df", mustard: "#d9a521", teal: "#3f6f73", red: "#d94848", cream: "#fff8ec", green: "#3f8f5a" };
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const at = (o, extra = "") => `position:absolute;left:${o.x}px;top:${o.y}px;${o.w ? `width:${o.w}px;` : ""}${o.h ? `height:${o.h}px;` : ""}${o.rot ? `transform:rotate(${o.rot}deg);` : ""}${extra}`;
+// pictures inside an overlay (V1-06 avatars) are inlined: the page is loaded with setContent and cannot read files
+const img64 = (n) => `data:image/png;base64,${fs.readFileSync(path.join(__dirname, "img", `${n}.png`)).toString("base64")}`;
 const star = (n, r1, r2) => Array.from({ length: n * 2 }, (_, i) => { const a = (Math.PI * i) / n - Math.PI / 2, r = i % 2 ? r2 : r1; return `${(50 + r * Math.cos(a)).toFixed(2)},${(50 + r * Math.sin(a)).toFixed(2)}`; }).join(" ");
 
 const R = {
@@ -21,6 +23,9 @@ const R = {
   text: (o) => `<div style="${at(o)}text-align:center;font:400 ${o.size || 60}px 'Patrick Hand';color:${C.ink}">${esc(o.text)}</div>`,
   bubble: (o) => `<div style="${at(o)}"><div class="bub">${esc(o.text)}<i class="tail ${o.tail || "left"}"></i></div></div>`,
   chat: (o) => `<div style="${at(o)}display:flex;justify-content:${o.side === "out" ? "flex-end" : "flex-start"}"><div class="chat ${o.side}">${o.name ? `<small>${esc(o.name)}</small>` : ""}${esc(o.text)}</div></div>`,
+  // WhatsApp-style group chat (V1-06): header bar, then bubbles with sender colour, avatar, time and ticks
+  wahead: (o) => `<div style="${at(o)}" class="wahead"><span class="waico" data-gfx>${esc(o.icon || "")}</span><div><b>${esc(o.text)}</b><small>${esc(o.sub)}</small></div></div>`,
+  wa: (o) => `<div style="${at(o)}display:flex;align-items:flex-start;gap:16px;justify-content:${o.side === "out" ? "flex-end" : "flex-start"}">${o.avatar ? `<img class="waav" src="${img64(`avatar-${o.avatar}`)}">` : ""}<div class="wa ${o.side}">${o.name ? `<small style="color:${o.color || C.teal}">${esc(o.name)}</small>` : ""}${esc(o.text)}<i class="wat">${esc(o.time || "")}${o.side === "out" ? ` <span class="tick">✓✓</span>` : ""}</i></div></div>`,
   notif: (o) => `<div style="${at(o)}" class="notif${o.dim ? " dim" : ""}"><small>${esc(o.app)}</small><div>${esc(o.text)}</div></div>`,
   tag: (o) => `<div style="${at(o)}${o.size ? `font-size:${o.size}px;` : ""}" class="tag">${esc(o.text)}</div>`,
   pill: (o) => `<div style="${at(o)}" class="pill ${o.style}">${esc(o.text)}</div>`,
@@ -52,6 +57,13 @@ const page = (items) => `<!doctype html><html><head><meta charset="utf-8">
 .tail.left{left:60px}.tail.right{right:60px}
 .chat{max-width:100%;background:#fff;border:5px solid ${C.ink};border-radius:34px;padding:16px 30px;font:800 46px/1.2 Nunito,'Noto Color Emoji';color:${C.ink};box-shadow:7px 7px 0 ${C.mauve}}
 .chat.out{background:${C.teal};color:#fff}.chat small{display:block;font:900 28px Nunito;color:${C.mauve};margin-bottom:2px}
+.wahead{display:flex;align-items:center;gap:20px;background:#008069;border:5px solid ${C.ink};border-radius:26px;padding:12px 30px 12px 14px;box-shadow:7px 7px 0 ${C.mauve};color:#fff}
+.wahead .waico{width:78px;height:78px;flex:none;border-radius:50%;background:#fff;border:4px solid ${C.ink};display:flex;align-items:center;justify-content:center;font:42px 'Noto Color Emoji'}
+.wahead b{display:block;font:900 44px/1.1 Nunito,'Noto Color Emoji'}.wahead small{display:block;font:800 26px Nunito;color:#d8f3eb}
+.waav{width:96px;height:96px;flex:none;border-radius:50%;border:5px solid ${C.ink};background:#fff;box-shadow:5px 5px 0 ${C.mauve}}
+.wa{max-width:100%;background:#fff;border:5px solid ${C.ink};border-radius:30px;padding:10px 26px 8px;font:800 42px/1.2 Nunito,'Noto Color Emoji';color:${C.ink};box-shadow:7px 7px 0 ${C.mauve}}
+.wa.in{border-top-left-radius:6px}.wa.out{background:#d9fdd3;border-top-right-radius:6px}
+.wa small{display:block;font:900 28px Nunito;margin-bottom:2px}.wa .wat{display:block;text-align:right;font:800 22px Nunito;font-style:normal;color:#667781;margin-top:2px}.wa .tick{color:#34a5d8}
 .notif{background:rgba(255,255,255,.97);border:5px solid ${C.ink};border-radius:30px;padding:16px 28px;box-shadow:7px 7px 0 ${C.mauve};font:800 44px/1.2 Nunito,'Noto Color Emoji';color:${C.ink}}
 .notif small{display:block;font:900 28px Nunito,'Noto Color Emoji';color:${C.teal};margin-bottom:4px}.notif.dim{color:#8a7f86}
 .tag{display:inline-block;width:auto;background:#fff;border:5px solid ${C.ink};border-radius:999px;padding:6px 28px;text-align:center;font:800 46px 'Baloo 2';color:${C.ink};box-shadow:6px 6px 0 ${C.mauve}}
@@ -82,7 +94,8 @@ if (require.main === module) (async () => {
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: W, height: H } });
   for (const k of keys) {
-    await p.setContent(page(SPEC[k]), { waitUntil: "networkidle" });
+    // hidden items (the chorus role cards) stay in the spec for After Effects but are left out here
+    await p.setContent(page(SPEC[k].filter((o) => !o.hidden)), { waitUntil: "networkidle" });
     await p.evaluate(() => document.fonts.ready);
     const png = path.join(OUT, `${k}.png`);
     await p.screenshot({ path: png, omitBackground: true });
